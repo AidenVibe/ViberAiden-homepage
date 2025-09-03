@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NineOneLabs Typography System - Complete Showcase</title>
+    
+    <!-- Google Fonts - NanumSquare & Archivo -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css" rel="stylesheet">
+    
+    <style>
+        /* ============================================================================
+           NINEONELABS TYPOGRAPHY SYSTEM - COMPLETE IMPLEMENTATION
+           ============================================================================ */
+        
+        /* CSS Variables from theme.css */
+        :root {
+            /* Primary Purple */
+            --color-primary-50: hsl(266, 87%, 97%);
+            --color-primary-100: hsl(266, 87%, 93%);
+            --color-primary-200: hsl(266, 87%, 86%);
+            --color-primary-300: hsl(266, 87%, 77%);
+            --color-primary-400: hsl(266, 87%, 67%);
+            --color-primary-500: hsl(266, 87%, 57%); /* Base - rgb(102, 53, 240) */
+            --color-primary-600: hsl(266, 87%, 47%);
+            --color-primary-700: hsl(266, 87%, 37%);
+            --color-primary-800: hsl(266, 87%, 27%);
+            --color-primary-900: hsl(266, 87%, 17%);
+
+            /* Secondary Green */
+            --color-secondary-50: hsl(158, 98%, 97%);
+            --color-secondary-100: hsl(158, 98%, 93%);
+            --color-secondary-200: hsl(158, 98%, 85%);
+            --color-secondary-300: hsl(158, 98%, 75%);
+            --color-secondary-400: hsl(158, 98%, 55%);
+            --color-secondary-500: hsl(158, 98%, 34%); /* Base - rgb(2, 170, 108) */
+            --color-secondary-600: hsl(158, 98%, 30%);
+            --color-secondary-700: hsl(158, 98%, 24%);
+            --color-secondary-800: hsl(158, 98%, 18%);
+            --color-secondary-900: hsl(158, 98%, 12%);
+
+            /* Accent Yellow */
+            --color-accent-50: hsl(57, 97%, 97%);
+            --color-accent-100: hsl(57, 97%, 93%);
+            --color-accent-200: hsl(57, 97%, 85%);
+            --color-accent-300: hsl(57, 97%, 75%);
+            --color-accent-400: hsl(57, 97%, 65%);
+            --color-accent-500: hsl(57, 97%, 53%); /* Base - rgb(252, 240, 18) */
+            --color-accent-600: hsl(57, 97%, 43%);
+            --color-accent-700: hsl(57, 97%, 33%);
+            --color-accent-800: hsl(57, 97%, 23%);
+            --color-accent-900: hsl(57, 97%, 13%);
+
+            /* Neutral Gray Scale */
+            --color-neutral-0: hsl(0, 0%, 100%);
+            --color-neutral-50: hsl(0, 0%, 98%);
+            --color-neutral-100: hsl(0, 0%, 96%);
+            --color-neutral-200: hsl(0, 0%, 90%);
+            --color-neutral-300: hsl(0, 0%, 83%);
+            --color-neutral-400: hsl(0, 0%, 64%);
+            --color-neutral-500: hsl(0, 0%, 45%);
+            --color-neutral-600: hsl(0, 0%, 32%);
+            --color-neutral-700: hsl(0, 0%, 25%);
+            --color-neutral-800: hsl(0, 0%, 15%);
+            --color-neutral-900: hsl(0, 0%, 9%);
+            --color-neutral-950: hsl(0, 0%, 4%);
+
+            /* Font Families */
+            --font-family-primary: 'NanumSquare', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-secondary: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+
+            /* Font Sizes - 16 Scale Steps */
+            --font-size-xs: 0.625rem;     /* 10px */
+            --font-size-sm: 0.75rem;      /* 12px */
+            --font-size-base: 0.875rem;   /* 14px */
+            --font-size-md: 1rem;         /* 16px */
+            --font-size-lg: 1.125rem;     /* 18px */
+            --font-size-xl: 1.25rem;      /* 20px */
+            --font-size-2xl: 1.5rem;      /* 24px */
+            --font-size-3xl: 1.75rem;     /* 28px */
+            --font-size-4xl: 2rem;        /* 32px */
+            --font-size-5xl: 2.25rem;     /* 36px */
+            --font-size-6xl: 3rem;        /* 48px */
+            --font-size-7xl: 4rem;        /* 64px */
+            --font-size-8xl: 5rem;        /* 80px */
+            --font-size-9xl: 6rem;        /* 96px */
+            --font-size-10xl: 8rem;       /* 128px */
+            --font-size-11xl: 19.1875rem; /* 307px */
+
+            /* Font Weights */
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-black: 900;
+
+            /* Line Heights */
+            --line-height-tight: 1.25;
+            --line-height-snug: 1.375;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            --line-height-loose: 2;
+
+            /* Semantic Colors */
+            --color-text-primary: var(--color-neutral-900);
+            --color-text-secondary: var(--color-neutral-600);
+            --color-text-muted: var(--color-neutral-400);
+
+            /* Spacing */
+            --space-2: 0.5rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-32: 8rem;
+        }
+
+        /* Base Styles */
+        * { box-sizing: border-box; }
+        
+        html {
+            font-family: var(--font-family-primary);
+            font-size: 16px;
+            line-height: var(--line-height-normal);
+            color: var(--color-text-primary);
+            background-color: var(--color-neutral-0);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            margin: 0;
+            padding: var(--space-4);
+            background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-neutral-100) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-neutral-0);
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px hsla(0, 0%, 0%, 0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-secondary-500) 100%);
+            color: var(--color-neutral-0);
+            padding: var(--space-16) var(--space-8);
+            text-align: center;
+        }
+
+        .section {
+            padding: var(--space-12) var(--space-8);
+            border-bottom: 1px solid var(--color-neutral-200);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-neutral-800);
+            margin: 0 0 var(--space-8) 0;
+            text-align: center;
+        }
+
+        .typography-grid {
+            display: grid;
+            gap: var(--space-8);
+            margin-bottom: var(--space-12);
+        }
+
+        .typography-item {
+            padding: var(--space-6);
+            border: 1px solid var(--color-neutral-200);
+            border-radius: 0.5rem;
+            background: var(--color-neutral-50);
+            transition: all 0.3s ease;
+        }
+
+        .typography-item:hover {
+            border-color: var(--color-primary-300);
+            box-shadow: 0 4px 6px -1px hsla(266, 87%, 57%, 0.1);
+        }
+
+        .meta {
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-2);
+            background: var(--color-neutral-200);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            display: inline-block;
+        }
+
+        .usage {
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-secondary-600);
+            background: var(--color-secondary-50);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: var(--space-4);
+            border-left: 4px solid var(--color-secondary-500);
+        }
+
+        /* ============================================================================
+           TYPOGRAPHY COMPONENT CLASSES
+           ============================================================================ */
+
+        /* Font Family Classes */
+        .typo-primary { font-family: var(--font-family-primary); }
+        .typo-secondary { font-family: var(--font-family-secondary); }
+        .typo-mono { font-family: var(--font-family-mono); }
+
+        /* Font Size Classes */
+        .typo-xs { font-size: var(--font-size-xs); }
+        .typo-sm { font-size: var(--font-size-sm); }
+        .typo-base { font-size: var(--font-size-base); }
+        .typo-md { font-size: var(--font-size-md); }
+        .typo-lg { font-size: var(--font-size-lg); }
+        .typo-xl { font-size: var(--font-size-xl); }
+        .typo-2xl { font-size: var(--font-size-2xl); }
+        .typo-3xl { font-size: var(--font-size-3xl); }
+        .typo-4xl { font-size: var(--font-size-4xl); }
+        .typo-5xl { font-size: var(--font-size-5xl); }
+        .typo-6xl { font-size: var(--font-size-6xl); }
+        .typo-7xl { font-size: var(--font-size-7xl); }
+        .typo-8xl { font-size: var(--font-size-8xl); }
+        .typo-9xl { font-size: var(--font-size-9xl); }
+        .typo-10xl { font-size: var(--font-size-10xl); }
+        .typo-11xl { font-size: var(--font-size-11xl); }
+
+        /* Font Weight Classes */
+        .typo-light { font-weight: var(--font-weight-light); }
+        .typo-normal { font-weight: var(--font-weight-normal); }
+        .typo-medium { font-weight: var(--font-weight-medium); }
+        .typo-semibold { font-weight: var(--font-weight-semibold); }
+        .typo-bold { font-weight: var(--font-weight-bold); }
+        .typo-black { font-weight: var(--font-weight-black); }
+
+        /* Line Height Classes */
+        .typo-leading-tight { line-height: var(--line-height-tight); }
+        .typo-leading-snug { line-height: var(--line-height-snug); }
+        .typo-leading-normal { line-height: var(--line-height-normal); }
+        .typo-leading-relaxed { line-height: var(--line-height-relaxed); }
+        .typo-leading-loose { line-height: var(--line-height-loose); }
+
+        /* Color Variations */
+        .typo-primary { color: var(--color-primary-500); }
+        .typo-primary-light { color: var(--color-primary-300); }
+        .typo-primary-dark { color: var(--color-primary-700); }
+        
+        .typo-secondary { color: var(--color-secondary-500); }
+        .typo-secondary-light { color: var(--color-secondary-300); }
+        .typo-secondary-dark { color: var(--color-secondary-700); }
+        
+        .typo-accent { color: var(--color-accent-500); }
+        .typo-accent-light { color: var(--color-accent-300); }
+        .typo-accent-dark { color: var(--color-accent-700); }
+        
+        .typo-neutral { color: var(--color-text-primary); }
+        .typo-muted { color: var(--color-text-secondary); }
+        .typo-subtle { color: var(--color-text-muted); }
+
+        /* Text Alignment */
+        .typo-left { text-align: left; }
+        .typo-center { text-align: center; }
+        .typo-right { text-align: right; }
+        .typo-justify { text-align: justify; }
+
+        /* Special Typography Styles */
+        .typo-hero {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-8xl);
+            font-weight: var(--font-weight-black);
+            line-height: var(--line-height-tight);
+            color: var(--color-primary-500);
+            background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-secondary-500) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .typo-section-title {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-tight);
+            color: var(--color-neutral-800);
+        }
+
+        .typo-body {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-normal);
+            line-height: var(--line-height-relaxed);
+            color: var(--color-text-primary);
+        }
+
+        .typo-caption {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            line-height: var(--line-height-snug);
+            color: var(--color-text-muted);
+        }
+
+        .typo-link {
+            color: var(--color-primary-500);
+            text-decoration: underline;
+            text-decoration-color: var(--color-primary-300);
+            transition: all 0.3s ease;
+        }
+
+        .typo-link:hover {
+            color: var(--color-primary-700);
+            text-decoration-color: var(--color-primary-700);
+        }
+
+        .typo-blockquote {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-medium);
+            font-style: italic;
+            line-height: var(--line-height-relaxed);
+            color: var(--color-text-secondary);
+            border-left: 4px solid var(--color-primary-500);
+            padding-left: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .typo-hero { font-size: var(--font-size-6xl); }
+            .typo-section-title { font-size: var(--font-size-3xl); }
+            .section-title { font-size: var(--font-size-2xl); }
+        }
+
+        /* Color showcase grid */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .color-item {
+            text-align: center;
+            padding: var(--space-4);
+            border-radius: 0.5rem;
+            border: 1px solid var(--color-neutral-200);
+        }
+
+        /* Special hero section for super large text */
+        .hero-showcase {
+            background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%);
+            padding: var(--space-20) var(--space-8);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .super-hero-text {
+            font-family: var(--font-family-primary);
+            font-size: clamp(4rem, 15vw, var(--font-size-11xl));
+            font-weight: var(--font-weight-black);
+            line-height: var(--line-height-tight);
+            background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-secondary-500) 50%, var(--color-accent-500) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+        }
+
+        /* Accessibility indicators */
+        .a11y-good { color: var(--color-secondary-500); }
+        .a11y-warning { color: var(--color-accent-600); }
+        .a11y-error { color: #e74c3c; }
+
+        /* Code examples */
+        .code-example {
+            background: var(--color-neutral-900);
+            color: var(--color-neutral-100);
+            padding: var(--space-6);
+            border-radius: 0.5rem;
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+            overflow-x: auto;
+            margin-top: var(--space-4);
+        }
+
+        .keyword { color: #ff79c6; }
+        .string { color: #f1fa8c; }
+        .class { color: #50fa7b; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="typo-6xl typo-black typo-center" style="margin: 0;">
+                NineOneLabs Typography System
+            </h1>
+            <p class="typo-xl typo-medium typo-center" style="margin: var(--space-4) 0 0 0; opacity: 0.9;">
+                한국어 최적화 타이포그래피 - NanumSquare & Archivo 폰트 시스템
+            </p>
+        </div>
+
+        <!-- Super Hero Text Showcase -->
+        <div class="hero-showcase">
+            <h2 class="super-hero-text">Design</h2>
+            <p class="typo-xl typo-medium typo-muted">Super Hero Text (307px 최대 크기)</p>
+        </div>
+
+        <!-- Semantic HTML Elements -->
+        <section class="section">
+            <h2 class="section-title">Semantic HTML 요소</h2>
+            <div class="typography-grid">
+                <div class="typography-item">
+                    <div class="meta">h1 - Main Heading</div>
+                    <h1 class="typo-primary typo-6xl typo-bold">메인 제목 - 페이지 최상위 제목</h1>
+                    <div class="usage">&lt;h1 class="typo-primary typo-6xl typo-bold"&gt;메인 제목&lt;/h1&gt;</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">h2 - Section Heading</div>
+                    <h2 class="typo-secondary typo-4xl typo-semibold">섹션 제목 - 주요 영역 구분</h2>
+                    <div class="usage">&lt;h2 class="typo-secondary typo-4xl typo-semibold"&gt;섹션 제목&lt;/h2&gt;</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">h3 - Subsection Heading</div>
+                    <h3 class="typo-neutral typo-3xl typo-medium">하위 섹션 제목 - 내용 구분</h3>
+                    <div class="usage">&lt;h3 class="typo-neutral typo-3xl typo-medium"&gt;하위 섹션 제목&lt;/h3&gt;</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">p - Body Text</div>
+                    <p class="typo-body">본문 텍스트입니다. 사용자가 읽는 주요 내용을 담고 있으며, 가독성이 가장 중요한 요소입니다. NanumSquare 폰트로 한국어 텍스트의 가독성을 최적화했습니다.</p>
+                    <div class="usage">&lt;p class="typo-body"&gt;본문 텍스트&lt;/p&gt;</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">span - Inline Text</div>
+                    <span class="typo-accent typo-medium">인라인 텍스트</span> <span class="typo-muted">일반 텍스트와 함께</span>
+                    <div class="usage">&lt;span class="typo-accent typo-medium"&gt;인라인 텍스트&lt;/span&gt;</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">small - Small Text</div>
+                    <small class="typo-caption">작은 텍스트 - 부가 정보나 저작권 표시 등</small>
+                    <div class="usage">&lt;small class="typo-caption"&gt;작은 텍스트&lt;/small&gt;</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">blockquote - Quote</div>
+                    <blockquote class="typo-blockquote">
+                        "디자인은 단순한 외모나 느낌이 아니다. 디자인은 작동 방식이다."
+                        <footer style="margin-top: 1rem; font-size: 0.875rem;">— 스티브 잡스</footer>
+                    </blockquote>
+                    <div class="usage">&lt;blockquote class="typo-blockquote"&gt;인용문&lt;/blockquote&gt;</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">a - Link</div>
+                    <a href="#" class="typo-link">링크 텍스트</a> 일반 텍스트와 함께 <a href="#" class="typo-link">다른 링크</a>
+                    <div class="usage">&lt;a href="#" class="typo-link"&gt;링크 텍스트&lt;/a&gt;</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Font Size Scale -->
+        <section class="section">
+            <h2 class="section-title">폰트 크기 스케일 (16단계)</h2>
+            <div class="typography-grid">
+                <div class="typography-item">
+                    <div class="meta">typo-xs (10px)</div>
+                    <div class="typo-xs">Extra Small - 매우 작은 텍스트</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-sm (12px)</div>
+                    <div class="typo-sm">Small - 작은 텍스트</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-base (14px)</div>
+                    <div class="typo-base">Base - 기본 텍스트</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-md (16px)</div>
+                    <div class="typo-md">Medium - 중간 텍스트</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-lg (18px)</div>
+                    <div class="typo-lg">Large - 큰 텍스트</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-xl (20px)</div>
+                    <div class="typo-xl">Extra Large - 더 큰 텍스트</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-2xl (24px)</div>
+                    <div class="typo-2xl">2XL - 소제목 크기</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-3xl (28px)</div>
+                    <div class="typo-3xl">3XL - 중간 제목</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-4xl (32px)</div>
+                    <div class="typo-4xl typo-semibold">4XL - 섹션 제목</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-5xl (36px)</div>
+                    <div class="typo-5xl typo-bold">5XL - 큰 제목</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-6xl (48px)</div>
+                    <div class="typo-6xl typo-bold typo-primary">6XL - 페이지 제목</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-7xl (64px)</div>
+                    <div class="typo-7xl typo-black typo-primary">7XL - 히어로</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-8xl (80px)</div>
+                    <div class="typo-8xl typo-black typo-secondary">8XL - 대형</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-9xl (96px)</div>
+                    <div class="typo-9xl typo-black typo-accent" style="line-height: 1.1;">9XL</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-10xl (128px)</div>
+                    <div class="typo-10xl typo-black typo-primary" style="line-height: 1;">10XL</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-11xl (307px)</div>
+                    <div class="typo-11xl typo-black typo-secondary" style="line-height: 0.9;">11XL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Font Weight Variations -->
+        <section class="section">
+            <h2 class="section-title">폰트 웨이트 변형</h2>
+            <div class="typography-grid">
+                <div class="typography-item">
+                    <div class="meta">typo-light (300)</div>
+                    <div class="typo-2xl typo-light">Light Weight - 가벼운 느낌</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-normal (400)</div>
+                    <div class="typo-2xl typo-normal">Normal Weight - 일반적인 굵기</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-medium (500)</div>
+                    <div class="typo-2xl typo-medium">Medium Weight - 중간 굵기</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-semibold (600)</div>
+                    <div class="typo-2xl typo-semibold">Semibold Weight - 세미볼드</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-bold (700)</div>
+                    <div class="typo-2xl typo-bold">Bold Weight - 굵은 글씨</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-black (900)</div>
+                    <div class="typo-2xl typo-black">Black Weight - 가장 굵은 글씨</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Variations -->
+        <section class="section">
+            <h2 class="section-title">색상 변형</h2>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="typo-2xl typo-primary typo-bold">Primary</div>
+                    <div class="typo-primary-light">Primary Light</div>
+                    <div class="typo-primary-dark">Primary Dark</div>
+                </div>
+
+                <div class="color-item">
+                    <div class="typo-2xl typo-secondary typo-bold">Secondary</div>
+                    <div class="typo-secondary-light">Secondary Light</div>
+                    <div class="typo-secondary-dark">Secondary Dark</div>
+                </div>
+
+                <div class="color-item">
+                    <div class="typo-2xl typo-accent typo-bold">Accent</div>
+                    <div class="typo-accent-light">Accent Light</div>
+                    <div class="typo-accent-dark">Accent Dark</div>
+                </div>
+
+                <div class="color-item">
+                    <div class="typo-2xl typo-neutral typo-bold">Neutral</div>
+                    <div class="typo-muted">Muted Text</div>
+                    <div class="typo-subtle">Subtle Text</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Text Alignment -->
+        <section class="section">
+            <h2 class="section-title">텍스트 정렬</h2>
+            <div class="typography-grid">
+                <div class="typography-item">
+                    <div class="meta">typo-left</div>
+                    <div class="typo-xl typo-left">왼쪽 정렬 텍스트입니다.</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-center</div>
+                    <div class="typo-xl typo-center">중앙 정렬 텍스트입니다.</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-right</div>
+                    <div class="typo-xl typo-right">오른쪽 정렬 텍스트입니다.</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-justify</div>
+                    <div class="typo-md typo-justify">양쪽 정렬 텍스트입니다. 이 텍스트는 양쪽 정렬로 표시되어 좌우 여백이 균등하게 조정됩니다. 긴 문단에서 깔끔한 레이아웃을 만들어줍니다.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Styles -->
+        <section class="section">
+            <h2 class="section-title">특별 스타일</h2>
+            <div class="typography-grid">
+                <div class="typography-item">
+                    <div class="meta">typo-hero</div>
+                    <div class="typo-hero">Hero Title</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-section-title</div>
+                    <div class="typo-section-title">Section Title</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-body</div>
+                    <div class="typo-body">Body Text - 사용자가 읽는 주요 본문 내용입니다. 가독성을 위해 적절한 줄 간격과 폰트 크기를 사용합니다.</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-caption</div>
+                    <div class="typo-caption">Caption Text - 이미지 설명이나 부가 정보에 사용되는 작은 텍스트입니다.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Line Height Variations -->
+        <section class="section">
+            <h2 class="section-title">줄 간격 변형</h2>
+            <div class="typography-grid">
+                <div class="typography-item">
+                    <div class="meta">typo-leading-tight (1.25)</div>
+                    <p class="typo-md typo-leading-tight">Tight line height - 제목이나 짧은 텍스트에 적합합니다. 줄 간격이 좁아 밀도감 있는 레이아웃을 만듭니다.</p>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-leading-snug (1.375)</div>
+                    <p class="typo-md typo-leading-snug">Snug line height - 일반적인 텍스트에 사용됩니다. 가독성과 밀도 사이의 균형을 맞춥니다.</p>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-leading-normal (1.5)</div>
+                    <p class="typo-md typo-leading-normal">Normal line height - 기본 줄 간격입니다. 대부분의 본문 텍스트에 사용하기 적합합니다.</p>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-leading-relaxed (1.625)</div>
+                    <p class="typo-md typo-leading-relaxed">Relaxed line height - 여유로운 줄 간격으로 긴 텍스트의 가독성을 향상시킵니다.</p>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-leading-loose (2.0)</div>
+                    <p class="typo-md typo-leading-loose">Loose line height - 가장 넓은 줄 간격입니다. 특별한 디자인 효과나 접근성 개선에 사용됩니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Font Family Showcase -->
+        <section class="section">
+            <h2 class="section-title">폰트 패밀리 비교</h2>
+            <div class="typography-grid">
+                <div class="typography-item">
+                    <div class="meta">typo-primary - NanumSquare</div>
+                    <div class="typo-primary typo-2xl typo-medium">
+                        한국어 텍스트 최적화 - 나눔스퀘어<br>
+                        Korean text optimization - NanumSquare
+                    </div>
+                    <div class="usage">한국어 우선 사용 - 제목, 본문, UI 텍스트</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-secondary - Archivo</div>
+                    <div class="typo-secondary typo-2xl typo-medium">
+                        영문 텍스트 최적화 - Archivo<br>
+                        English text optimization - Archivo
+                    </div>
+                    <div class="usage">영문 우선 사용 - 영문 제목, 브랜딩, 국제화</div>
+                </div>
+
+                <div class="typography-item">
+                    <div class="meta">typo-mono - JetBrains Mono</div>
+                    <div class="typo-mono typo-md">
+                        // Code examples and technical content<br>
+                        const typography = 'monospace font';<br>
+                        console.log('Fixed-width characters');
+                    </div>
+                    <div class="usage">코드, 기술 문서, 고정폭 텍스트</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Examples -->
+        <section class="section">
+            <h2 class="section-title">사용 예시</h2>
+            
+            <div class="typography-item">
+                <h3 class="typo-2xl typo-semibold typo-neutral">Hero Section 구성</h3>
+                <div class="code-example">
+<span class="keyword">&lt;section</span> <span class="string">class="hero-section"</span><span class="keyword">&gt;</span>
+  <span class="keyword">&lt;h1</span> <span class="string">class="<span class="class">typo-hero typo-center</span>"</span><span class="keyword">&gt;</span>Innovation<span class="keyword">&lt;/h1&gt;</span>
+  <span class="keyword">&lt;p</span> <span class="string">class="<span class="class">typo-xl typo-medium typo-muted typo-center</span>"</span><span class="keyword">&gt;</span>
+    혁신적인 디자인으로 미래를 만들어갑니다
+  <span class="keyword">&lt;/p&gt;</span>
+  <span class="keyword">&lt;a</span> <span class="string">href="#" class="<span class="class">typo-link typo-lg</span>"</span><span class="keyword">&gt;</span>자세히 보기<span class="keyword">&lt;/a&gt;</span>
+<span class="keyword">&lt;/section&gt;</span>
+                </div>
+            </div>
+
+            <div class="typography-item">
+                <h3 class="typo-2xl typo-semibold typo-neutral">Article Content 구성</h3>
+                <div class="code-example">
+<span class="keyword">&lt;article&gt;</span>
+  <span class="keyword">&lt;h2</span> <span class="string">class="<span class="class">typo-section-title</span>"</span><span class="keyword">&gt;</span>디자인 시스템<span class="keyword">&lt;/h2&gt;</span>
+  <span class="keyword">&lt;p</span> <span class="string">class="<span class="class">typo-body</span>"</span><span class="keyword">&gt;</span>
+    일관된 사용자 경험을 위한 체계적인 접근방법입니다.
+  <span class="keyword">&lt;/p&gt;</span>
+  <span class="keyword">&lt;small</span> <span class="string">class="<span class="class">typo-caption</span>"</span><span class="keyword">&gt;</span>2024년 3월 게시<span class="keyword">&lt;/small&gt;</span>
+<span class="keyword">&lt;/article&gt;</span>
+                </div>
+            </div>
+
+            <div class="typography-item">
+                <h3 class="typo-2xl typo-semibold typo-neutral">UI 컴포넌트 구성</h3>
+                <div class="code-example">
+<span class="keyword">&lt;div</span> <span class="string">class="card"</span><span class="keyword">&gt;</span>
+  <span class="keyword">&lt;h3</span> <span class="string">class="<span class="class">typo-xl typo-semibold typo-primary</span>"</span><span class="keyword">&gt;</span>카드 제목<span class="keyword">&lt;/h3&gt;</span>
+  <span class="keyword">&lt;p</span> <span class="string">class="<span class="class">typo-body typo-muted</span>"</span><span class="keyword">&gt;</span>카드 설명 텍스트<span class="keyword">&lt;/p&gt;</span>
+  <span class="keyword">&lt;button</span> <span class="string">class="<span class="class">typo-md typo-medium</span>"</span><span class="keyword">&gt;</span>액션 버튼<span class="keyword">&lt;/button&gt;</span>
+<span class="keyword">&lt;/div&gt;</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessibility Guidelines -->
+        <section class="section">
+            <h2 class="section-title">접근성 가이드라인</h2>
+            <div class="typography-grid">
+                <div class="typography-item">
+                    <h3 class="typo-lg typo-semibold a11y-good">✓ 색상 대비 (4.5:1 이상)</h3>
+                    <div class="typo-body">
+                        모든 텍스트는 배경과 4.5:1 이상의 대비율을 유지합니다.
+                        <br><strong class="typo-primary">Primary 색상:</strong> 7.2:1
+                        <br><strong class="typo-secondary">Secondary 색상:</strong> 8.1:1
+                        <br><strong class="typo-muted">Muted 색상:</strong> 4.6:1
+                    </div>
+                </div>
+
+                <div class="typography-item">
+                    <h3 class="typo-lg typo-semibold a11y-good">✓ 헤딩 계층구조</h3>
+                    <div class="typo-body">
+                        의미적 HTML 구조를 준수하여 스크린 리더 호환성을 보장합니다.
+                        <br>h1 → h2 → h3 → h4 → h5 → h6 순서로 사용
+                    </div>
+                </div>
+
+                <div class="typography-item">
+                    <h3 class="typo-lg typo-semibold a11y-good">✓ 최소 폰트 크기</h3>
+                    <div class="typo-body">
+                        본문 텍스트는 최소 14px (typo-base) 이상 사용을 권장합니다.
+                        <br>모바일에서는 16px (typo-md) 이상 사용
+                    </div>
+                </div>
+
+                <div class="typography-item">
+                    <h3 class="typo-lg typo-semibold a11y-good">✓ 충분한 줄 간격</h3>
+                    <div class="typo-body">
+                        본문 텍스트의 줄 간격은 1.5 (typo-leading-normal) 이상을 사용합니다.
+                        <br>긴 텍스트의 경우 1.625 (typo-leading-relaxed) 권장
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="section" style="border-bottom: none; text-align: center; background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-neutral-100) 100%);">
+            <p class="typo-caption typo-center">
+                NineOneLabs Typography System v1.0
+                <br>
+                © 2024 NineOneLabs. All rights reserved.
+                <br>
+                <a href="#" class="typo-link">Documentation</a> • 
+                <a href="#" class="typo-link">GitHub</a> • 
+                <a href="#" class="typo-link">Figma</a>
+            </p>
+        </section>
+    </div>
+
+    <script>
+        // Typography System Interactive Features
+        console.log('NineOneLabs Typography System Loaded');
+        
+        // Log font loading status
+        document.fonts.ready.then(() => {
+            console.log('✓ NanumSquare & Archivo fonts loaded successfully');
+        });
+
+        // Add hover effects for typography items
+        document.querySelectorAll('.typography-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-2px)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Copy code examples to clipboard
+        document.querySelectorAll('.usage').forEach(usage => {
+            usage.addEventListener('click', () => {
+                navigator.clipboard.writeText(usage.textContent)
+                    .then(() => {
+                        const originalText = usage.textContent;
+                        usage.textContent = '✓ 복사됨!';
+                        usage.style.background = 'var(--color-secondary-50)';
+                        setTimeout(() => {
+                            usage.textContent = originalText;
+                            usage.style.background = 'var(--color-secondary-50)';
+                        }, 2000);
+                    })
+                    .catch(err => console.log('Copy failed:', err));
+            });
+            
+            // Add cursor pointer
+            usage.style.cursor = 'pointer';
+            usage.title = '클릭하여 코드 복사';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#heroGradient)"/>
+  
+  <!-- Logo/Title -->
+  <text x="600" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">
+    ViberAiden
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.9">
+    불편함을 찾는 기획자
+  </text>
+  
+  <!-- Description -->
+  <text x="600" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.8">
+    사람들이 느끼지만 말하지 않는 불편함을 찾아 해결합니다
+  </text>
+  
+  <!-- Service -->
+  <text x="600" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="white" opacity="0.7">
+    대표 서비스: 마음배달 (dearq.app)
+  </text>
+  
+  <!-- Contact -->
+  <text x="600" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white" opacity="0.6">
+    viberaiden@gmail.com | 개인사업자번호: 622-07-03994
+  </text>
+</svg>

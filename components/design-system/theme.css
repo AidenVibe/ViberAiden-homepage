@@ -1,0 +1,792 @@
+/* ============================================================================
+   밤하늘 테마 디자인 시스템 - "우주를 간직한 마음은 별처럼 반짝인다"
+   ============================================================================
+   Midnight Sky Theme System - Cosmic Hearts & Starlight Design
+   Primary: #385678 (Deep Night Blue) - 깊은 밤하늘의 파랑
+   Secondary: #0176F9 (Bright Cosmic Blue) - 우주의 밝은 파랑  
+   Accent: #FFE276 (Golden Starlight) - 별빛의 황금색
+   Neutral: #111111 (Cosmic Black) - 우주의 검정
+   ============================================================================ */
+
+:root {
+  /* ========================================================================
+     밤하늘 컬러 시스템 - 우주적 색상 팔레트
+     ======================================================================== */
+  
+  /* 메인 컬러: 깊은 밤하늘 파랑 - #385678 / hsl(210, 36%, 34%) */
+  --color-primary-50: hsl(210, 36%, 98%);    /* 거의 흰색, 별빛의 반짝임 */
+  --color-primary-100: hsl(210, 36%, 95%);   /* 매우 연한 밤하늘 */
+  --color-primary-200: hsl(210, 36%, 88%);   /* 연한 밤하늘 */
+  --color-primary-300: hsl(210, 36%, 75%);   /* 부드러운 밤하늘 */
+  --color-primary-400: hsl(210, 36%, 55%);   /* 중간 밤하늘 */
+  --color-primary-500: hsl(210, 36%, 34%);   /* 메인 깊은 밤하늘 - #385678 */
+  --color-primary-600: hsl(210, 36%, 28%);   /* 진한 밤하늘 */
+  --color-primary-700: hsl(210, 36%, 22%);   /* 더 깊은 밤하늘 */
+  --color-primary-800: hsl(210, 36%, 16%);   /* 매우 깊은 밤하늘 */
+  --color-primary-900: hsl(210, 36%, 10%);   /* 가장 깊은 밤하늘 */
+
+  /* 보조 컬러: 우주의 밝은 파랑 - #0176F9 / hsl(210, 98%, 49%) */
+  --color-secondary-50: hsl(210, 98%, 97%);   /* 연한 우주 파랑 */
+  --color-secondary-100: hsl(210, 98%, 93%);  /* 매우 연한 우주 파랑 */
+  --color-secondary-200: hsl(210, 98%, 85%);  /* 연한 우주 파랑 */
+  --color-secondary-300: hsl(210, 98%, 75%);  /* 부드러운 우주 파랑 */
+  --color-secondary-400: hsl(210, 98%, 62%);  /* 중간 우주 파랑 */
+  --color-secondary-500: hsl(210, 98%, 49%);  /* 메인 우주 파랑 - #0176F9 */
+  --color-secondary-600: hsl(210, 98%, 42%);  /* 진한 우주 파랑 */
+  --color-secondary-700: hsl(210, 98%, 35%);  /* 더 진한 우주 파랑 */
+  --color-secondary-800: hsl(210, 98%, 28%);  /* 매우 진한 우주 파랑 */
+  --color-secondary-900: hsl(210, 98%, 20%);  /* 가장 진한 우주 파랑 */
+
+  /* 강조 컬러: 황금 별빛 - #FFE276 / hsl(50, 100%, 73%) */
+  --color-accent-50: hsl(50, 100%, 98%);     /* 거의 흰색 별빛 */
+  --color-accent-100: hsl(50, 100%, 95%);    /* 매우 연한 별빛 */
+  --color-accent-200: hsl(50, 100%, 88%);    /* 연한 별빛 */
+  --color-accent-300: hsl(50, 100%, 81%);    /* 부드러운 별빛 */
+  --color-accent-400: hsl(50, 100%, 77%);    /* 중간 별빛 */
+  --color-accent-500: hsl(50, 100%, 73%);    /* 메인 황금 별빛 - #FFE276 */
+  --color-accent-600: hsl(50, 100%, 65%);    /* 진한 별빛 */
+  --color-accent-700: hsl(50, 100%, 55%);    /* 더 진한 별빛 */
+  --color-accent-800: hsl(50, 100%, 45%);    /* 매우 진한 별빛 */
+  --color-accent-900: hsl(50, 100%, 35%);    /* 가장 진한 별빛 */
+
+  /* 뉴트럴 컬러: 우주의 검정과 회색 - #111111 기반 */
+  --color-neutral-0: hsl(0, 0%, 100%);       /* 순백색 */
+  --color-neutral-50: hsl(220, 10%, 98%);    /* 거의 흰색, 약간의 파랑 톤 */
+  --color-neutral-100: hsl(220, 8%, 96%);    /* 매우 연한 회색 */
+  --color-neutral-200: hsl(220, 6%, 90%);    /* 연한 회색 */
+  --color-neutral-300: hsl(220, 4%, 75%);    /* 중간 연한 회색 */
+  --color-neutral-400: hsl(220, 3%, 60%);    /* 중간 회색 */
+  --color-neutral-500: hsl(220, 2%, 45%);    /* 중간 진한 회색 */
+  --color-neutral-600: hsl(220, 4%, 30%);    /* 진한 회색 */
+  --color-neutral-700: hsl(220, 6%, 20%);    /* 더 진한 회색 */
+  --color-neutral-800: hsl(220, 8%, 12%);    /* 매우 진한 회색 */
+  --color-neutral-900: hsl(220, 10%, 7%);    /* 우주의 검정 - #111111 */
+  --color-neutral-950: hsl(220, 12%, 4%);    /* 가장 깊은 우주 검정 */
+
+  /* 투명도 레벨 - 밤하늘 테마 */
+  --color-primary-alpha-10: hsla(210, 36%, 34%, 0.1);    /* 깊은 밤하늘 10% */
+  --color-primary-alpha-20: hsla(210, 36%, 34%, 0.2);    /* 깊은 밤하늘 20% */
+  --color-primary-alpha-30: hsla(210, 36%, 34%, 0.3);    /* 깊은 밤하늘 30% */
+  --color-primary-alpha-50: hsla(210, 36%, 34%, 0.5);    /* 깊은 밤하늘 50% */
+  --color-primary-alpha-80: hsla(210, 36%, 34%, 0.8);    /* 깊은 밤하늘 80% */
+  --color-primary-alpha-90: hsla(210, 36%, 34%, 0.9);    /* 깊은 밤하늘 90% */
+
+  --color-secondary-alpha-10: hsla(210, 98%, 49%, 0.1);  /* 우주 파랑 10% */
+  --color-secondary-alpha-20: hsla(210, 98%, 49%, 0.2);  /* 우주 파랑 20% */
+  --color-secondary-alpha-30: hsla(210, 98%, 49%, 0.3);  /* 우주 파랑 30% */
+  --color-secondary-alpha-50: hsla(210, 98%, 49%, 0.5);  /* 우주 파랑 50% */
+  --color-secondary-alpha-80: hsla(210, 98%, 49%, 0.8);  /* 우주 파랑 80% */
+  --color-secondary-alpha-90: hsla(210, 98%, 49%, 0.9);  /* 우주 파랑 90% */
+
+  --color-accent-alpha-10: hsla(50, 100%, 73%, 0.1);     /* 별빛 10% */
+  --color-accent-alpha-20: hsla(50, 100%, 73%, 0.2);     /* 별빛 20% */
+  --color-accent-alpha-30: hsla(50, 100%, 73%, 0.3);     /* 별빛 30% */
+  --color-accent-alpha-50: hsla(50, 100%, 73%, 0.5);     /* 별빛 50% */
+  --color-accent-alpha-80: hsla(50, 100%, 73%, 0.8);     /* 별빛 80% */
+  --color-accent-alpha-90: hsla(50, 100%, 73%, 0.9);     /* 별빛 90% */
+
+  --color-neutral-alpha-10: hsla(220, 10%, 7%, 0.1);     /* 우주 검정 10% */
+  --color-neutral-alpha-20: hsla(220, 10%, 7%, 0.2);     /* 우주 검정 20% */
+  --color-neutral-alpha-30: hsla(220, 10%, 7%, 0.3);     /* 우주 검정 30% */
+  --color-neutral-alpha-50: hsla(220, 10%, 7%, 0.5);     /* 우주 검정 50% */
+  --color-neutral-alpha-80: hsla(220, 10%, 7%, 0.8);     /* 우주 검정 80% */
+  --color-neutral-alpha-90: hsla(220, 10%, 7%, 0.9);     /* 우주 검정 90% */
+
+  /* 의미적 색상 별칭 - 밤하늘 테마 */
+  --color-background: var(--color-neutral-0);             /* 배경: 순백색 */
+  --color-surface: var(--color-neutral-50);               /* 표면: 별빛 톤의 연한 회색 */
+  --color-text-primary: var(--color-neutral-900);         /* 주요 텍스트: 우주의 검정 */
+  --color-text-secondary: var(--color-neutral-600);       /* 보조 텍스트: 진한 회색 */
+  --color-text-muted: var(--color-neutral-400);           /* 약한 텍스트: 중간 회색 */
+  --color-border: var(--color-neutral-200);               /* 경계선: 연한 회색 */
+  --color-border-strong: var(--color-neutral-300);        /* 강한 경계선: 중간 연한 회색 */
+
+  /* 상태 색상 - 밤하늘 테마 */
+  --color-success: var(--color-secondary-500);            /* 성공: 우주의 밝은 파랑 */
+  --color-warning: var(--color-accent-500);               /* 경고: 황금 별빛 */
+  --color-error: hsl(0, 84%, 60%);                        /* 오류: 붉은색 유지 */
+  --color-info: var(--color-primary-500);                 /* 정보: 깊은 밤하늘 파랑 */
+
+  /* 특별 그라데이션 색상 - 밤하늘에서 우주로 */
+  --gradient-night-sky: linear-gradient(135deg, 
+    var(--color-neutral-900) 0%,     /* 우주의 검정 */
+    var(--color-primary-800) 25%,    /* 매우 깊은 밤하늘 */
+    var(--color-primary-600) 50%,    /* 진한 밤하늘 */
+    var(--color-secondary-700) 75%,  /* 진한 우주 파랑 */
+    var(--color-secondary-500) 100%  /* 밝은 우주 파랑 */
+  );
+  
+  --gradient-starlight: linear-gradient(45deg,
+    var(--color-accent-500) 0%,      /* 황금 별빛 */
+    var(--color-accent-300) 50%,     /* 부드러운 별빛 */
+    var(--color-accent-100) 100%     /* 연한 별빛 */
+  );
+
+  --gradient-cosmic-glow: radial-gradient(circle,
+    var(--color-accent-alpha-30) 0%,    /* 별빛 글로우 중심 */
+    var(--color-secondary-alpha-20) 50%, /* 우주 파랑 글로우 */
+    transparent 100%                     /* 투명하게 사라짐 */
+  );
+
+  /* ========================================================================
+     TYPOGRAPHY SYSTEM - Families, Sizes, Weights, Line Heights
+     ======================================================================== */
+  
+  /* Font Families */
+  --font-family-primary: 'NanumSquare', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-secondary: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+
+  /* Font Sizes - 16 Scale Steps (10px ~ 307px) */
+  --font-size-xs: 0.625rem;     /* 10px */
+  --font-size-sm: 0.75rem;      /* 12px */
+  --font-size-base: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;         /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.75rem;     /* 28px */
+  --font-size-4xl: 2rem;        /* 32px */
+  --font-size-5xl: 2.25rem;     /* 36px */
+  --font-size-6xl: 3rem;        /* 48px */
+  --font-size-7xl: 4rem;        /* 64px */
+  --font-size-8xl: 5rem;        /* 80px */
+  --font-size-9xl: 6rem;        /* 96px */
+  --font-size-10xl: 8rem;       /* 128px */
+  --font-size-11xl: 19.1875rem; /* 307px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* ========================================================================
+     SPACING SYSTEM - Consistent 4px Grid
+     ======================================================================== */
+  
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
+
+  /* ========================================================================
+     BORDER RADIUS SYSTEM
+     ======================================================================== */
+  
+  --radius-none: 0;
+  --radius-sm: 0.125rem;   /* 2px */
+  --radius-base: 0.25rem;  /* 4px */
+  --radius-md: 0.375rem;   /* 6px */
+  --radius-lg: 0.5rem;     /* 8px */
+  --radius-xl: 0.75rem;    /* 12px */
+  --radius-2xl: 1rem;      /* 16px */
+  --radius-3xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;   /* Fully rounded */
+  
+  /* NineOneLabs Button Radius */
+  --radius-button: 2.5rem; /* 40px - Signature rounded button */
+
+  /* ========================================================================
+     SHADOW SYSTEM - Elevation Layers
+     ======================================================================== */
+  
+  --shadow-sm: 0 1px 2px 0 var(--color-neutral-alpha-10);
+  --shadow-base: 0 1px 3px 0 var(--color-neutral-alpha-20), 0 1px 2px 0 var(--color-neutral-alpha-10);
+  --shadow-md: 0 4px 6px -1px var(--color-neutral-alpha-20), 0 2px 4px -1px var(--color-neutral-alpha-10);
+  --shadow-lg: 0 10px 15px -3px var(--color-neutral-alpha-20), 0 4px 6px -2px var(--color-neutral-alpha-10);
+  --shadow-xl: 0 20px 25px -5px var(--color-neutral-alpha-30), 0 10px 10px -5px var(--color-neutral-alpha-10);
+  --shadow-2xl: 0 25px 50px -12px var(--color-neutral-alpha-50);
+
+  /* ========================================================================
+     LAYOUT & CONTAINER SYSTEM
+     ======================================================================== */
+  
+  --container-max-width: 1920px; /* NineOneLabs container width */
+  --container-padding: var(--space-4);
+  
+  /* Responsive Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ========================================================================
+     TRANSITION & ANIMATION SYSTEM
+     ======================================================================== */
+  
+  --transition-duration-fast: 150ms;
+  --transition-duration-normal: 300ms;
+  --transition-duration-slow: 500ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --transition-all: all var(--transition-duration-normal) var(--transition-timing-function);
+  --transition-colors: color var(--transition-duration-normal) var(--transition-timing-function),
+                      background-color var(--transition-duration-normal) var(--transition-timing-function),
+                      border-color var(--transition-duration-normal) var(--transition-timing-function);
+  --transition-transform: transform var(--transition-duration-normal) var(--transition-timing-function);
+}
+
+/* ============================================================================
+   BASE STYLES & TYPOGRAPHY
+   ============================================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography Classes */
+.text-primary { font-family: var(--font-family-primary); }
+.text-secondary { font-family: var(--font-family-secondary); }
+.text-mono { font-family: var(--font-family-mono); }
+
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-md { font-size: var(--font-size-md); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+.text-5xl { font-size: var(--font-size-5xl); }
+.text-6xl { font-size: var(--font-size-6xl); }
+.text-7xl { font-size: var(--font-size-7xl); }
+.text-8xl { font-size: var(--font-size-8xl); }
+.text-9xl { font-size: var(--font-size-9xl); }
+.text-10xl { font-size: var(--font-size-10xl); }
+.text-11xl { font-size: var(--font-size-11xl); }
+
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-black { font-weight: var(--font-weight-black); }
+
+/* ============================================================================
+   COMPONENT STYLES
+   ============================================================================ */
+
+/* Container */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Button System */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-tight);
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-button); /* 40px rounded */
+  cursor: pointer;
+  transition: var(--transition-all);
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Button Variants */
+.btn-primary {
+  background-color: var(--color-primary-500);
+  color: var(--color-neutral-0);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  background-color: var(--color-primary-700);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary-500);
+  color: var(--color-neutral-0);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-accent {
+  background-color: var(--color-accent-500);
+  color: var(--color-neutral-900);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-400);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary-500);
+  border: 2px solid var(--color-primary-500);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-500);
+  color: var(--color-neutral-0);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text-primary);
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-neutral-100);
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+.btn-lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-lg);
+}
+
+.btn-xl {
+  padding: var(--space-5) var(--space-10);
+  font-size: var(--font-size-xl);
+}
+
+/* Button States */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Input System */
+.input {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-colors);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-20);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Card System */
+.card {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-all);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-strong);
+}
+
+.card-elevated {
+  box-shadow: var(--shadow-lg);
+  border: none;
+}
+
+.card-elevated:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+/* Spacing Utilities */
+.m-0 { margin: var(--space-0); }
+.m-1 { margin: var(--space-1); }
+.m-2 { margin: var(--space-2); }
+.m-3 { margin: var(--space-3); }
+.m-4 { margin: var(--space-4); }
+.m-5 { margin: var(--space-5); }
+.m-6 { margin: var(--space-6); }
+.m-8 { margin: var(--space-8); }
+.m-10 { margin: var(--space-10); }
+.m-12 { margin: var(--space-12); }
+.m-16 { margin: var(--space-16); }
+
+.p-0 { padding: var(--space-0); }
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-3 { padding: var(--space-3); }
+.p-4 { padding: var(--space-4); }
+.p-5 { padding: var(--space-5); }
+.p-6 { padding: var(--space-6); }
+.p-8 { padding: var(--space-8); }
+.p-10 { padding: var(--space-10); }
+.p-12 { padding: var(--space-12); }
+.p-16 { padding: var(--space-16); }
+
+/* Color Utilities */
+.text-primary-500 { color: var(--color-primary-500); }
+.text-secondary-500 { color: var(--color-secondary-500); }
+.text-accent-500 { color: var(--color-accent-500); }
+.text-neutral-900 { color: var(--color-neutral-900); }
+.text-neutral-600 { color: var(--color-neutral-600); }
+.text-neutral-400 { color: var(--color-neutral-400); }
+
+.bg-primary-500 { background-color: var(--color-primary-500); }
+.bg-secondary-500 { background-color: var(--color-secondary-500); }
+.bg-accent-500 { background-color: var(--color-accent-500); }
+.bg-neutral-50 { background-color: var(--color-neutral-50); }
+.bg-neutral-100 { background-color: var(--color-neutral-100); }
+
+/* Border Radius Utilities */
+.rounded-none { border-radius: var(--radius-none); }
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded { border-radius: var(--radius-base); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-2xl { border-radius: var(--radius-2xl); }
+.rounded-3xl { border-radius: var(--radius-3xl); }
+.rounded-full { border-radius: var(--radius-full); }
+.rounded-button { border-radius: var(--radius-button); }
+
+/* Shadow Utilities */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow-base); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+.shadow-2xl { box-shadow: var(--shadow-2xl); }
+.shadow-none { box-shadow: none; }
+
+/* Transition Utilities */
+.transition-all { transition: var(--transition-all); }
+.transition-colors { transition: var(--transition-colors); }
+.transition-transform { transition: var(--transition-transform); }
+
+/* Layout Utilities */
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+
+.justify-center { justify-content: center; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* Text Alignment */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* ============================================================================
+   RESPONSIVE UTILITIES
+   ============================================================================ */
+
+@media (min-width: 640px) {
+  .sm\:container { max-width: var(--breakpoint-sm); }
+  .sm\:text-lg { font-size: var(--font-size-lg); }
+  .sm\:p-6 { padding: var(--space-6); }
+}
+
+@media (min-width: 768px) {
+  .md\:container { max-width: var(--breakpoint-md); }
+  .md\:text-xl { font-size: var(--font-size-xl); }
+  .md\:p-8 { padding: var(--space-8); }
+  .md\:flex { display: flex; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:container { max-width: var(--breakpoint-lg); }
+  .lg\:text-2xl { font-size: var(--font-size-2xl); }
+  .lg\:p-10 { padding: var(--space-10); }
+}
+
+@media (min-width: 1280px) {
+  .xl\:container { max-width: var(--breakpoint-xl); }
+  .xl\:text-3xl { font-size: var(--font-size-3xl); }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:container { max-width: var(--breakpoint-2xl); }
+}
+
+/* ============================================================================
+   COMPONENT EXAMPLES & PATTERNS
+   ============================================================================ */
+
+/* Hero Section Pattern - 밤하늘 테마 */
+.hero {
+  padding: var(--space-16) 0;
+  text-align: center;
+  background: var(--gradient-night-sky);
+  color: var(--color-neutral-0);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 별 반짝임 애니메이션 효과 */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(2px 2px at 20px 30px, var(--color-accent-500), transparent),
+    radial-gradient(2px 2px at 40px 70px, var(--color-accent-400), transparent),
+    radial-gradient(1px 1px at 90px 40px, var(--color-accent-300), transparent),
+    radial-gradient(1px 1px at 130px 80px, var(--color-accent-500), transparent),
+    radial-gradient(2px 2px at 160px 30px, var(--color-accent-400), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: starlight 4s linear infinite;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-cosmic-glow);
+  opacity: 0.6;
+  animation: cosmicPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes starlight {
+  0%, 100% { opacity: 0.8; transform: translateY(0px); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+
+@keyframes cosmicPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* 별 반짝임 유틸리티 클래스 */
+.starlight-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.starlight-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(1px 1px at 25% 20%, var(--color-accent-500), transparent),
+    radial-gradient(1px 1px at 75% 60%, var(--color-accent-400), transparent),
+    radial-gradient(2px 2px at 50% 80%, var(--color-accent-300), transparent);
+  background-size: 150px 150px;
+  animation: starlight 3s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* 우주적 글로우 효과 */
+.cosmic-glow {
+  box-shadow: 
+    0 0 20px var(--color-secondary-alpha-30),
+    0 0 40px var(--color-primary-alpha-20),
+    0 0 60px var(--color-accent-alpha-10);
+  transition: box-shadow 0.3s ease;
+}
+
+.cosmic-glow:hover {
+  box-shadow: 
+    0 0 30px var(--color-secondary-alpha-50),
+    0 0 50px var(--color-primary-alpha-30),
+    0 0 80px var(--color-accent-alpha-20);
+}
+
+.hero-title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-tight);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-normal);
+  opacity: 0.9;
+  margin-bottom: var(--space-8);
+}
+
+/* Feature Card Pattern */
+.feature-card {
+  padding: var(--space-8);
+  background: var(--color-background);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition-all);
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl);
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-4);
+  background: var(--color-primary-alpha-20);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-500);
+}
+
+/* Navigation Pattern */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-logo {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-500);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: var(--transition-colors);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary-500);
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+  .btn {
+    background: none !important;
+    color: var(--color-text-primary) !important;
+    border: 2px solid var(--color-text-primary) !important;
+  }
+  
+  .shadow,
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl {
+    box-shadow: none !important;
+  }
+}

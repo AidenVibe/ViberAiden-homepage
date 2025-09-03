@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NineOneLabs Button Component - Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================================================
+           CSS VARIABLES FROM NINEONELABS DESIGN SYSTEM
+           ============================================================================ */
+        :root {
+            /* Colors - NineOneLabs Theme */
+            --color-primary-500: hsl(266, 87%, 57%); /* rgb(102, 53, 240) */
+            --color-primary-600: hsl(266, 87%, 47%);
+            --color-primary-700: hsl(266, 87%, 37%);
+            --color-primary-400: hsl(266, 87%, 67%);
+            --color-primary-300: hsl(266, 87%, 77%);
+            --color-primary-100: hsl(266, 87%, 93%);
+            --color-primary-50: hsl(266, 87%, 97%);
+
+            --color-secondary-500: hsl(158, 98%, 34%); /* rgb(2, 170, 108) */
+            --color-secondary-600: hsl(158, 98%, 30%);
+            --color-secondary-700: hsl(158, 98%, 24%);
+            --color-secondary-400: hsl(158, 98%, 55%);
+            --color-secondary-300: hsl(158, 98%, 75%);
+            --color-secondary-100: hsl(158, 98%, 93%);
+            --color-secondary-50: hsl(158, 98%, 97%);
+
+            --color-accent-500: hsl(57, 97%, 53%); /* rgb(252, 240, 18) */
+            --color-accent-600: hsl(57, 97%, 43%);
+            --color-accent-700: hsl(57, 97%, 33%);
+            --color-accent-400: hsl(57, 97%, 65%);
+            --color-accent-300: hsl(57, 97%, 75%);
+            --color-accent-100: hsl(57, 97%, 93%);
+            --color-accent-50: hsl(57, 97%, 97%);
+
+            --color-neutral-0: hsl(0, 0%, 100%);
+            --color-neutral-50: hsl(0, 0%, 98%);
+            --color-neutral-100: hsl(0, 0%, 96%);
+            --color-neutral-200: hsl(0, 0%, 90%);
+            --color-neutral-300: hsl(0, 0%, 83%);
+            --color-neutral-400: hsl(0, 0%, 64%);
+            --color-neutral-500: hsl(0, 0%, 45%);
+            --color-neutral-600: hsl(0, 0%, 32%);
+            --color-neutral-700: hsl(0, 0%, 25%);
+            --color-neutral-800: hsl(0, 0%, 15%);
+            --color-neutral-900: hsl(0, 0%, 9%);
+
+            /* Spacing */
+            --space-2: 0.5rem;   /* 8px */
+            --space-3: 0.75rem;  /* 12px */
+            --space-4: 1rem;     /* 16px */
+            --space-5: 1.25rem;  /* 20px */
+            --space-6: 1.5rem;   /* 24px */
+            --space-8: 2rem;     /* 32px */
+            --space-10: 2.5rem;  /* 40px */
+
+            /* Typography */
+            --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+
+            /* Border Radius - NineOneLabs Signature */
+            --radius-button: 2.5rem; /* 40px - Signature rounded button */
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+            /* Transitions */
+            --transition-all: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================================================
+           BUTTON COMPONENT SYSTEM
+           ============================================================================ */
+
+        /* Base Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-family: var(--font-family-primary);
+            font-weight: var(--font-weight-semibold);
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--radius-button); /* NineOneLabs 40px signature */
+            cursor: pointer;
+            transition: var(--transition-all);
+            user-select: none;
+            white-space: nowrap;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            
+            /* Minimum touch target for accessibility */
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* Focus styles for accessibility */
+        .btn:focus-visible {
+            outline: 3px solid var(--color-primary-300);
+            outline-offset: 2px;
+        }
+
+        /* ============================================================================
+           BUTTON VARIANTS (5 Types)
+           ============================================================================ */
+
+        /* PRIMARY VARIANT */
+        .btn-primary {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            border-color: var(--color-primary-500);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--color-primary-600);
+            border-color: var(--color-primary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(-1px);
+            background-color: var(--color-primary-700);
+            border-color: var(--color-primary-700);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* SECONDARY VARIANT */
+        .btn-secondary {
+            background-color: var(--color-secondary-500);
+            color: var(--color-neutral-0);
+            border-color: var(--color-secondary-500);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background-color: var(--color-secondary-600);
+            border-color: var(--color-secondary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary:active:not(:disabled) {
+            transform: translateY(-1px);
+            background-color: var(--color-secondary-700);
+            border-color: var(--color-secondary-700);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ACCENT VARIANT */
+        .btn-accent {
+            background-color: var(--color-accent-500);
+            color: var(--color-neutral-900);
+            border-color: var(--color-accent-500);
+        }
+
+        .btn-accent:hover:not(:disabled) {
+            background-color: var(--color-accent-400);
+            border-color: var(--color-accent-400);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-accent:active:not(:disabled) {
+            transform: translateY(-1px);
+            background-color: var(--color-accent-600);
+            border-color: var(--color-accent-600);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* OUTLINE VARIANT */
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary-500);
+            border-color: var(--color-primary-500);
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline:active:not(:disabled) {
+            transform: translateY(-1px);
+            background-color: var(--color-primary-600);
+            border-color: var(--color-primary-600);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* GHOST VARIANT */
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--color-neutral-600);
+            border-color: transparent;
+        }
+
+        .btn-ghost:hover:not(:disabled) {
+            background-color: var(--color-neutral-100);
+            color: var(--color-neutral-900);
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost:active:not(:disabled) {
+            transform: translateY(0);
+            background-color: var(--color-neutral-200);
+        }
+
+        /* ============================================================================
+           BUTTON SIZES (4 Sizes)
+           ============================================================================ */
+
+        /* SMALL */
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: 0.75rem; /* 12px */
+            min-height: 36px;
+        }
+
+        /* MEDIUM (Default) */
+        .btn-md {
+            padding: var(--space-3) var(--space-6);
+            font-size: 0.875rem; /* 14px */
+            min-height: 44px;
+        }
+
+        /* LARGE */
+        .btn-lg {
+            padding: var(--space-4) var(--space-8);
+            font-size: 1rem; /* 16px */
+            min-height: 52px;
+        }
+
+        /* EXTRA LARGE */
+        .btn-xl {
+            padding: var(--space-5) var(--space-10);
+            font-size: 1.125rem; /* 18px */
+            min-height: 60px;
+        }
+
+        /* ============================================================================
+           BUTTON STATES
+           ============================================================================ */
+
+        /* DISABLED STATE */
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* LOADING STATE */
+        .btn-loading {
+            color: transparent !important;
+            pointer-events: none;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 2px solid transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .btn-loading.btn-primary::after {
+            border-top-color: var(--color-neutral-0);
+        }
+
+        .btn-loading.btn-secondary::after {
+            border-top-color: var(--color-neutral-0);
+        }
+
+        .btn-loading.btn-accent::after {
+            border-top-color: var(--color-neutral-900);
+        }
+
+        .btn-loading.btn-outline::after {
+            border-top-color: var(--color-primary-500);
+        }
+
+        .btn-loading.btn-ghost::after {
+            border-top-color: var(--color-neutral-600);
+        }
+
+        /* ============================================================================
+           ICON SUPPORT
+           ============================================================================ */
+
+        /* Icon only buttons */
+        .btn-icon-only {
+            padding: var(--space-3);
+            aspect-ratio: 1;
+            border-radius: 50%;
+        }
+
+        .btn-icon-only.btn-sm {
+            padding: var(--space-2);
+        }
+
+        .btn-icon-only.btn-lg {
+            padding: var(--space-4);
+        }
+
+        .btn-icon-only.btn-xl {
+            padding: var(--space-5);
+        }
+
+        /* Icon positioning */
+        .btn-icon {
+            width: 1em;
+            height: 1em;
+            flex-shrink: 0;
+        }
+
+        .btn-icon-left {
+            margin-right: var(--space-2);
+        }
+
+        .btn-icon-right {
+            margin-left: var(--space-2);
+        }
+
+        /* ============================================================================
+           ANIMATIONS
+           ============================================================================ */
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* ============================================================================
+           DEMO PAGE STYLES
+           ============================================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background-color: var(--color-neutral-50);
+            color: var(--color-neutral-900);
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-neutral-0);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-title {
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary-500);
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-neutral-600);
+            margin-bottom: 2rem;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+        }
+
+        .demo-section-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-neutral-900);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-neutral-200);
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .demo-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-label {
+            font-weight: var(--font-weight-medium);
+            color: var(--color-neutral-700);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .code-block {
+            background-color: var(--color-neutral-900);
+            color: var(--color-neutral-100);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .accessibility-note {
+            background-color: var(--color-primary-50);
+            border-left: 4px solid var(--color-primary-500);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .accessibility-note-title {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary-700);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .demo-container {
+                padding: 2rem;
+            }
+            
+            .demo-title {
+                font-size: 2rem;
+            }
+            
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Header -->
+        <header class="demo-header">
+            <h1 class="demo-title">NineOneLabs Button Component</h1>
+            <p class="demo-subtitle">Complete button system with 5 variants, 4 sizes, and comprehensive accessibility support</p>
+        </header>
+
+        <!-- Variants Section -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">1. Button Variants (5 Types)</h2>
+            
+            <div class="demo-group">
+                <button class="btn btn-primary btn-md">Primary Button</button>
+                <button class="btn btn-secondary btn-md">Secondary Button</button>
+                <button class="btn btn-accent btn-md">Accent Button</button>
+                <button class="btn btn-outline btn-md">Outline Button</button>
+                <button class="btn btn-ghost btn-md">Ghost Button</button>
+            </div>
+            
+            <div class="code-block">
+&lt;button class="btn btn-primary btn-md"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn btn-secondary btn-md"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="btn btn-accent btn-md"&gt;Accent Button&lt;/button&gt;
+&lt;button class="btn btn-outline btn-md"&gt;Outline Button&lt;/button&gt;
+&lt;button class="btn btn-ghost btn-md"&gt;Ghost Button&lt;/button&gt;
+            </div>
+        </section>
+
+        <!-- Sizes Section -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">2. Button Sizes (4 Sizes)</h2>
+            
+            <div class="demo-group" style="align-items: center;">
+                <button class="btn btn-primary btn-sm">Small (36px)</button>
+                <button class="btn btn-primary btn-md">Medium (44px)</button>
+                <button class="btn btn-primary btn-lg">Large (52px)</button>
+                <button class="btn btn-primary btn-xl">Extra Large (60px)</button>
+            </div>
+            
+            <div class="code-block">
+&lt;button class="btn btn-primary btn-sm"&gt;Small (36px)&lt;/button&gt;
+&lt;button class="btn btn-primary btn-md"&gt;Medium (44px)&lt;/button&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;Large (52px)&lt;/button&gt;
+&lt;button class="btn btn-primary btn-xl"&gt;Extra Large (60px)&lt;/button&gt;
+            </div>
+        </section>
+
+        <!-- States Section -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">3. Button States</h2>
+            
+            <div class="demo-group">
+                <span class="demo-label">Normal State:</span>
+                <button class="btn btn-primary btn-md">Normal Button</button>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">Hover State (호버해보세요):</span>
+                <button class="btn btn-secondary btn-md">Hover Me</button>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">Disabled State:</span>
+                <button class="btn btn-primary btn-md" disabled>Disabled Button</button>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">Loading State:</span>
+                <button class="btn btn-primary btn-md btn-loading">Loading...</button>
+            </div>
+            
+            <div class="code-block">
+&lt;!-- Normal --&gt;
+&lt;button class="btn btn-primary btn-md"&gt;Normal Button&lt;/button&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;button class="btn btn-primary btn-md" disabled&gt;Disabled Button&lt;/button&gt;
+
+&lt;!-- Loading --&gt;
+&lt;button class="btn btn-primary btn-md btn-loading"&gt;Loading...&lt;/button&gt;
+            </div>
+        </section>
+
+        <!-- Icon Support Section -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">4. Icon Support</h2>
+            
+            <div class="demo-group">
+                <span class="demo-label">텍스트만:</span>
+                <button class="btn btn-primary btn-md">텍스트 전용</button>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">아이콘 + 텍스트:</span>
+                <button class="btn btn-secondary btn-md">
+                    <svg class="btn-icon btn-icon-left" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                    </svg>
+                    추가하기
+                </button>
+                
+                <button class="btn btn-outline btn-md">
+                    다운로드
+                    <svg class="btn-icon btn-icon-right" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">아이콘만:</span>
+                <button class="btn btn-primary btn-md btn-icon-only" aria-label="메뉴 열기">
+                    <svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                
+                <button class="btn btn-accent btn-lg btn-icon-only" aria-label="좋아요">
+                    <svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                
+                <button class="btn btn-ghost btn-sm btn-icon-only" aria-label="닫기">
+                    <svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="code-block">
+&lt;!-- 아이콘 + 텍스트 --&gt;
+&lt;button class="btn btn-secondary btn-md"&gt;
+    &lt;svg class="btn-icon btn-icon-left" fill="currentColor" viewBox="0 0 20 20"&gt;
+        &lt;path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" /&gt;
+    &lt;/svg&gt;
+    추가하기
+&lt;/button&gt;
+
+&lt;!-- 아이콘만 --&gt;
+&lt;button class="btn btn-primary btn-md btn-icon-only" aria-label="메뉴 열기"&gt;
+    &lt;svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20"&gt;
+        &lt;path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" /&gt;
+    &lt;/svg&gt;
+&lt;/button&gt;
+            </div>
+        </section>
+
+        <!-- Complete Grid Demo -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">5. Complete Size × Variant Grid</h2>
+            
+            <div class="demo-grid">
+                <div>
+                    <span class="demo-label">Primary</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <button class="btn btn-primary btn-sm">Small</button>
+                        <button class="btn btn-primary btn-md">Medium</button>
+                        <button class="btn btn-primary btn-lg">Large</button>
+                        <button class="btn btn-primary btn-xl">XL</button>
+                    </div>
+                </div>
+                
+                <div>
+                    <span class="demo-label">Secondary</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <button class="btn btn-secondary btn-sm">Small</button>
+                        <button class="btn btn-secondary btn-md">Medium</button>
+                        <button class="btn btn-secondary btn-lg">Large</button>
+                        <button class="btn btn-secondary btn-xl">XL</button>
+                    </div>
+                </div>
+                
+                <div>
+                    <span class="demo-label">Accent</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <button class="btn btn-accent btn-sm">Small</button>
+                        <button class="btn btn-accent btn-md">Medium</button>
+                        <button class="btn btn-accent btn-lg">Large</button>
+                        <button class="btn btn-accent btn-xl">XL</button>
+                    </div>
+                </div>
+                
+                <div>
+                    <span class="demo-label">Outline</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <button class="btn btn-outline btn-sm">Small</button>
+                        <button class="btn btn-outline btn-md">Medium</button>
+                        <button class="btn btn-outline btn-lg">Large</button>
+                        <button class="btn btn-outline btn-xl">XL</button>
+                    </div>
+                </div>
+                
+                <div>
+                    <span class="demo-label">Ghost</span>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <button class="btn btn-ghost btn-sm">Small</button>
+                        <button class="btn btn-ghost btn-md">Medium</button>
+                        <button class="btn btn-ghost btn-lg">Large</button>
+                        <button class="btn btn-ghost btn-xl">XL</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Examples -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">6. 사용 예시 (Real-world Examples)</h2>
+            
+            <div class="demo-group">
+                <span class="demo-label">Primary Actions (주요 액션):</span>
+                <button class="btn btn-primary btn-lg">회원가입</button>
+                <button class="btn btn-primary btn-md">로그인</button>
+                <button class="btn btn-primary btn-md">구매하기</button>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">Secondary Actions (보조 액션):</span>
+                <button class="btn btn-outline btn-md">취소</button>
+                <button class="btn btn-ghost btn-md">나중에</button>
+                <button class="btn btn-outline btn-md">더 보기</button>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">Success Actions (성공 액션):</span>
+                <button class="btn btn-secondary btn-md">저장 완료</button>
+                <button class="btn btn-secondary btn-md">전송하기</button>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">Warning Actions (경고 액션):</span>
+                <button class="btn btn-accent btn-md">주의 필요</button>
+                <button class="btn btn-accent btn-md">확인 요청</button>
+            </div>
+            
+            <div class="code-block">
+&lt;!-- Primary Actions --&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;회원가입&lt;/button&gt;
+&lt;button class="btn btn-primary btn-md"&gt;로그인&lt;/button&gt;
+
+&lt;!-- Secondary Actions --&gt;
+&lt;button class="btn btn-outline btn-md"&gt;취소&lt;/button&gt;
+&lt;button class="btn btn-ghost btn-md"&gt;나중에&lt;/button&gt;
+
+&lt;!-- Success Actions --&gt;
+&lt;button class="btn btn-secondary btn-md"&gt;저장 완료&lt;/button&gt;
+
+&lt;!-- Warning Actions --&gt;
+&lt;button class="btn btn-accent btn-md"&gt;주의 필요&lt;/button&gt;
+            </div>
+        </section>
+
+        <!-- Accessibility Section -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">7. 접근성 (Accessibility)</h2>
+            
+            <div class="accessibility-note">
+                <div class="accessibility-note-title">🎯 접근성 고려사항</div>
+                <ul>
+                    <li><strong>최소 터치 타겟:</strong> 모든 버튼은 최소 44×44px 크기 보장</li>
+                    <li><strong>키보드 네비게이션:</strong> Tab, Enter, Space 키 지원</li>
+                    <li><strong>포커스 인디케이터:</strong> 키보드 포커스 시 명확한 아웃라인</li>
+                    <li><strong>ARIA 레이블:</strong> 아이콘만 있는 버튼에 aria-label 필수</li>
+                    <li><strong>색상 대비:</strong> 모든 변형이 WCAG AA 기준 충족</li>
+                    <li><strong>상태 표시:</strong> disabled, loading 상태 명확히 구분</li>
+                </ul>
+            </div>
+            
+            <div class="demo-group">
+                <span class="demo-label">키보드 테스트 (Tab키로 이동해보세요):</span>
+                <button class="btn btn-primary btn-md">첫 번째</button>
+                <button class="btn btn-secondary btn-md">두 번째</button>
+                <button class="btn btn-outline btn-md">세 번째</button>
+                <button class="btn btn-ghost btn-md">네 번째</button>
+            </div>
+            
+            <div class="code-block">
+&lt;!-- 아이콘만 있는 버튼에 aria-label 필수 --&gt;
+&lt;button class="btn btn-primary btn-md btn-icon-only" aria-label="메뉴 열기"&gt;
+    &lt;svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20"&gt;...&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- disabled 상태 --&gt;
+&lt;button class="btn btn-primary btn-md" disabled&gt;사용 불가&lt;/button&gt;
+
+&lt;!-- 로딩 상태 --&gt;
+&lt;button class="btn btn-primary btn-md btn-loading" aria-label="로딩 중"&gt;처리중...&lt;/button&gt;
+            </div>
+        </section>
+
+        <!-- CSS Classes Reference -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">8. CSS 클래스 참조</h2>
+            
+            <div class="code-block">
+/* 기본 구조 */
+.btn                    // 기본 버튼 스타일
+
+/* 변형 (Variants) */
+.btn-primary           // 보라색 주요 버튼
+.btn-secondary         // 녹색 보조 버튼  
+.btn-accent            // 노란색 강조 버튼
+.btn-outline           // 테두리만 있는 버튼
+.btn-ghost             // 투명 배경 버튼
+
+/* 크기 (Sizes) */
+.btn-sm               // 작음 (36px 높이)
+.btn-md               // 보통 (44px 높이) - 기본값
+.btn-lg               // 큼 (52px 높이)
+.btn-xl               // 매우 큼 (60px 높이)
+
+/* 상태 (States) */
+.btn-loading          // 로딩 상태
+disabled              // HTML disabled 속성
+
+/* 아이콘 지원 */
+.btn-icon             // 아이콘 크기 조정
+.btn-icon-left        // 왼쪽 아이콘 마진
+.btn-icon-right       // 오른쪽 아이콘 마진
+.btn-icon-only        // 아이콘만 있는 원형 버튼
+
+/* 조합 예시 */
+.btn .btn-primary .btn-lg .btn-loading
+            </div>
+        </section>
+
+        <!-- Technical Specifications -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">9. 기술 사양</h2>
+            
+            <div class="demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div>
+                    <strong>브라우저 지원:</strong>
+                    <ul>
+                        <li>Chrome 60+</li>
+                        <li>Firefox 60+</li>
+                        <li>Safari 12+</li>
+                        <li>Edge 79+</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <strong>반응형 지원:</strong>
+                    <ul>
+                        <li>모바일: 44px 최소 터치 타겟</li>
+                        <li>태블릿: 유연한 크기 조정</li>
+                        <li>데스크톱: 호버 효과 지원</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <strong>성능 특징:</strong>
+                    <ul>
+                        <li>CSS Transform 기반 애니메이션</li>
+                        <li>GPU 가속 호버 효과</li>
+                        <li>60fps 부드러운 전환</li>
+                        <li>최소 리페인트/리플로우</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <strong>나인원랩스 특징:</strong>
+                    <ul>
+                        <li>40px 시그니처 둥근 테두리</li>
+                        <li>브랜드 색상 완벽 적용</li>
+                        <li>일관된 디자인 시스템</li>
+                        <li>고급스러운 그림자 효과</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive demo functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add keyboard interaction demo
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('focus', function() {
+                    console.log('Button focused:', this.textContent);
+                });
+                
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+            
+            // Toggle loading state demo
+            const loadingButtons = document.querySelectorAll('.btn-loading');
+            loadingButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Simulate loading completion
+                    setTimeout(() => {
+                        this.classList.remove('btn-loading');
+                        this.textContent = '완료!';
+                        setTimeout(() => {
+                            this.classList.add('btn-loading');
+                            this.textContent = 'Loading...';
+                        }, 2000);
+                    }, 3000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

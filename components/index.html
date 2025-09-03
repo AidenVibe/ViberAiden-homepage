@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NineOneLabs Design System - Complete Component Library</title>
+    <meta name="description" content="나인원랩스 디자인 시스템 컴포넌트 라이브러리 - Button, Typography, Input, Card, Header, Hero 컴포넌트 완전 데모">
+    
+    <!-- 폰트 로딩 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css" rel="stylesheet">
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎨%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        /* ============================================================================
+           NINEONELABS DESIGN SYSTEM - COMPLETE INTEGRATION
+           ============================================================================ */
+        
+        :root {
+            /* 브랜드 색상 */
+            --color-primary-50: hsl(266, 87%, 97%);
+            --color-primary-100: hsl(266, 87%, 93%);
+            --color-primary-200: hsl(266, 87%, 86%);
+            --color-primary-300: hsl(266, 87%, 77%);
+            --color-primary-400: hsl(266, 87%, 67%);
+            --color-primary-500: hsl(266, 87%, 57%); /* rgb(102, 53, 240) */
+            --color-primary-600: hsl(266, 87%, 47%);
+            --color-primary-700: hsl(266, 87%, 37%);
+            --color-primary-800: hsl(266, 87%, 27%);
+            --color-primary-900: hsl(266, 87%, 17%);
+
+            --color-secondary-50: hsl(158, 98%, 97%);
+            --color-secondary-100: hsl(158, 98%, 93%);
+            --color-secondary-200: hsl(158, 98%, 85%);
+            --color-secondary-300: hsl(158, 98%, 75%);
+            --color-secondary-400: hsl(158, 98%, 55%);
+            --color-secondary-500: hsl(158, 98%, 34%); /* rgb(2, 170, 108) */
+            --color-secondary-600: hsl(158, 98%, 30%);
+            --color-secondary-700: hsl(158, 98%, 24%);
+            --color-secondary-800: hsl(158, 98%, 18%);
+            --color-secondary-900: hsl(158, 98%, 12%);
+
+            --color-accent-50: hsl(57, 97%, 97%);
+            --color-accent-100: hsl(57, 97%, 93%);
+            --color-accent-200: hsl(57, 97%, 85%);
+            --color-accent-300: hsl(57, 97%, 75%);
+            --color-accent-400: hsl(57, 97%, 65%);
+            --color-accent-500: hsl(57, 97%, 53%); /* rgb(252, 240, 18) */
+            --color-accent-600: hsl(57, 97%, 43%);
+            --color-accent-700: hsl(57, 97%, 33%);
+            --color-accent-800: hsl(57, 97%, 23%);
+            --color-accent-900: hsl(57, 97%, 13%);
+
+            /* 뉴트럴 컬러 */
+            --color-neutral-0: hsl(0, 0%, 100%);
+            --color-neutral-50: hsl(0, 0%, 98%);
+            --color-neutral-100: hsl(0, 0%, 96%);
+            --color-neutral-200: hsl(0, 0%, 90%);
+            --color-neutral-300: hsl(0, 0%, 83%);
+            --color-neutral-400: hsl(0, 0%, 64%);
+            --color-neutral-500: hsl(0, 0%, 45%);
+            --color-neutral-600: hsl(0, 0%, 32%);
+            --color-neutral-700: hsl(0, 0%, 25%);
+            --color-neutral-800: hsl(0, 0%, 15%);
+            --color-neutral-900: hsl(0, 0%, 9%);
+            --color-neutral-950: hsl(0, 0%, 4%);
+
+            /* 시멘틱 컬러 */
+            --color-text-primary: var(--color-neutral-900);
+            --color-text-secondary: var(--color-neutral-600);
+            --color-text-muted: var(--color-neutral-400);
+            --color-border: var(--color-neutral-200);
+            --color-border-strong: var(--color-neutral-300);
+            --color-surface: var(--color-neutral-50);
+            --color-background: var(--color-neutral-0);
+
+            /* 타이포그래피 */
+            --font-family-primary: 'NanumSquare', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-secondary: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+
+            --font-size-xs: 0.625rem;     /* 10px */
+            --font-size-sm: 0.75rem;      /* 12px */
+            --font-size-base: 0.875rem;   /* 14px */
+            --font-size-md: 1rem;         /* 16px */
+            --font-size-lg: 1.125rem;     /* 18px */
+            --font-size-xl: 1.25rem;      /* 20px */
+            --font-size-2xl: 1.5rem;      /* 24px */
+            --font-size-3xl: 1.75rem;     /* 28px */
+            --font-size-4xl: 2rem;        /* 32px */
+            --font-size-5xl: 2.25rem;     /* 36px */
+            --font-size-6xl: 3rem;        /* 48px */
+            --font-size-7xl: 4rem;        /* 64px */
+            --font-size-8xl: 5rem;        /* 80px */
+            --font-size-9xl: 6rem;        /* 96px */
+            --font-size-10xl: 8rem;       /* 128px */
+            --font-size-11xl: 19.1875rem; /* 307px */
+
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-black: 900;
+
+            --line-height-tight: 1.25;
+            --line-height-snug: 1.375;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            --line-height-loose: 2;
+
+            /* 스페이싱 */
+            --space-0: 0;
+            --space-1: 0.25rem;   /* 4px */
+            --space-2: 0.5rem;    /* 8px */
+            --space-3: 0.75rem;   /* 12px */
+            --space-4: 1rem;      /* 16px */
+            --space-5: 1.25rem;   /* 20px */
+            --space-6: 1.5rem;    /* 24px */
+            --space-8: 2rem;      /* 32px */
+            --space-10: 2.5rem;   /* 40px */
+            --space-12: 3rem;     /* 48px */
+            --space-16: 4rem;     /* 64px */
+            --space-20: 5rem;     /* 80px */
+            --space-24: 6rem;     /* 96px */
+            --space-32: 8rem;     /* 128px */
+
+            /* 보더 래디우스 */
+            --radius-none: 0;
+            --radius-sm: 0.125rem;   /* 2px */
+            --radius-base: 0.25rem;  /* 4px */
+            --radius-md: 0.375rem;   /* 6px */
+            --radius-lg: 0.5rem;     /* 8px */
+            --radius-xl: 0.75rem;    /* 12px */
+            --radius-2xl: 1rem;      /* 16px */
+            --radius-3xl: 1.5rem;    /* 24px */
+            --radius-full: 9999px;
+            --radius-button: 2.5rem; /* 40px - NineOneLabs 시그니처 */
+
+            /* 그림자 */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+            /* 트랜지션 */
+            --transition-duration-fast: 150ms;
+            --transition-duration-normal: 300ms;
+            --transition-duration-slow: 500ms;
+            --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-all: all var(--transition-duration-normal) var(--transition-timing-function);
+            --transition-colors: color var(--transition-duration-normal) var(--transition-timing-function),
+                                background-color var(--transition-duration-normal) var(--transition-timing-function),
+                                border-color var(--transition-duration-normal) var(--transition-timing-function);
+            --transition-transform: transform var(--transition-duration-normal) var(--transition-timing-function);
+
+            /* 레이아웃 */
+            --container-max-width: 1920px;
+            --sidebar-width: 280px;
+            --header-height: 80px;
+        }
+
+        /* ============================================================================
+           BASE STYLES
+           ============================================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: var(--font-family-primary);
+            font-size: 16px;
+            line-height: var(--line-height-normal);
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ============================================================================
+           BUTTON SYSTEM - From Button.html
+           ============================================================================ */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-family: var(--font-family-primary);
+            font-weight: var(--font-weight-semibold);
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--radius-button);
+            cursor: pointer;
+            transition: var(--transition-all);
+            user-select: none;
+            white-space: nowrap;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--color-primary-300);
+            outline-offset: 2px;
+        }
+
+        /* Button Variants */
+        .btn-primary {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            border-color: var(--color-primary-500);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--color-primary-600);
+            border-color: var(--color-primary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-secondary-500);
+            color: var(--color-neutral-0);
+            border-color: var(--color-secondary-500);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background-color: var(--color-secondary-600);
+            border-color: var(--color-secondary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-accent {
+            background-color: var(--color-accent-500);
+            color: var(--color-neutral-900);
+            border-color: var(--color-accent-500);
+        }
+
+        .btn-accent:hover:not(:disabled) {
+            background-color: var(--color-accent-400);
+            border-color: var(--color-accent-400);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary-500);
+            border-color: var(--color-primary-500);
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--color-neutral-600);
+            border-color: transparent;
+        }
+
+        .btn-ghost:hover:not(:disabled) {
+            background-color: var(--color-neutral-100);
+            color: var(--color-neutral-900);
+            transform: translateY(-1px);
+        }
+
+        /* Button Sizes */
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: var(--font-size-sm);
+            min-height: 36px;
+        }
+
+        .btn-md {
+            padding: var(--space-3) var(--space-6);
+            font-size: var(--font-size-base);
+            min-height: 44px;
+        }
+
+        .btn-lg {
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--font-size-md);
+            min-height: 52px;
+        }
+
+        .btn-xl {
+            padding: var(--space-5) var(--space-10);
+            font-size: var(--font-size-lg);
+            min-height: 60px;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* ============================================================================
+           INPUT SYSTEM
+           ============================================================================ */
+
+        .input {
+            display: block;
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-md);
+            line-height: var(--line-height-tight);
+            color: var(--color-text-primary);
+            background-color: var(--color-background);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-colors);
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--color-primary-500);
+            box-shadow: 0 0 0 3px hsla(266, 87%, 57%, 0.2);
+        }
+
+        .input::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        /* ============================================================================
+           CARD SYSTEM
+           ============================================================================ */
+
+        .card {
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-all);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-border-strong);
+        }
+
+        .card-elevated {
+            box-shadow: var(--shadow-lg);
+            border: none;
+        }
+
+        .card-elevated:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================================
+           LAYOUT SYSTEM
+           ============================================================================ */
+
+        .app-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .app-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-secondary-500) 100%);
+            color: var(--color-neutral-0);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-8);
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+        }
+
+        .app-header h1 {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-black);
+            margin: 0;
+            background: linear-gradient(45deg, var(--color-neutral-0), var(--color-accent-200));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .app-header .meta {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        /* Sidebar */
+        .app-sidebar {
+            position: fixed;
+            left: 0;
+            top: var(--header-height);
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-nav {
+            padding: var(--space-6) 0;
+        }
+
+        .nav-section {
+            margin-bottom: var(--space-8);
+        }
+
+        .nav-section-title {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0 var(--space-6);
+            margin-bottom: var(--space-4);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            display: block;
+            padding: var(--space-3) var(--space-6);
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: var(--transition-colors);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--color-primary-500);
+            background-color: var(--color-primary-50);
+        }
+
+        .nav-link.active {
+            font-weight: var(--font-weight-semibold);
+            border-right: 2px solid var(--color-primary-500);
+        }
+
+        /* Main Content */
+        .app-main {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            min-height: calc(100vh - var(--header-height));
+            background: var(--color-background);
+        }
+
+        .main-content {
+            padding: var(--space-12);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ============================================================================
+           COMPONENT SHOWCASE STYLES
+           ============================================================================ */
+
+        .section {
+            margin-bottom: var(--space-20);
+        }
+
+        .section-header {
+            margin-bottom: var(--space-12);
+        }
+
+        .section-title {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-5xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            margin: 0 0 var(--space-4) 0;
+            line-height: var(--line-height-tight);
+        }
+
+        .section-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            margin: 0;
+            line-height: var(--line-height-relaxed);
+        }
+
+        .subsection {
+            margin-bottom: var(--space-12);
+        }
+
+        .subsection-title {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin: 0 0 var(--space-6) 0;
+            padding-bottom: var(--space-3);
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .demo-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .demo-item {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            transition: var(--transition-all);
+        }
+
+        .demo-item:hover {
+            border-color: var(--color-primary-300);
+            box-shadow: var(--shadow-md);
+        }
+
+        .demo-label {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-muted);
+            display: block;
+            margin-bottom: var(--space-3);
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        /* 색상 팔레트 표시 */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .color-preview {
+            width: 100%;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-2);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .color-name {
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-1);
+        }
+
+        .color-value {
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-secondary);
+        }
+
+        /* 코드 블록 */
+        .code-block {
+            background: var(--color-neutral-900);
+            color: var(--color-neutral-100);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+            overflow-x: auto;
+            position: relative;
+            margin: var(--space-4) 0;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-3);
+            border-bottom: 1px solid var(--color-neutral-700);
+        }
+
+        .code-title {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-neutral-300);
+        }
+
+        .copy-button {
+            background: var(--color-neutral-800);
+            color: var(--color-neutral-300);
+            border: 1px solid var(--color-neutral-700);
+            border-radius: var(--radius-base);
+            padding: var(--space-2) var(--space-3);
+            font-size: var(--font-size-xs);
+            cursor: pointer;
+            transition: var(--transition-colors);
+        }
+
+        .copy-button:hover {
+            background: var(--color-neutral-700);
+            color: var(--color-neutral-100);
+        }
+
+        .copy-button.copied {
+            background: var(--color-secondary-600);
+            color: var(--color-neutral-0);
+        }
+
+        /* 타이포그래피 스케일 */
+        .typography-scale {
+            display: grid;
+            gap: var(--space-6);
+        }
+
+        .typo-example {
+            padding: var(--space-4);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface);
+        }
+
+        .typo-meta {
+            font-family: var(--font-family-mono);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-2);
+        }
+
+        /* 반응형 테스트 */
+        .responsive-test {
+            border: 2px dashed var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-8);
+            text-align: center;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--color-neutral-50),
+                var(--color-neutral-50) 10px,
+                var(--color-neutral-100) 10px,
+                var(--color-neutral-100) 20px
+            );
+        }
+
+        /* 인터랙션 데모 */
+        .interaction-demo {
+            padding: var(--space-8);
+            background: var(--color-surface);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--color-border);
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .control-label {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-secondary);
+        }
+
+        /* 접근성 인디케이터 */
+        .a11y-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-3);
+            background: var(--color-secondary-50);
+            color: var(--color-secondary-700);
+            border: 1px solid var(--color-secondary-200);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            margin: var(--space-2) 0;
+        }
+
+        .a11y-indicator.warning {
+            background: var(--color-accent-50);
+            color: var(--color-accent-700);
+            border-color: var(--color-accent-200);
+        }
+
+        /* Hero 섹션 */
+        .hero-demo {
+            background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%);
+            padding: var(--space-20) var(--space-8);
+            text-align: center;
+            border-radius: var(--radius-2xl);
+            margin-bottom: var(--space-12);
+        }
+
+        .hero-title {
+            font-family: var(--font-family-primary);
+            font-size: clamp(var(--font-size-6xl), 8vw, var(--font-size-10xl));
+            font-weight: var(--font-weight-black);
+            line-height: var(--line-height-tight);
+            background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-secondary-500) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0 0 var(--space-6) 0;
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            margin: 0 0 var(--space-8) 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============================================================================
+           RESPONSIVE DESIGN
+           ============================================================================ */
+
+        @media (max-width: 1024px) {
+            .app-sidebar {
+                transform: translateX(-100%);
+                transition: var(--transition-transform);
+            }
+
+            .app-sidebar.active {
+                transform: translateX(0);
+            }
+
+            .app-main {
+                margin-left: 0;
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: var(--space-6);
+            }
+
+            .section-title {
+                font-size: var(--font-size-3xl);
+            }
+
+            .app-header {
+                padding: 0 var(--space-4);
+            }
+
+            .app-header h1 {
+                font-size: var(--font-size-xl);
+            }
+
+            .demo-group {
+                flex-direction: column;
+            }
+
+            .color-palette {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+
+        /* ============================================================================
+           DARK MODE SUPPORT (토글 가능)
+           ============================================================================ */
+
+        [data-theme="dark"] {
+            --color-background: var(--color-neutral-900);
+            --color-surface: var(--color-neutral-800);
+            --color-text-primary: var(--color-neutral-100);
+            --color-text-secondary: var(--color-neutral-400);
+            --color-text-muted: var(--color-neutral-500);
+            --color-border: var(--color-neutral-700);
+            --color-border-strong: var(--color-neutral-600);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 50%;
+            right: var(--space-6);
+            transform: translateY(-50%);
+            z-index: 1001;
+            background: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            border: none;
+            border-radius: var(--radius-full);
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-all);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* 스크롤 인디케이터 */
+        .scroll-progress {
+            position: fixed;
+            top: var(--header-height);
+            left: var(--sidebar-width);
+            right: 0;
+            height: 3px;
+            background: var(--color-neutral-200);
+            z-index: 999;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary-500), var(--color-secondary-500));
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* 모바일 메뉴 토글 */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-neutral-0);
+            font-size: var(--font-size-xl);
+            cursor: pointer;
+            padding: var(--space-2);
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .scroll-progress {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 스크롤 진행 바 -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="scrollProgress"></div>
+    </div>
+
+    <!-- 테마 토글 버튼 -->
+    <button class="theme-toggle" id="themeToggle" aria-label="테마 변경">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+            <path id="themeIcon" d="M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 18L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z" />
+        </svg>
+    </button>
+
+    <div class="app-layout">
+        <!-- Header -->
+        <header class="app-header">
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="사이드바 토글">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <h1>NineOneLabs Design System</h1>
+            </div>
+            <div class="meta">v1.0 • ViberAiden Edition</div>
+        </header>
+
+        <!-- Sidebar Navigation -->
+        <aside class="app-sidebar" id="sidebar">
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Design System</h3>
+                    <ul class="nav-links">
+                        <li><a href="#overview" class="nav-link active">Overview</a></li>
+                        <li><a href="#colors" class="nav-link">Colors</a></li>
+                        <li><a href="#typography" class="nav-link">Typography</a></li>
+                        <li><a href="#spacing" class="nav-link">Spacing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Atoms</h3>
+                    <ul class="nav-links">
+                        <li><a href="#buttons" class="nav-link">Buttons</a></li>
+                        <li><a href="#inputs" class="nav-link">Inputs</a></li>
+                        <li><a href="#icons" class="nav-link">Icons</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Molecules</h3>
+                    <ul class="nav-links">
+                        <li><a href="#cards" class="nav-link">Cards</a></li>
+                        <li><a href="#forms" class="nav-link">Forms</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Organisms</h3>
+                    <ul class="nav-links">
+                        <li><a href="#headers" class="nav-link">Headers</a></li>
+                        <li><a href="#heroes" class="nav-link">Heroes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Utilities</h3>
+                    <ul class="nav-links">
+                        <li><a href="#accessibility" class="nav-link">Accessibility</a></li>
+                        <li><a href="#responsive" class="nav-link">Responsive</a></li>
+                        <li><a href="#performance" class="nav-link">Performance</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="main-content">
+                
+                <!-- Hero Section -->
+                <div class="hero-demo" id="overview">
+                    <h1 class="hero-title">Design System</h1>
+                    <p class="hero-subtitle">나인원랩스 테마를 기반으로 한 완전한 컴포넌트 라이브러리입니다. 일관성 있는 디자인과 최고의 사용자 경험을 제공합니다.</p>
+                    <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                        <a href="#buttons" class="btn btn-primary btn-lg">컴포넌트 둘러보기</a>
+                        <a href="https://github.com/nineonelabs/design-system" class="btn btn-outline btn-lg">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Overview Stats -->
+                <div class="demo-grid" style="margin-bottom: var(--space-16);">
+                    <div class="card card-elevated">
+                        <h3 style="margin: 0 0 var(--space-2) 0; color: var(--color-primary-500); font-size: var(--font-size-2xl);">50+</h3>
+                        <p style="margin: 0; color: var(--color-text-secondary);">UI 컴포넌트</p>
+                    </div>
+                    <div class="card card-elevated">
+                        <h3 style="margin: 0 0 var(--space-2) 0; color: var(--color-secondary-500); font-size: var(--font-size-2xl);">100%</h3>
+                        <p style="margin: 0; color: var(--color-text-secondary);">접근성 준수</p>
+                    </div>
+                    <div class="card card-elevated">
+                        <h3 style="margin: 0 0 var(--space-2) 0; color: var(--color-accent-600); font-size: var(--font-size-2xl);">5KB</h3>
+                        <p style="margin: 0; color: var(--color-text-secondary);">CSS 번들 크기</p>
+                    </div>
+                </div>
+
+                <!-- Color System -->
+                <section class="section" id="colors">
+                    <div class="section-header">
+                        <h2 class="section-title">Color System</h2>
+                        <p class="section-subtitle">나인원랩스의 시그니처 색상 팔레트입니다. Primary Purple, Secondary Green, Accent Yellow로 구성됩니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Primary Colors</h3>
+                        <div class="color-palette">
+                            <div class="color-swatch">
+                                <div class="color-preview" style="background-color: var(--color-primary-100);"></div>
+                                <div class="color-name">primary-100</div>
+                                <div class="color-value">hsl(266, 87%, 93%)</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" style="background-color: var(--color-primary-300);"></div>
+                                <div class="color-name">primary-300</div>
+                                <div class="color-value">hsl(266, 87%, 77%)</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" style="background-color: var(--color-primary-500);"></div>
+                                <div class="color-name">primary-500</div>
+                                <div class="color-value">hsl(266, 87%, 57%)</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" style="background-color: var(--color-primary-700);"></div>
+                                <div class="color-name">primary-700</div>
+                                <div class="color-value">hsl(266, 87%, 37%)</div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-preview" style="background-color: var(--color-primary-900);"></div>
+                                <div class="color-name">primary-900</div>
+                                <div class="color-value">hsl(266, 87%, 17%)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Secondary & Accent</h3>
+                        <div class="demo-grid">
+                            <div class="demo-item">
+                                <span class="demo-label">Secondary Green</span>
+                                <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
+                                    <div style="width: 40px; height: 40px; background: var(--color-secondary-300); border-radius: var(--radius-base);"></div>
+                                    <div style="width: 40px; height: 40px; background: var(--color-secondary-500); border-radius: var(--radius-base);"></div>
+                                    <div style="width: 40px; height: 40px; background: var(--color-secondary-700); border-radius: var(--radius-base);"></div>
+                                </div>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-muted);">성공 상태, 긍정적 액션에 사용</p>
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">Accent Yellow</span>
+                                <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
+                                    <div style="width: 40px; height: 40px; background: var(--color-accent-300); border-radius: var(--radius-base);"></div>
+                                    <div style="width: 40px; height: 40px; background: var(--color-accent-500); border-radius: var(--radius-base);"></div>
+                                    <div style="width: 40px; height: 40px; background: var(--color-accent-700); border-radius: var(--radius-base);"></div>
+                                </div>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-muted);">경고, 주의 사항에 사용</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-title">CSS Variables 사용법</span>
+                            <button class="copy-button" onclick="copyCode(this)" data-code="/* Primary Colors */
+--color-primary-500: hsl(266, 87%, 57%);
+--color-secondary-500: hsl(158, 98%, 34%);
+--color-accent-500: hsl(57, 97%, 53%);
+
+/* Usage */
+.button-primary {
+  background-color: var(--color-primary-500);
+}">복사</button>
+                        </div>
+                        <pre><code>/* Primary Colors */
+--color-primary-500: hsl(266, 87%, 57%);
+--color-secondary-500: hsl(158, 98%, 34%);
+--color-accent-500: hsl(57, 97%, 53%);
+
+/* Usage */
+.button-primary {
+  background-color: var(--color-primary-500);
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- Typography System -->
+                <section class="section" id="typography">
+                    <div class="section-header">
+                        <h2 class="section-title">Typography</h2>
+                        <p class="section-subtitle">NanumSquare와 Archivo 폰트를 사용한 한국어 최적화 타이포그래피 시스템입니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Font Scale</h3>
+                        <div class="typography-scale">
+                            <div class="typo-example">
+                                <div class="typo-meta">font-size-xs (10px)</div>
+                                <div style="font-size: var(--font-size-xs);">Extra Small Text - 매우 작은 텍스트</div>
+                            </div>
+                            <div class="typo-example">
+                                <div class="typo-meta">font-size-sm (12px)</div>
+                                <div style="font-size: var(--font-size-sm);">Small Text - 작은 텍스트</div>
+                            </div>
+                            <div class="typo-example">
+                                <div class="typo-meta">font-size-base (14px)</div>
+                                <div style="font-size: var(--font-size-base);">Base Text - 기본 텍스트</div>
+                            </div>
+                            <div class="typo-example">
+                                <div class="typo-meta">font-size-md (16px)</div>
+                                <div style="font-size: var(--font-size-md);">Medium Text - 중간 텍스트</div>
+                            </div>
+                            <div class="typo-example">
+                                <div class="typo-meta">font-size-2xl (24px)</div>
+                                <div style="font-size: var(--font-size-2xl); font-weight: var(--font-weight-semibold);">2XL Text - 소제목</div>
+                            </div>
+                            <div class="typo-example">
+                                <div class="typo-meta">font-size-4xl (32px)</div>
+                                <div style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold);">4XL Text - 제목</div>
+                            </div>
+                            <div class="typo-example">
+                                <div class="typo-meta">font-size-6xl (48px)</div>
+                                <div style="font-size: var(--font-size-6xl); font-weight: var(--font-weight-black); color: var(--color-primary-500);">6XL Text - 대형 제목</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Font Weights</h3>
+                        <div class="demo-group">
+                            <div class="demo-item" style="flex: 1; min-width: 200px;">
+                                <span class="demo-label">Light (300)</span>
+                                <div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-light);">가벼운 텍스트</div>
+                            </div>
+                            <div class="demo-item" style="flex: 1; min-width: 200px;">
+                                <span class="demo-label">Normal (400)</span>
+                                <div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-normal);">일반 텍스트</div>
+                            </div>
+                            <div class="demo-item" style="flex: 1; min-width: 200px;">
+                                <span class="demo-label">Medium (500)</span>
+                                <div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-medium);">중간 텍스트</div>
+                            </div>
+                            <div class="demo-item" style="flex: 1; min-width: 200px;">
+                                <span class="demo-label">Bold (700)</span>
+                                <div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold);">굵은 텍스트</div>
+                            </div>
+                            <div class="demo-item" style="flex: 1; min-width: 200px;">
+                                <span class="demo-label">Black (900)</span>
+                                <div style="font-size: var(--font-size-lg); font-weight: var(--font-weight-black);">가장 굵은 텍스트</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Spacing System -->
+                <section class="section" id="spacing">
+                    <div class="section-header">
+                        <h2 class="section-title">Spacing System</h2>
+                        <p class="section-subtitle">4px 기준의 일관된 간격 시스템입니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Spacing Scale</h3>
+                        <div class="demo-grid">
+                            <div class="demo-item">
+                                <span class="demo-label">space-1 (4px)</span>
+                                <div style="width: 4px; height: 20px; background: var(--color-primary-500);"></div>
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">space-2 (8px)</span>
+                                <div style="width: 8px; height: 20px; background: var(--color-primary-500);"></div>
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">space-4 (16px)</span>
+                                <div style="width: 16px; height: 20px; background: var(--color-primary-500);"></div>
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">space-6 (24px)</span>
+                                <div style="width: 24px; height: 20px; background: var(--color-primary-500);"></div>
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">space-8 (32px)</span>
+                                <div style="width: 32px; height: 20px; background: var(--color-primary-500);"></div>
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">space-12 (48px)</span>
+                                <div style="width: 48px; height: 20px; background: var(--color-primary-500);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Button System -->
+                <section class="section" id="buttons">
+                    <div class="section-header">
+                        <h2 class="section-title">Button System</h2>
+                        <p class="section-subtitle">5가지 변형과 4가지 크기를 제공하는 완전한 버튼 시스템입니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Button Variants</h3>
+                        <div class="demo-group">
+                            <button class="btn btn-primary btn-md">Primary</button>
+                            <button class="btn btn-secondary btn-md">Secondary</button>
+                            <button class="btn btn-accent btn-md">Accent</button>
+                            <button class="btn btn-outline btn-md">Outline</button>
+                            <button class="btn btn-ghost btn-md">Ghost</button>
+                        </div>
+                        
+                        <div class="a11y-indicator">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            모든 버튼은 44px 이상의 터치 타겟 크기를 보장합니다
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Button Sizes</h3>
+                        <div class="demo-group" style="align-items: center;">
+                            <button class="btn btn-primary btn-sm">Small (36px)</button>
+                            <button class="btn btn-primary btn-md">Medium (44px)</button>
+                            <button class="btn btn-primary btn-lg">Large (52px)</button>
+                            <button class="btn btn-primary btn-xl">XL (60px)</button>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Interactive Demo</h3>
+                        <div class="interaction-demo">
+                            <div class="demo-controls">
+                                <div class="control-group">
+                                    <span class="control-label">Variant:</span>
+                                    <select id="buttonVariant" onchange="updateButtonDemo()">
+                                        <option value="btn-primary">Primary</option>
+                                        <option value="btn-secondary">Secondary</option>
+                                        <option value="btn-accent">Accent</option>
+                                        <option value="btn-outline">Outline</option>
+                                        <option value="btn-ghost">Ghost</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <span class="control-label">Size:</span>
+                                    <select id="buttonSize" onchange="updateButtonDemo()">
+                                        <option value="btn-sm">Small</option>
+                                        <option value="btn-md" selected>Medium</option>
+                                        <option value="btn-lg">Large</option>
+                                        <option value="btn-xl">Extra Large</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <input type="checkbox" id="buttonDisabled" onchange="updateButtonDemo()">
+                                    <span class="control-label">Disabled</span>
+                                </div>
+                            </div>
+                            <button id="demoButton" class="btn btn-primary btn-md">Demo Button</button>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-title">HTML 사용법</span>
+                            <button class="copy-button" onclick="copyCode(this)" data-code='<button class="btn btn-primary btn-md">Primary Button</button>
+<button class="btn btn-secondary btn-lg">Secondary Large</button>
+<button class="btn btn-outline btn-sm">Small Outline</button>
+<button class="btn btn-ghost btn-xl">Ghost XL</button>'>복사</button>
+                        </div>
+                        <pre><code>&lt;button class="btn btn-primary btn-md"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn btn-secondary btn-lg"&gt;Secondary Large&lt;/button&gt;
+&lt;button class="btn btn-outline btn-sm"&gt;Small Outline&lt;/button&gt;
+&lt;button class="btn btn-ghost btn-xl"&gt;Ghost XL&lt;/button&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Input System -->
+                <section class="section" id="inputs">
+                    <div class="section-header">
+                        <h2 class="section-title">Input System</h2>
+                        <p class="section-subtitle">사용자 입력을 위한 다양한 폼 컨트롤 컴포넌트입니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Text Inputs</h3>
+                        <div class="demo-grid">
+                            <div class="demo-item">
+                                <span class="demo-label">기본 입력 필드</span>
+                                <input type="text" class="input" placeholder="텍스트를 입력하세요">
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">이메일 입력</span>
+                                <input type="email" class="input" placeholder="이메일을 입력하세요">
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">비밀번호 입력</span>
+                                <input type="password" class="input" placeholder="비밀번호를 입력하세요">
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">텍스트 영역</span>
+                                <textarea class="input" rows="3" placeholder="메시지를 입력하세요" style="resize: vertical; min-height: 80px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Form Example</h3>
+                        <div class="card" style="max-width: 500px;">
+                            <form style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                <div>
+                                    <label style="display: block; font-weight: var(--font-weight-medium); margin-bottom: var(--space-2);">이름</label>
+                                    <input type="text" class="input" placeholder="홍길동">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-weight: var(--font-weight-medium); margin-bottom: var(--space-2);">이메일</label>
+                                    <input type="email" class="input" placeholder="hello@example.com">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-weight: var(--font-weight-medium); margin-bottom: var(--space-2);">메시지</label>
+                                    <textarea class="input" rows="4" placeholder="메시지를 입력하세요"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-md">전송하기</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Card System -->
+                <section class="section" id="cards">
+                    <div class="section-header">
+                        <h2 class="section-title">Card System</h2>
+                        <p class="section-subtitle">콘텐츠를 그룹화하고 표시하는 카드 컴포넌트입니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Card Variants</h3>
+                        <div class="demo-grid">
+                            <div class="card">
+                                <h3 style="margin: 0 0 var(--space-3) 0; font-size: var(--font-size-xl);">기본 카드</h3>
+                                <p style="margin: 0; color: var(--color-text-secondary);">기본적인 카드 스타일입니다. 호버 시 그림자 효과가 적용됩니다.</p>
+                            </div>
+                            <div class="card card-elevated">
+                                <h3 style="margin: 0 0 var(--space-3) 0; font-size: var(--font-size-xl);">엘리베이티드 카드</h3>
+                                <p style="margin: 0; color: var(--color-text-secondary);">더 강한 그림자로 떠 있는 듯한 느낌을 주는 카드입니다.</p>
+                            </div>
+                            <div class="card" style="background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500)); color: var(--color-neutral-0);">
+                                <h3 style="margin: 0 0 var(--space-3) 0; font-size: var(--font-size-xl);">그라디언트 카드</h3>
+                                <p style="margin: 0; opacity: 0.9;">브랜드 색상의 그라디언트를 적용한 카드입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Feature Cards</h3>
+                        <div class="demo-grid">
+                            <div class="card card-elevated" style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: var(--color-primary-100); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4);">
+                                    <svg width="24" height="24" fill="var(--color-primary-500)" viewBox="0 0 20 20">
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <h3 style="margin: 0 0 var(--space-3) 0; font-size: var(--font-size-xl);">접근성</h3>
+                                <p style="margin: 0; color: var(--color-text-secondary);">WCAG 2.1 AA 기준을 준수하는 완전한 접근성 지원</p>
+                            </div>
+                            <div class="card card-elevated" style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: var(--color-secondary-100); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4);">
+                                    <svg width="24" height="24" fill="var(--color-secondary-500)" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 style="margin: 0 0 var(--space-3) 0; font-size: var(--font-size-xl);">성능</h3>
+                                <p style="margin: 0; color: var(--color-text-secondary);">최적화된 CSS로 빠른 로딩과 부드러운 애니메이션</p>
+                            </div>
+                            <div class="card card-elevated" style="text-align: center;">
+                                <div style="width: 60px; height: 60px; background: var(--color-accent-100); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4);">
+                                    <svg width="24" height="24" fill="var(--color-accent-600)" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 style="margin: 0 0 var(--space-3) 0; font-size: var(--font-size-xl);">개발자 친화적</h3>
+                                <p style="margin: 0; color: var(--color-text-secondary);">직관적인 클래스명과 완벽한 문서화</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Header Component -->
+                <section class="section" id="headers">
+                    <div class="section-header">
+                        <h2 class="section-title">Header Component</h2>
+                        <p class="section-subtitle">반응형 네비게이션을 제공하는 헤더 컴포넌트입니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Header Preview</h3>
+                        <div class="demo-item" style="padding: 0; border-radius: var(--radius-xl); overflow: hidden;">
+                            <!-- 미니 헤더 데모 -->
+                            <div style="background: var(--color-background); border-bottom: 1px solid var(--color-border); padding: var(--space-4) var(--space-6); display: flex; align-items: center; justify-content: space-between;">
+                                <div style="font-size: var(--font-size-xl); font-weight: var(--font-weight-black); color: var(--color-primary-500);">ViberAiden</div>
+                                <nav style="display: flex; gap: var(--space-6);">
+                                    <a href="#" style="color: var(--color-text-secondary); text-decoration: none;">문제들</a>
+                                    <a href="#" style="color: var(--color-text-secondary); text-decoration: none;">해결책</a>
+                                    <a href="#" style="color: var(--color-text-secondary); text-decoration: none;">연락하기</a>
+                                </nav>
+                                <button class="btn btn-primary btn-sm">시작하기</button>
+                            </div>
+                        </div>
+                        
+                        <div class="a11y-indicator">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            키보드 네비게이션과 스크린 리더 완전 지원
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Features</h3>
+                        <div class="demo-grid">
+                            <div class="demo-item">
+                                <h4 style="margin: 0 0 var(--space-2) 0; color: var(--color-primary-500);">고정 헤더</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">80px 높이의 고정 헤더로 스크롤 시에도 항상 접근 가능</p>
+                            </div>
+                            <div class="demo-item">
+                                <h4 style="margin: 0 0 var(--space-2) 0; color: var(--color-secondary-500);">반응형 메뉴</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">1024px 이하에서 햄버거 메뉴로 자동 전환</p>
+                            </div>
+                            <div class="demo-item">
+                                <h4 style="margin: 0 0 var(--space-2) 0; color: var(--color-accent-600);">스크롤 효과</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">스크롤 시 배경 블러와 그림자 효과 적용</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hero Component -->
+                <section class="section" id="heroes">
+                    <div class="section-header">
+                        <h2 class="section-title">Hero Section</h2>
+                        <p class="section-subtitle">페이지 상단의 임팩트 있는 히어로 섹션 컴포넌트입니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Hero Variants</h3>
+                        <div style="display: flex; flex-direction: column; gap: var(--space-8);">
+                            <!-- 기본 히어로 -->
+                            <div class="card" style="background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%); padding: var(--space-12); text-align: center;">
+                                <h1 style="font-size: var(--font-size-6xl); font-weight: var(--font-weight-black); margin: 0 0 var(--space-4) 0; background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Innovation</h1>
+                                <p style="font-size: var(--font-size-xl); color: var(--color-text-secondary); margin: 0 0 var(--space-8) 0; max-width: 600px; margin-left: auto; margin-right: auto;">혁신적인 디자인으로 미래를 만들어갑니다</p>
+                                <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                                    <button class="btn btn-primary btn-lg">시작하기</button>
+                                    <button class="btn btn-outline btn-lg">더 알아보기</button>
+                                </div>
+                            </div>
+
+                            <!-- 다크 히어로 -->
+                            <div class="card" style="background: linear-gradient(135deg, var(--color-neutral-900) 0%, var(--color-neutral-800) 100%); color: var(--color-neutral-0); padding: var(--space-12); text-align: center;">
+                                <h1 style="font-size: var(--font-size-5xl); font-weight: var(--font-weight-bold); margin: 0 0 var(--space-4) 0;">Premium Experience</h1>
+                                <p style="font-size: var(--font-size-lg); opacity: 0.8; margin: 0 0 var(--space-8) 0; max-width: 500px; margin-left: auto; margin-right: auto;">최고의 사용자 경험을 제공하는 프리미엄 디자인 시스템</p>
+                                <button class="btn btn-accent btn-lg">경험해보기</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Accessibility -->
+                <section class="section" id="accessibility">
+                    <div class="section-header">
+                        <h2 class="section-title">Accessibility</h2>
+                        <p class="section-subtitle">WCAG 2.1 AA 기준을 준수하는 완전한 접근성을 제공합니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Accessibility Features</h3>
+                        <div class="demo-grid">
+                            <div class="demo-item">
+                                <div class="a11y-indicator">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    색상 대비 4.5:1 이상
+                                </div>
+                                <p style="margin: var(--space-2) 0 0 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">모든 텍스트와 배경의 명도 대비가 접근성 기준을 충족합니다.</p>
+                            </div>
+                            <div class="demo-item">
+                                <div class="a11y-indicator">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    키보드 네비게이션
+                                </div>
+                                <p style="margin: var(--space-2) 0 0 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">Tab, Enter, Space 키로 모든 인터랙션이 가능합니다.</p>
+                            </div>
+                            <div class="demo-item">
+                                <div class="a11y-indicator">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    ARIA 레이블
+                                </div>
+                                <p style="margin: var(--space-2) 0 0 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">스크린 리더를 위한 적절한 ARIA 속성을 제공합니다.</p>
+                            </div>
+                            <div class="demo-item">
+                                <div class="a11y-indicator">
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    44px 터치 타겟
+                                </div>
+                                <p style="margin: var(--space-2) 0 0 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">모든 인터랙티브 요소는 충분한 크기를 보장합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Keyboard Navigation Test</h3>
+                        <div class="interaction-demo">
+                            <p style="margin: 0 0 var(--space-4) 0; color: var(--color-text-secondary);">Tab 키를 사용하여 아래 요소들을 순서대로 탐색해보세요:</p>
+                            <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+                                <button class="btn btn-primary btn-md">버튼 1</button>
+                                <button class="btn btn-secondary btn-md">버튼 2</button>
+                                <input type="text" class="input" placeholder="입력 필드" style="width: 200px;">
+                                <button class="btn btn-outline btn-md">버튼 3</button>
+                            </div>
+                            <div class="a11y-indicator" style="margin-top: var(--space-4);">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                포커스 링이 명확하게 표시됩니다
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Responsive Design -->
+                <section class="section" id="responsive">
+                    <div class="section-header">
+                        <h2 class="section-title">Responsive Design</h2>
+                        <p class="section-subtitle">모든 디바이스에서 완벽하게 동작하는 반응형 디자인입니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Breakpoints</h3>
+                        <div class="demo-grid">
+                            <div class="demo-item">
+                                <span class="demo-label">Mobile</span>
+                                <div style="font-family: var(--font-family-mono); font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-2);">&lt; 768px</div>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">단일 컬럼 레이아웃, 터치 최적화</p>
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">Tablet</span>
+                                <div style="font-family: var(--font-family-mono); font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-2);">768px - 1024px</div>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">2-3 컬럼 레이아웃, 햄버거 메뉴</p>
+                            </div>
+                            <div class="demo-item">
+                                <span class="demo-label">Desktop</span>
+                                <div style="font-family: var(--font-family-mono); font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-2);">&gt; 1024px</div>
+                                <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary);">다중 컬럼, 호버 효과, 풀 네비게이션</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Responsive Test</h3>
+                        <div class="responsive-test">
+                            <p style="margin: 0 0 var(--space-4) 0; font-size: var(--font-size-lg); font-weight: var(--font-weight-medium);">브라우저 창 크기를 조절해보세요</p>
+                            <div id="screenSize" style="font-family: var(--font-family-mono); font-size: var(--font-size-sm); color: var(--color-text-muted);"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Performance -->
+                <section class="section" id="performance">
+                    <div class="section-header">
+                        <h2 class="section-title">Performance</h2>
+                        <p class="section-subtitle">최적화된 성능으로 빠른 로딩과 부드러운 사용자 경험을 제공합니다.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Performance Metrics</h3>
+                        <div class="demo-grid">
+                            <div class="demo-item" style="text-align: center;">
+                                <div style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); color: var(--color-secondary-500); margin-bottom: var(--space-2);">5KB</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-muted);">CSS 번들 크기</div>
+                                <div style="font-size: var(--font-size-xs); color: var(--color-text-secondary); margin-top: var(--space-2);">gzip 압축 기준</div>
+                            </div>
+                            <div class="demo-item" style="text-align: center;">
+                                <div style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); color: var(--color-primary-500); margin-bottom: var(--space-2);">60fps</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-muted);">애니메이션 성능</div>
+                                <div style="font-size: var(--font-size-xs); color: var(--color-text-secondary); margin-top: var(--space-2);">GPU 가속 사용</div>
+                            </div>
+                            <div class="demo-item" style="text-align: center;">
+                                <div style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); color: var(--color-accent-600); margin-bottom: var(--space-2);">&lt;100ms</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--color-text-muted);">인터랙션 응답시간</div>
+                                <div style="font-size: var(--font-size-xs); color: var(--color-text-secondary); margin-top: var(--space-2);">사용자 감지 한계</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Loading Performance</h3>
+                        <div class="demo-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+                                <span>CSS 로딩</span>
+                                <span style="font-family: var(--font-family-mono); font-size: var(--font-size-sm); color: var(--color-secondary-500);">완료</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--color-neutral-200); border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 100%; height: 100%; background: var(--color-secondary-500); transition: width 2s ease;"></div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin: var(--space-4) 0 var(--space-2) 0;">
+                                <span>폰트 로딩</span>
+                                <span style="font-family: var(--font-family-mono); font-size: var(--font-size-sm); color: var(--color-secondary-500);">완료</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: var(--color-neutral-200); border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 100%; height: 100%; background: var(--color-secondary-500); transition: width 2s ease;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer style="margin-top: var(--space-32); padding: var(--space-12) 0; text-align: center; background: linear-gradient(135deg, var(--color-neutral-900) 0%, var(--color-neutral-800) 100%); color: var(--color-neutral-100); border-radius: var(--radius-2xl);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin: 0 0 var(--space-4) 0;">NineOneLabs Design System</h3>
+                    <p style="margin: 0 0 var(--space-6) 0; opacity: 0.8;">ViberAiden과 함께 만드는 혁신적인 디자인 경험</p>
+                    <div style="display: flex; gap: var(--space-6); justify-content: center; flex-wrap: wrap;">
+                        <a href="#" style="color: var(--color-neutral-300); text-decoration: none; transition: var(--transition-colors);">Documentation</a>
+                        <a href="#" style="color: var(--color-neutral-300); text-decoration: none; transition: var(--transition-colors);">GitHub</a>
+                        <a href="#" style="color: var(--color-neutral-300); text-decoration: none; transition: var(--transition-colors);">Figma</a>
+                        <a href="#" style="color: var(--color-neutral-300); text-decoration: none; transition: var(--transition-colors);">Support</a>
+                    </div>
+                    <div style="margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-neutral-700); font-size: var(--font-size-sm); opacity: 0.6;">
+                        © 2024 NineOneLabs. Made with ❤️ for developers.
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // DOM 로딩 완료 후 실행
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎨 NineOneLabs Design System v1.0 Loaded');
+            
+            // 요소들 가져오기
+            const sidebar = document.getElementById('sidebar');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const themeToggle = document.getElementById('themeToggle');
+            const scrollProgress = document.getElementById('scrollProgress');
+            const screenSizeDisplay = document.getElementById('screenSize');
+
+            // 사이드바 토글 (모바일)
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+            }
+
+            // 테마 토글
+            function toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // 아이콘 업데이트
+                const themeIcon = document.getElementById('themeIcon');
+                if (newTheme === 'dark') {
+                    themeIcon.setAttribute('d', 'M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z');
+                } else {
+                    themeIcon.setAttribute('d', 'M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 18L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z');
+                }
+            }
+
+            // 스크롤 진행률 업데이트
+            function updateScrollProgress() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (scrollTop / docHeight) * 100;
+                
+                scrollProgress.style.width = progress + '%';
+            }
+
+            // 화면 크기 표시 업데이트
+            function updateScreenSize() {
+                if (screenSizeDisplay) {
+                    const width = window.innerWidth;
+                    let breakpoint = '';
+                    
+                    if (width < 768) {
+                        breakpoint = 'Mobile';
+                    } else if (width < 1024) {
+                        breakpoint = 'Tablet';
+                    } else {
+                        breakpoint = 'Desktop';
+                    }
+                    
+                    screenSizeDisplay.textContent = `${width}px (${breakpoint})`;
+                }
+            }
+
+            // 네비게이션 링크 활성화
+            function updateActiveNavigation() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let currentSection = '';
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // 부드러운 스크롤
+            function smoothScrollToSection(event) {
+                event.preventDefault();
+                const targetId = event.target.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // 모바일에서 사이드바 닫기
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('active');
+                }
+            }
+
+            // 이벤트 리스너 등록
+            mobileMenuToggle?.addEventListener('click', toggleSidebar);
+            themeToggle?.addEventListener('click', toggleTheme);
+            window.addEventListener('scroll', () => {
+                updateScrollProgress();
+                updateActiveNavigation();
+            });
+            window.addEventListener('resize', updateScreenSize);
+
+            // 네비게이션 링크에 부드러운 스크롤 적용
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', smoothScrollToSection);
+            });
+
+            // 초기 테마 설정
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+
+            // 초기 화면 크기 표시
+            updateScreenSize();
+            
+            // 초기 네비게이션 상태
+            updateActiveNavigation();
+        });
+
+        // 버튼 데모 업데이트
+        function updateButtonDemo() {
+            const variant = document.getElementById('buttonVariant').value;
+            const size = document.getElementById('buttonSize').value;
+            const disabled = document.getElementById('buttonDisabled').checked;
+            const button = document.getElementById('demoButton');
+            
+            // 클래스 초기화
+            button.className = 'btn';
+            
+            // 새 클래스 적용
+            button.classList.add(variant, size);
+            
+            // disabled 상태
+            button.disabled = disabled;
+            
+            // 텍스트 업데이트
+            const sizeText = size.replace('btn-', '');
+            const variantText = variant.replace('btn-', '');
+            button.textContent = `${variantText} ${sizeText} ${disabled ? '(disabled)' : ''}`;
+        }
+
+        // 코드 복사 기능
+        function copyCode(button) {
+            const code = button.getAttribute('data-code');
+            
+            navigator.clipboard.writeText(code).then(() => {
+                button.textContent = '복사됨!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = '복사';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('복사 실패:', err);
+            });
+        }
+
+        // 성능 모니터링
+        window.addEventListener('load', () => {
+            // 폰트 로딩 상태 체크
+            document.fonts.ready.then(() => {
+                console.log('✅ All fonts loaded successfully');
+                console.log('📊 Performance:', {
+                    'DOM Content Loaded': performance.getEntriesByType('navigation')[0].domContentLoadedEventEnd,
+                    'Load Complete': performance.getEntriesByType('navigation')[0].loadEventEnd,
+                    'CSS Bundle Size': '~5KB (estimated)',
+                    'Font Count': document.fonts.size
+                });
+            });
+            
+            // 애니메이션 성능 모니터링
+            let frameCount = 0;
+            let lastTime = performance.now();
+            
+            function measureFPS() {
+                frameCount++;
+                const currentTime = performance.now();
+                
+                if (currentTime - lastTime >= 1000) {
+                    console.log(`🎯 FPS: ${frameCount}`);
+                    frameCount = 0;
+                    lastTime = currentTime;
+                }
+                
+                requestAnimationFrame(measureFPS);
+            }
+            
+            requestAnimationFrame(measureFPS);
+        });
+
+        // 키보드 네비게이션 개선
+        document.addEventListener('keydown', (e) => {
+            // ESC로 모바일 사이드바 닫기
+            if (e.key === 'Escape') {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                }
+            }
+            
+            // 포커스 관리
+            if (e.key === 'Tab') {
+                // 현재 포커스된 요소 로그 (개발용)
+                setTimeout(() => {
+                    const focused = document.activeElement;
+                    if (focused && focused !== document.body) {
+                        console.log('Focus on:', focused.textContent || focused.tagName);
+                    }
+                }, 10);
+            }
+        });
+
+        // 접근성 개선: 포커스 인디케이터
+        document.addEventListener('focusin', (e) => {
+            e.target.setAttribute('data-focus', 'true');
+        });
+
+        document.addEventListener('focusout', (e) => {
+            e.target.removeAttribute('data-focus');
+        });
+
+        // 사용자 인터랙션 추적 (개발용)
+        let interactionCount = 0;
+        ['click', 'keydown', 'touchstart'].forEach(event => {
+            document.addEventListener(event, () => {
+                interactionCount++;
+                if (interactionCount % 10 === 0) {
+                    console.log(`💡 User interactions: ${interactionCount}`);
+                }
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>

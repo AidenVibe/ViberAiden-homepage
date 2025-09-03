@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViberAiden Hero - NineOneLabs Design System</title>
+    
+    <!-- Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css" rel="stylesheet">
+    
+    <style>
+        /* ============================================================================
+           DESIGN SYSTEM IMPORT - NineOneLabs Theme
+           ============================================================================ */
+        
+        :root {
+            /* Primary Purple - ViberAiden Main Brand */
+            --color-primary-50: hsl(266, 87%, 97%);
+            --color-primary-100: hsl(266, 87%, 93%);
+            --color-primary-300: hsl(266, 87%, 77%);
+            --color-primary-500: hsl(266, 87%, 57%); /* rgb(102, 53, 240) */
+            --color-primary-600: hsl(266, 87%, 47%);
+            --color-primary-700: hsl(266, 87%, 37%);
+
+            /* Secondary Green */
+            --color-secondary-500: hsl(158, 98%, 34%); /* rgb(2, 170, 108) */
+            --color-secondary-600: hsl(158, 98%, 30%);
+
+            /* Accent Yellow */
+            --color-accent-500: hsl(57, 97%, 53%); /* rgb(252, 240, 18) */
+
+            /* Neutral */
+            --color-neutral-0: hsl(0, 0%, 100%);
+            --color-neutral-50: hsl(0, 0%, 98%);
+            --color-neutral-100: hsl(0, 0%, 96%);
+            --color-neutral-200: hsl(0, 0%, 90%);
+            --color-neutral-400: hsl(0, 0%, 64%);
+            --color-neutral-600: hsl(0, 0%, 32%);
+            --color-neutral-700: hsl(0, 0%, 25%);
+            --color-neutral-900: hsl(0, 0%, 9%);
+
+            /* Typography - From Typography.html */
+            --font-family-primary: 'NanumSquare', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-secondary: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+
+            /* Font Sizes - Hero Scale */
+            --font-size-sm: 0.75rem;
+            --font-size-base: 0.875rem;
+            --font-size-md: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.75rem;
+            --font-size-4xl: 2rem;
+            --font-size-5xl: 2.25rem;
+            --font-size-6xl: 3rem;
+            --font-size-7xl: 4rem;
+            --font-size-8xl: 5rem;
+            --font-size-9xl: 6rem;
+            --font-size-10xl: 8rem;
+
+            /* Font Weights */
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-black: 900;
+
+            /* Line Heights */
+            --line-height-tight: 1.25;
+            --line-height-snug: 1.375;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+
+            /* Transitions */
+            --transition-all: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Shadows */
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+            /* Button Radius - NineOneLabs Signature */
+            --radius-button: 2.5rem; /* 40px */
+        }
+
+        /* ============================================================================
+           IMPORTED BUTTON SYSTEM - From ../atoms/Button/Button.html
+           ============================================================================ */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-family: var(--font-family-primary);
+            font-weight: var(--font-weight-semibold);
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--radius-button);
+            cursor: pointer;
+            transition: var(--transition-all);
+            user-select: none;
+            white-space: nowrap;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--color-primary-300);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            border-color: var(--color-primary-500);
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--color-primary-600);
+            border-color: var(--color-primary-600);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(-1px);
+            background-color: var(--color-primary-700);
+            border-color: var(--color-primary-700);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-neutral-0);
+            border-color: var(--color-neutral-0);
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background-color: var(--color-neutral-0);
+            color: var(--color-primary-500);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-xl {
+            padding: var(--space-5) var(--space-10);
+            font-size: var(--font-size-xl);
+            min-height: 60px;
+        }
+
+        /* ============================================================================
+           HERO COMPONENT SYSTEM
+           ============================================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family-primary);
+        }
+
+        /* Hero Container */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-secondary-500) 100%);
+            color: var(--color-neutral-0);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Animated Background Pattern */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 80%, hsla(266, 87%, 67%, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, hsla(158, 98%, 55%, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, hsla(57, 97%, 65%, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        /* Content Container */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            padding: 0 var(--space-6);
+            margin: 0 auto;
+        }
+
+        /* Hero Typography - Imported from Typography.html */
+        .hero-title {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-7xl);
+            font-weight: var(--font-weight-black);
+            line-height: var(--line-height-tight);
+            margin: 0 0 var(--space-6) 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+        }
+
+        .hero-title-highlight {
+            background: linear-gradient(135deg, var(--color-accent-500) 0%, var(--color-neutral-0) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-medium);
+            font-style: italic;
+            line-height: var(--line-height-relaxed);
+            margin: 0 0 var(--space-8) 0;
+            opacity: 0.9;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.4s forwards;
+        }
+
+        .hero-description {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-normal);
+            line-height: var(--line-height-relaxed);
+            margin: 0 0 var(--space-12) 0;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: var(--space-12);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+        }
+
+        /* CTA Buttons */
+        .hero-actions {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-8);
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            color: var(--color-neutral-0);
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: var(--transition-all);
+        }
+
+        .scroll-arrow:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .scroll-text {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            margin-top: var(--space-2);
+            opacity: 0.6;
+        }
+
+        /* Stats/Features Cards */
+        .hero-stats {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: hsla(0, 0%, 100%, 0.1);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid hsla(0, 0%, 100%, 0.2);
+            padding: var(--space-6) 0;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: slideUp 1s ease-out 1s forwards;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-8);
+            text-align: center;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 1.2s; }
+        .stat-item:nth-child(2) { animation-delay: 1.4s; }
+        .stat-item:nth-child(3) { animation-delay: 1.6s; }
+        .stat-item:nth-child(4) { animation-delay: 1.8s; }
+
+        .stat-number {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-black);
+            color: var(--color-accent-500);
+            margin-bottom: var(--space-2);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            opacity: 0.9;
+        }
+
+        /* Typing Effect */
+        .typing-text {
+            border-right: 2px solid var(--color-accent-500);
+            animation: blink 1s infinite;
+        }
+
+        /* ============================================================================
+           RESPONSIVE DESIGN
+           ============================================================================ */
+
+        /* Large Screens */
+        @media (min-width: 1280px) {
+            .hero-title {
+                font-size: var(--font-size-8xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .hero-description {
+                font-size: var(--font-size-2xl);
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .hero-content {
+                padding: 0 var(--space-8);
+            }
+            
+            .stats-container {
+                padding: 0 var(--space-8);
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1023px) {
+            .hero-title {
+                font-size: var(--font-size-6xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-xl);
+            }
+            
+            .hero-description {
+                font-size: var(--font-size-lg);
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                gap: var(--space-3);
+            }
+            
+            .btn-xl {
+                padding: var(--space-4) var(--space-8);
+                font-size: var(--font-size-lg);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 100svh; /* Safe area viewport height */
+                padding: var(--space-8) 0;
+            }
+            
+            .hero-content {
+                padding: 0 var(--space-4);
+            }
+            
+            .hero-title {
+                font-size: var(--font-size-5xl);
+                margin-bottom: var(--space-4);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-lg);
+                margin-bottom: var(--space-6);
+            }
+            
+            .hero-description {
+                font-size: var(--font-size-md);
+                margin-bottom: var(--space-8);
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-4);
+                padding: 0 var(--space-4);
+            }
+            
+            .stat-number {
+                font-size: var(--font-size-2xl);
+            }
+            
+            .stat-label {
+                font-size: var(--font-size-sm);
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: var(--font-size-4xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-md);
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-3);
+            }
+        }
+
+        /* ============================================================================
+           ANIMATIONS
+           ============================================================================ */
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-10px) rotate(-1deg);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
+        /* ============================================================================
+           DEMO STYLES
+           ============================================================================ */
+
+        .demo-content {
+            padding: var(--space-16);
+            background: var(--color-neutral-50);
+            min-height: 100vh;
+        }
+
+        .demo-section {
+            max-width: 1200px;
+            margin: 0 auto var(--space-16);
+            padding: var(--space-8);
+            background: var(--color-neutral-0);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .demo-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-neutral-900);
+            margin-bottom: var(--space-4);
+        }
+
+        .demo-description {
+            color: var(--color-neutral-600);
+            line-height: 1.6;
+            margin-bottom: var(--space-6);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--color-neutral-100);
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--color-secondary-500);
+            flex-shrink: 0;
+        }
+
+        .code-showcase {
+            background: var(--color-neutral-900);
+            color: var(--color-neutral-100);
+            padding: var(--space-6);
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+            overflow-x: auto;
+            margin-top: var(--space-4);
+        }
+
+        .keyword { color: #ff79c6; }
+        .string { color: #f1fa8c; }
+        .class { color: #50fa7b; }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.1s !important;
+                transition-duration: 0.1s !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================================
+         HERO COMPONENT - ViberAiden Brand
+         ============================================================================ -->
+    
+    <section class="hero" id="hero">
+        <!-- Background Pattern Animation -->
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1 class="hero-title">
+                사람들이 느끼지만<br>
+                <span class="hero-title-highlight typing-text" id="typingText">말하지 않는 불편함</span>을<br>
+                찾는 기획자
+            </h1>
+            
+            <p class="hero-subtitle">
+                Where Empathy Meets Strategy
+            </p>
+            
+            <p class="hero-description">
+                사용자들이 표현하지 못하는 진짜 문제를 발견하고, 
+                데이터와 직관을 결합하여 혁신적인 해결책을 만듭니다.
+            </p>
+            
+            <div class="hero-actions">
+                <a href="#solved-problems" class="btn btn-primary btn-xl" aria-label="해결한 문제들을 확인하세요">
+                    해결한 문제들 보기
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 8px;">
+                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                    </svg>
+                </a>
+                <a href="#about" class="btn btn-outline btn-xl" aria-label="ViberAiden에 대해 더 알아보세요">
+                    더 알아보기
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" id="scrollIndicator">
+            <svg class="scroll-arrow" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+            <div class="scroll-text">스크롤</div>
+        </div>
+
+        <!-- Hero Stats -->
+        <div class="hero-stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">해결한 문제</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="95">0</div>
+                    <div class="stat-label">사용자 만족도 (%)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="stat-label">년간 경험</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-label">프로젝트 완료</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================================
+         DEMO CONTENT
+         ============================================================================ -->
+    
+    <main class="demo-content">
+        <section class="demo-section">
+            <h1 class="demo-title">🚀 ViberAiden Hero Component</h1>
+            <p class="demo-description">
+                나인원랩스 디자인 시스템을 기반으로 ViberAiden 브랜딩에 최적화된 Hero 컴포넌트입니다. 
+                풀스크린 높이, 그라데이션 배경, 타이핑 애니메이션을 지원합니다.
+            </p>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>풀스크린 Hero 섹션 with 나인원랩스 그라데이션</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>ViberAiden 핵심 메시지: "사람들이 느끼지만 말하지 않는 불편함을 찾는 기획자"</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>타이핑 효과 애니메이션 ("말하지 않는 불편함")</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>순차적 페이드인 애니메이션 (제목 → 부제목 → 설명 → CTA)</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>통계 카드 with 카운트업 애니메이션</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>반응형 디자인 (Desktop → Tablet → Mobile → Small Mobile)</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>접근성: reduced-motion 지원, 적절한 ARIA 레이블</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="demo-section">
+            <h2 class="demo-title">🎨 Typography 시스템 활용</h2>
+            <p class="demo-description">
+                나인원랩스 Typography 컴포넌트의 hero 스타일을 ViberAiden에 맞게 커스터마이징했습니다.
+            </p>
+
+            <div class="code-showcase">
+<span class="keyword">&lt;h1</span> <span class="string">class="<span class="class">hero-title</span>"</span><span class="keyword">&gt;</span>
+  사람들이 느끼지만&lt;br&gt;
+  <span class="keyword">&lt;span</span> <span class="string">class="<span class="class">hero-title-highlight typing-text</span>"</span><span class="keyword">&gt;</span>말하지 않는 불편함<span class="keyword">&lt;/span&gt;</span>을&lt;br&gt;
+  찾는 기획자
+<span class="keyword">&lt;/h1&gt;</span>
+
+<span class="keyword">&lt;p</span> <span class="string">class="<span class="class">hero-subtitle</span>"</span><span class="keyword">&gt;</span>
+  Where Empathy Meets Strategy
+<span class="keyword">&lt;/p&gt;</span>
+
+<span class="keyword">&lt;div</span> <span class="string">class="<span class="class">hero-actions</span>"</span><span class="keyword">&gt;</span>
+  <span class="keyword">&lt;a</span> <span class="string">class="<span class="class">btn btn-primary btn-xl</span>"</span><span class="keyword">&gt;</span>해결한 문제들 보기<span class="keyword">&lt;/a&gt;</span>
+  <span class="keyword">&lt;a</span> <span class="string">class="<span class="class">btn btn-outline btn-xl</span>"</span><span class="keyword">&gt;</span>더 알아보기<span class="keyword">&lt;/a&gt;</span>
+<span class="keyword">&lt;/div&gt;</span>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2 class="demo-title">⚡ 애니메이션 효과</h2>
+            <p class="demo-description">
+                페이지 로드 시 다양한 애니메이션 효과가 순차적으로 실행됩니다.
+            </p>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>배경 패턴:</strong> 부드러운 플로팅 애니메이션 (20초 사이클)</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>타이핑 효과:</strong> "말하지 않는 불편함" 텍스트의 깜빡이는 커서</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>순차 페이드인:</strong> 0.2s → 0.4s → 0.6s → 0.8s 간격으로 요소 표시</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>카운트업:</strong> 통계 숫자가 0에서 목표값까지 애니메이션</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>스크롤 인디케이터:</strong> 바운스 애니메이션으로 스크롤 유도</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="demo-section">
+            <h2 class="demo-title">📱 반응형 브레이크포인트</h2>
+            <p class="demo-description">
+                다양한 디바이스에서 최적화된 경험을 제공합니다.
+            </p>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                    </svg>
+                    <span><strong>Large (1280px+):</strong> hero-title 8xl, hero-subtitle 3xl</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                    </svg>
+                    <span><strong>Desktop (1024px+):</strong> 기본 크기, 통계 4열 그리드</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z M4 5a2 2 0 012-2v0a2 2 0 012 2v6.5a.5.5 0 001 0V5a2 2 0 012-2v0a2 2 0 012 2v6.707l.146-.146a.5.5 0 01.708.708L12.5 15.5a.5.5 0 01-.708 0l-2.646-2.646a.5.5 0 01.708-.708L10 12.293V5a2 2 0 012-2v0a2 2 0 012 2v6.5a.5.5 0 001 0V5z" />
+                    </svg>
+                    <span><strong>Tablet (≤1023px):</strong> hero-title 6xl, 세로 CTA 배치</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                    </svg>
+                    <span><strong>Mobile (≤768px):</strong> hero-title 5xl, 통계 2열 그리드</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                    </svg>
+                    <span><strong>Small Mobile (≤480px):</strong> hero-title 4xl, 통계 1열 그리드</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- ============================================================================
+         JAVASCRIPT - Hero Functionality
+         ============================================================================ -->
+    
+    <script>
+        // Hero Component JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const typingText = document.getElementById('typingText');
+            const statNumbers = document.querySelectorAll('.stat-number');
+
+            // 스크롤 인디케이터 클릭 이벤트
+            scrollIndicator.addEventListener('click', function() {
+                const heroHeight = document.querySelector('.hero').offsetHeight;
+                window.scrollTo({
+                    top: heroHeight,
+                    behavior: 'smooth'
+                });
+            });
+
+            // 스크롤 시 스크롤 인디케이터 숨기기
+            function handleScroll() {
+                const scrollY = window.scrollY;
+                const heroHeight = document.querySelector('.hero').offsetHeight;
+                
+                if (scrollY > heroHeight * 0.3) {
+                    scrollIndicator.style.opacity = '0';
+                    scrollIndicator.style.transform = 'translateX(-50%) translateY(20px)';
+                } else {
+                    scrollIndicator.style.opacity = '1';
+                    scrollIndicator.style.transform = 'translateX(-50%) translateY(0)';
+                }
+            }
+
+            // 타이핑 효과 (간단한 깜빡임)
+            function startTypingEffect() {
+                // 타이핑 커서 깜빡임 효과는 CSS로 처리됨
+                console.log('🎯 Typing effect activated for:', typingText.textContent);
+            }
+
+            // 카운트업 애니메이션
+            function animateCounter(element, target, duration = 2000) {
+                const start = 0;
+                const range = target - start;
+                const startTime = performance.now();
+                
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Easing function (easeOutCubic)
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.round(start + (range * easeProgress));
+                    
+                    element.textContent = current;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                }
+                
+                requestAnimationFrame(updateCounter);
+            }
+
+            // Intersection Observer for stats animation
+            function initStatsAnimation() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const statNumber = entry.target;
+                            const targetValue = parseInt(statNumber.getAttribute('data-count'));
+                            
+                            // 각 통계에 대해 딜레이를 주어 순차 실행
+                            const index = Array.from(statNumbers).indexOf(statNumber);
+                            setTimeout(() => {
+                                animateCounter(statNumber, targetValue);
+                            }, index * 200);
+                            
+                            observer.unobserve(statNumber);
+                        }
+                    });
+                }, {
+                    threshold: 0.5,
+                    rootMargin: '0px 0px -100px 0px'
+                });
+
+                statNumbers.forEach(stat => {
+                    observer.observe(stat);
+                });
+            }
+
+            // 키보드 접근성 
+            function initKeyboardAccessibility() {
+                const ctaButtons = document.querySelectorAll('.hero-actions .btn');
+                
+                ctaButtons.forEach(button => {
+                    button.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.click();
+                        }
+                    });
+                });
+
+                // 스크롤 인디케이터 키보드 접근성
+                scrollIndicator.setAttribute('tabindex', '0');
+                scrollIndicator.setAttribute('role', 'button');
+                scrollIndicator.setAttribute('aria-label', '다음 섹션으로 스크롤');
+                
+                scrollIndicator.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            }
+
+            // Reduced Motion 지원
+            function checkReducedMotion() {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+                
+                if (prefersReducedMotion.matches) {
+                    console.log('🚫 Reduced motion detected, simplifying animations');
+                    document.body.classList.add('reduced-motion');
+                }
+                
+                prefersReducedMotion.addEventListener('change', function() {
+                    if (this.matches) {
+                        document.body.classList.add('reduced-motion');
+                    } else {
+                        document.body.classList.remove('reduced-motion');
+                    }
+                });
+            }
+
+            // 이벤트 리스너 등록
+            window.addEventListener('scroll', handleScroll);
+            
+            // 초기 실행
+            startTypingEffect();
+            initStatsAnimation();
+            initKeyboardAccessibility();
+            checkReducedMotion();
+            handleScroll();
+
+            // 성능 및 기능 로깅
+            console.log('🚀 ViberAiden Hero Component loaded successfully');
+            console.log('✨ Features: Full-screen hero, gradient background, typing effect, count-up stats');
+            console.log('📱 Responsive: Desktop → Tablet → Mobile → Small Mobile');
+            console.log('♿ Accessibility: Reduced motion, keyboard navigation, ARIA labels');
+            
+            // 애니메이션 타이밍 로깅
+            setTimeout(() => console.log('🎬 Title animation completed'), 1200);
+            setTimeout(() => console.log('🎬 All hero animations completed'), 2000);
+        });
+
+        // 페이지 가시성 API를 이용한 성능 최적화
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                // 페이지가 숨겨졌을 때 애니메이션 일시 정지
+                document.body.style.animationPlayState = 'paused';
+            } else {
+                // 페이지가 다시 보일 때 애니메이션 재개
+                document.body.style.animationPlayState = 'running';
+            }
+        });
+    </script>
+</body>
+</html>

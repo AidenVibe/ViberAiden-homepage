@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NineOneLabs Card Component - Molecules 시스템</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================================================
+           나인원랩스 디자인 시스템 - CSS Variables (theme.css 기반)
+           ============================================================================ */
+        :root {
+            /* Primary Colors - NineOneLabs 브랜드 */
+            --color-primary-500: hsl(266, 87%, 57%); /* rgb(102, 53, 240) */
+            --color-primary-600: hsl(266, 87%, 47%);
+            --color-primary-700: hsl(266, 87%, 37%);
+            --color-primary-400: hsl(266, 87%, 67%);
+            --color-primary-300: hsl(266, 87%, 77%);
+            --color-primary-100: hsl(266, 87%, 93%);
+            --color-primary-50: hsl(266, 87%, 97%);
+
+            /* Secondary Colors */
+            --color-secondary-500: hsl(158, 98%, 34%); /* rgb(2, 170, 108) */
+            --color-secondary-600: hsl(158, 98%, 30%);
+            --color-secondary-400: hsl(158, 98%, 55%);
+            --color-secondary-300: hsl(158, 98%, 75%);
+            --color-secondary-100: hsl(158, 98%, 93%);
+            --color-secondary-50: hsl(158, 98%, 97%);
+
+            /* Accent Colors */
+            --color-accent-500: hsl(57, 97%, 53%); /* rgb(252, 240, 18) */
+            --color-accent-600: hsl(57, 97%, 43%);
+            --color-accent-400: hsl(57, 97%, 65%);
+            --color-accent-300: hsl(57, 97%, 75%);
+            --color-accent-100: hsl(57, 97%, 93%);
+
+            /* Neutral Colors */
+            --color-neutral-0: hsl(0, 0%, 100%);
+            --color-neutral-50: hsl(0, 0%, 98%);
+            --color-neutral-100: hsl(0, 0%, 96%);
+            --color-neutral-200: hsl(0, 0%, 90%);
+            --color-neutral-300: hsl(0, 0%, 83%);
+            --color-neutral-400: hsl(0, 0%, 64%);
+            --color-neutral-500: hsl(0, 0%, 45%);
+            --color-neutral-600: hsl(0, 0%, 32%);
+            --color-neutral-700: hsl(0, 0%, 25%);
+            --color-neutral-800: hsl(0, 0%, 15%);
+            --color-neutral-900: hsl(0, 0%, 9%);
+
+            /* Typography */
+            --font-family-primary: 'NanumSquare', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-secondary: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+
+            /* Spacing */
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+
+            /* Border Radius */
+            --radius-button: 2.5rem; /* 나인원랩스 시그니처 40px */
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+            /* Transitions */
+            --transition-all: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================================================
+           Typography 컴포넌트 클래스들 (Typography.html 기반)
+           ============================================================================ */
+
+        .typo-primary { font-family: var(--font-family-primary); }
+        .typo-secondary { font-family: var(--font-family-secondary); }
+
+        .typo-xs { font-size: 0.75rem; }
+        .typo-sm { font-size: 0.875rem; }
+        .typo-base { font-size: 1rem; }
+        .typo-lg { font-size: 1.125rem; }
+        .typo-xl { font-size: 1.25rem; }
+        .typo-2xl { font-size: 1.5rem; }
+        .typo-3xl { font-size: 1.75rem; }
+        .typo-4xl { font-size: 2rem; }
+
+        .typo-normal { font-weight: var(--font-weight-normal); }
+        .typo-medium { font-weight: var(--font-weight-medium); }
+        .typo-semibold { font-weight: var(--font-weight-semibold); }
+        .typo-bold { font-weight: var(--font-weight-bold); }
+
+        .typo-primary-color { color: var(--color-primary-500); }
+        .typo-secondary-color { color: var(--color-secondary-500); }
+        .typo-accent-color { color: var(--color-accent-500); }
+        .typo-muted { color: var(--color-neutral-600); }
+        .typo-subtle { color: var(--color-neutral-400); }
+
+        .typo-center { text-align: center; }
+
+        /* ============================================================================
+           Button 컴포넌트 클래스들 (Button.html 기반)
+           ============================================================================ */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-family: var(--font-family-primary);
+            font-weight: var(--font-weight-semibold);
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--radius-button);
+            cursor: pointer;
+            transition: var(--transition-all);
+            user-select: none;
+            white-space: nowrap;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            min-height: 44px;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--color-primary-300);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            border-color: var(--color-primary-500);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--color-primary-600);
+            border-color: var(--color-primary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-secondary-500);
+            color: var(--color-neutral-0);
+            border-color: var(--color-secondary-500);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background-color: var(--color-secondary-600);
+            border-color: var(--color-secondary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary-500);
+            border-color: var(--color-primary-500);
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--color-neutral-600);
+            border-color: transparent;
+        }
+
+        .btn-ghost:hover:not(:disabled) {
+            background-color: var(--color-neutral-100);
+            color: var(--color-neutral-900);
+            transform: translateY(-1px);
+        }
+
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: 0.75rem;
+            min-height: 36px;
+        }
+
+        .btn-md {
+            padding: var(--space-3) var(--space-6);
+            font-size: 0.875rem;
+            min-height: 44px;
+        }
+
+        .btn-lg {
+            padding: var(--space-4) var(--space-8);
+            font-size: 1rem;
+            min-height: 52px;
+        }
+
+        /* ============================================================================
+           Card 컴포넌트 시스템 - Molecules 레벨
+           ============================================================================ */
+
+        /* Base Card Styles */
+        .card {
+            background-color: var(--color-neutral-0);
+            border: 1px solid var(--color-neutral-200);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-all);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-neutral-300);
+            transform: translateY(-2px);
+        }
+
+        .card:active {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Card Sizes */
+        .card-sm {
+            max-width: 320px;
+            min-height: 200px;
+        }
+
+        .card-md {
+            max-width: 400px;
+            min-height: 280px;
+        }
+
+        .card-lg {
+            max-width: 500px;
+            min-height: 360px;
+        }
+
+        .card-full {
+            width: 100%;
+        }
+
+        /* Card Variants */
+        .card-elevated {
+            box-shadow: var(--shadow-lg);
+            border: none;
+        }
+
+        .card-elevated:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+
+        .card-outlined {
+            border: 2px solid var(--color-primary-500);
+            box-shadow: none;
+        }
+
+        .card-outlined:hover {
+            border-color: var(--color-primary-600);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-gradient {
+            background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%);
+            border: none;
+        }
+
+        .card-dark {
+            background-color: var(--color-neutral-900);
+            color: var(--color-neutral-0);
+            border-color: var(--color-neutral-700);
+        }
+
+        .card-dark .typo-muted {
+            color: var(--color-neutral-400);
+        }
+
+        .card-dark .typo-subtle {
+            color: var(--color-neutral-500);
+        }
+
+        /* Card Layout Components */
+        .card-header {
+            padding: var(--space-6) var(--space-6) 0 var(--space-6);
+            position: relative;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .card-image-sm {
+            height: 140px;
+        }
+
+        .card-image-lg {
+            height: 260px;
+        }
+
+        .card-body {
+            padding: var(--space-6);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .card-body-sm {
+            padding: var(--space-4);
+        }
+
+        .card-body-lg {
+            padding: var(--space-8);
+        }
+
+        .card-footer {
+            padding: 0 var(--space-6) var(--space-6) var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-3);
+            margin-top: auto;
+        }
+
+        .card-title {
+            margin: 0 0 var(--space-2) 0;
+            line-height: 1.3;
+        }
+
+        .card-subtitle {
+            margin: 0 0 var(--space-3) 0;
+            line-height: 1.4;
+        }
+
+        .card-description {
+            margin: 0;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-top: var(--space-2);
+        }
+
+        /* Card Badge */
+        .card-badge {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            padding: var(--space-1) var(--space-3);
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            border-radius: var(--radius-button);
+            font-size: 0.75rem;
+            font-weight: var(--font-weight-semibold);
+            z-index: 10;
+        }
+
+        .card-badge-secondary {
+            background-color: var(--color-secondary-500);
+        }
+
+        .card-badge-accent {
+            background-color: var(--color-accent-500);
+            color: var(--color-neutral-900);
+        }
+
+        /* Card Actions */
+        .card-actions {
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+        }
+
+        /* Clickable Card */
+        .card-clickable {
+            cursor: pointer;
+            transition: var(--transition-all);
+        }
+
+        .card-clickable:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-clickable:active {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Special Card Types */
+        .card-project {
+            border-left: 4px solid var(--color-primary-500);
+        }
+
+        .card-feature {
+            text-align: center;
+            padding: var(--space-8) var(--space-6);
+        }
+
+        .card-testimonial {
+            position: relative;
+            padding: var(--space-8) var(--space-6);
+        }
+
+        .card-testimonial::before {
+            content: '"';
+            position: absolute;
+            top: var(--space-4);
+            left: var(--space-6);
+            font-size: 4rem;
+            color: var(--color-primary-300);
+            font-family: var(--font-family-secondary);
+            line-height: 1;
+        }
+
+        /* Avatar in Card */
+        .card-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-neutral-200);
+        }
+
+        .card-avatar-sm {
+            width: 32px;
+            height: 32px;
+        }
+
+        .card-avatar-lg {
+            width: 64px;
+            height: 64px;
+        }
+
+        /* Icon in Card */
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--space-4);
+            background: var(--color-primary-100);
+            border-radius: var(--radius-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary-500);
+        }
+
+        /* ============================================================================
+           Demo Page Styles
+           ============================================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: var(--space-4);
+            background: linear-gradient(135deg, var(--color-neutral-50) 0%, var(--color-neutral-100) 100%);
+            color: var(--color-neutral-900);
+            min-height: 100vh;
+        }
+
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--color-neutral-0);
+            border-radius: var(--radius-3xl);
+            box-shadow: var(--shadow-2xl);
+            overflow: hidden;
+        }
+
+        .demo-header {
+            background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-secondary-500) 100%);
+            color: var(--color-neutral-0);
+            padding: var(--space-16) var(--space-8);
+            text-align: center;
+        }
+
+        .demo-section {
+            padding: var(--space-12) var(--space-8);
+            border-bottom: 1px solid var(--color-neutral-200);
+        }
+
+        .demo-section:last-child {
+            border-bottom: none;
+        }
+
+        .demo-section-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-neutral-800);
+            margin: 0 0 var(--space-8) 0;
+            text-align: center;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+            margin-bottom: var(--space-8);
+        }
+
+        .demo-grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .demo-grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+
+        .demo-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-6);
+            justify-content: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .code-example {
+            background-color: var(--color-neutral-900);
+            color: var(--color-neutral-100);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin-top: var(--space-4);
+        }
+
+        .usage-note {
+            background-color: var(--color-primary-50);
+            border-left: 4px solid var(--color-primary-500);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            margin: var(--space-6) 0;
+        }
+
+        .usage-note-title {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-primary-700);
+            margin-bottom: var(--space-2);
+        }
+
+        /* 반응형 처리 */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--space-2);
+            }
+            
+            .demo-container {
+                border-radius: var(--radius-lg);
+            }
+            
+            .demo-header {
+                padding: var(--space-8) var(--space-4);
+            }
+            
+            .demo-section {
+                padding: var(--space-8) var(--space-4);
+            }
+            
+            .demo-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            
+            .demo-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-container">
+        <!-- Header -->
+        <header class="demo-header">
+            <h1 class="typo-3xl typo-bold" style="margin: 0;">NineOneLabs Card System</h1>
+            <p class="typo-xl typo-medium" style="margin: var(--space-4) 0 0 0; opacity: 0.9;">
+                나인원랩스 브랜드 기반 Molecules 레벨 카드 컴포넌트 시스템
+            </p>
+        </header>
+
+        <!-- Card Sizes -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">1. Card 크기 (Sizes)</h2>
+            
+            <div class="demo-row">
+                <div class="card card-sm">
+                    <div class="card-header">
+                        <span class="card-badge">Small</span>
+                    </div>
+                    <div class="card-body card-body-sm">
+                        <h3 class="card-title typo-lg typo-semibold">Small Card</h3>
+                        <p class="card-description typo-sm typo-muted">
+                            320px 최대 너비의 작은 카드입니다. 간단한 정보나 CTA에 적합합니다.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline btn-sm">자세히</button>
+                    </div>
+                </div>
+
+                <div class="card card-md">
+                    <div class="card-header">
+                        <span class="card-badge card-badge-secondary">Medium</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title typo-xl typo-semibold">Medium Card (기본)</h3>
+                        <p class="card-description typo-base typo-muted">
+                            400px 최대 너비의 기본 카드 크기입니다. 가장 일반적으로 사용되는 크기로, 균형잡힌 정보 표시에 적합합니다.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-md">액션 버튼</button>
+                        <button class="btn btn-ghost btn-md">취소</button>
+                    </div>
+                </div>
+
+                <div class="card card-lg">
+                    <div class="card-header">
+                        <span class="card-badge card-badge-accent">Large</span>
+                    </div>
+                    <div class="card-body card-body-lg">
+                        <h3 class="card-title typo-2xl typo-semibold">Large Card</h3>
+                        <p class="card-description typo-lg typo-muted">
+                            500px 최대 너비의 큰 카드입니다. 상세한 내용이나 복잡한 인터페이스에 사용됩니다. 더 많은 정보를 담을 수 있어 feature card로 활용하기 좋습니다.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-actions">
+                            <button class="btn btn-primary btn-lg">주요 액션</button>
+                            <button class="btn btn-secondary btn-md">보조 액션</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+&lt;!-- Card Sizes --&gt;
+&lt;div class="card card-sm"&gt;...&lt;/div&gt;      &lt;!-- Small: 320px max-width --&gt;
+&lt;div class="card card-md"&gt;...&lt;/div&gt;      &lt;!-- Medium: 400px max-width (기본) --&gt;
+&lt;div class="card card-lg"&gt;...&lt;/div&gt;      &lt;!-- Large: 500px max-width --&gt;
+&lt;div class="card card-full"&gt;...&lt;/div&gt;    &lt;!-- Full Width: 100% width --&gt;
+            </div>
+        </section>
+
+        <!-- Card Variants -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">2. Card 변형 (Variants)</h2>
+            
+            <div class="demo-grid demo-grid-2">
+                <!-- Basic Card -->
+                <div class="card card-md">
+                    <div class="card-body">
+                        <h3 class="card-title typo-xl typo-semibold">Basic Card</h3>
+                        <p class="card-description typo-base typo-muted">
+                            기본 카드 스타일입니다. 얇은 테두리와 부드러운 그림자가 특징입니다.
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-sm typo-subtle">기본 스타일</span>
+                            <span class="typo-sm typo-subtle">•</span>
+                            <span class="typo-sm typo-subtle">표준 elevation</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline btn-md">더 보기</button>
+                    </div>
+                </div>
+
+                <!-- Elevated Card -->
+                <div class="card card-elevated card-md">
+                    <div class="card-body">
+                        <h3 class="card-title typo-xl typo-semibold">Elevated Card</h3>
+                        <p class="card-description typo-base typo-muted">
+                            더 강한 그림자로 높은 elevation을 표현합니다. 중요한 콘텐츠에 사용됩니다.
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-sm typo-subtle">Elevated</span>
+                            <span class="typo-sm typo-subtle">•</span>
+                            <span class="typo-sm typo-subtle">강한 그림자</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-md">주요 액션</button>
+                    </div>
+                </div>
+
+                <!-- Outlined Card -->
+                <div class="card card-outlined card-md">
+                    <div class="card-body">
+                        <h3 class="card-title typo-xl typo-semibold typo-primary-color">Outlined Card</h3>
+                        <p class="card-description typo-base typo-muted">
+                            나인원랩스 Primary 색상의 굵은 테두리로 강조된 카드입니다.
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-sm typo-primary-color">Primary Outlined</span>
+                            <span class="typo-sm typo-subtle">•</span>
+                            <span class="typo-sm typo-subtle">브랜드 강조</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-md">확인</button>
+                    </div>
+                </div>
+
+                <!-- Gradient Card -->
+                <div class="card card-gradient card-md">
+                    <div class="card-body">
+                        <h3 class="card-title typo-xl typo-semibold">Gradient Card</h3>
+                        <p class="card-description typo-base typo-muted">
+                            나인원랩스 브랜드 색상의 그라디언트 배경을 가진 카드입니다.
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-sm typo-subtle">Gradient Background</span>
+                            <span class="typo-sm typo-subtle">•</span>
+                            <span class="typo-sm typo-subtle">특별한 강조</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-md">특별 액션</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+&lt;!-- Card Variants --&gt;
+&lt;div class="card"&gt;...&lt;/div&gt;                    &lt;!-- Basic Card --&gt;
+&lt;div class="card card-elevated"&gt;...&lt;/div&gt;     &lt;!-- Elevated Card --&gt;
+&lt;div class="card card-outlined"&gt;...&lt;/div&gt;     &lt;!-- Outlined Card --&gt;
+&lt;div class="card card-gradient"&gt;...&lt;/div&gt;     &lt;!-- Gradient Card --&gt;
+&lt;div class="card card-dark"&gt;...&lt;/div&gt;         &lt;!-- Dark Theme Card --&gt;
+            </div>
+        </section>
+
+        <!-- Image Cards -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">3. Image Card (이미지 카드)</h2>
+            
+            <div class="demo-grid demo-grid-3">
+                <div class="card card-md">
+                    <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=400&h=200&fit=crop&auto=format" alt="프로젝트 이미지" class="card-image">
+                    <div class="card-body">
+                        <h3 class="card-title typo-lg typo-semibold">UI/UX 디자인 프로젝트</h3>
+                        <p class="card-description typo-sm typo-muted">
+                            현대적이고 직관적인 사용자 인터페이스 디자인
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-xs typo-subtle">2024년 3월</span>
+                            <span class="typo-xs typo-subtle">•</span>
+                            <span class="typo-xs typo-subtle">디자인</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">프로젝트 보기</button>
+                        <button class="btn btn-ghost btn-sm">❤️</button>
+                    </div>
+                </div>
+
+                <div class="card card-md">
+                    <div style="position: relative;">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop&auto=format" alt="개발 프로젝트" class="card-image">
+                        <span class="card-badge card-badge-secondary">신규</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title typo-lg typo-semibold">웹 개발 솔루션</h3>
+                        <p class="card-description typo-sm typo-muted">
+                            최신 기술 스택을 활용한 웹 애플리케이션 개발
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-xs typo-subtle">진행 중</span>
+                            <span class="typo-xs typo-subtle">•</span>
+                            <span class="typo-xs typo-subtle">개발</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary btn-sm">상세 정보</button>
+                        <button class="btn btn-outline btn-sm">공유</button>
+                    </div>
+                </div>
+
+                <div class="card card-md">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&auto=format" alt="데이터 분석" class="card-image">
+                    <div class="card-body">
+                        <h3 class="card-title typo-lg typo-semibold">데이터 분석 도구</h3>
+                        <p class="card-description typo-sm typo-muted">
+                            비즈니스 인텔리전스를 위한 고급 분석 솔루션
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-xs typo-subtle">완료</span>
+                            <span class="typo-xs typo-subtle">•</span>
+                            <span class="typo-xs typo-subtle">분석</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-actions">
+                            <button class="btn btn-primary btn-sm">시작하기</button>
+                            <button class="btn btn-ghost btn-sm">📊</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+&lt;!-- Image Card --&gt;
+&lt;div class="card"&gt;
+    &lt;img src="image.jpg" alt="설명" class="card-image"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h3 class="card-title"&gt;카드 제목&lt;/h3&gt;
+        &lt;p class="card-description"&gt;카드 설명&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        &lt;button class="btn btn-primary"&gt;액션&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </section>
+
+        <!-- Project Cards -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">4. Project Card (프로젝트 카드)</h2>
+            
+            <div class="demo-grid demo-grid-2">
+                <div class="card card-project card-lg">
+                    <div class="card-body card-body-lg">
+                        <div style="display: flex; align-items: flex-start; gap: var(--space-4);">
+                            <div class="card-icon">
+                                <svg width="32" height="32" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                </svg>
+                            </div>
+                            <div style="flex: 1;">
+                                <h3 class="card-title typo-2xl typo-bold typo-primary-color">나인원랩스 웹사이트</h3>
+                                <p class="card-subtitle typo-lg typo-medium typo-secondary-color">브랜드 정체성을 반영한 현대적 웹 플랫폼</p>
+                                <p class="card-description typo-base typo-muted">
+                                    React와 Next.js를 활용한 고성능 웹 애플리케이션으로, 나인원랩스의 혁신적인 비전을 담아낸 사용자 중심의 디지털 경험을 제공합니다. 
+                                    반응형 디자인과 최적화된 성능으로 모든 디바이스에서 완벽한 사용자 경험을 보장합니다.
+                                </p>
+                                <div class="card-meta">
+                                    <span style="background: var(--color-primary-100); color: var(--color-primary-700); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">React</span>
+                                    <span style="background: var(--color-secondary-100); color: var(--color-secondary-700); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">Next.js</span>
+                                    <span style="background: var(--color-accent-100); color: var(--color-accent-700); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">TypeScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-lg">프로젝트 보기</button>
+                        <button class="btn btn-outline btn-md">GitHub</button>
+                        <button class="btn btn-ghost btn-md">공유</button>
+                    </div>
+                </div>
+
+                <div class="card card-project card-lg">
+                    <div class="card-body card-body-lg">
+                        <div style="display: flex; align-items: flex-start; gap: var(--space-4);">
+                            <div class="card-icon" style="background: var(--color-secondary-100); color: var(--color-secondary-500);">
+                                <svg width="32" height="32" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 01-1 1H7a1 1 0 110-2h3a1 1 0 011 1zm-4-3a1 1 0 100 2 1 1 0 000-2z"/>
+                                </svg>
+                            </div>
+                            <div style="flex: 1;">
+                                <h3 class="card-title typo-2xl typo-bold typo-secondary-color">모바일 앱 디자인</h3>
+                                <p class="card-subtitle typo-lg typo-medium typo-muted">직관적인 사용자 경험의 모바일 솔루션</p>
+                                <p class="card-description typo-base typo-muted">
+                                    사용자 중심의 인터페이스 디자인으로 일상을 더욱 편리하게 만드는 모바일 애플리케이션입니다. 
+                                    Material Design과 Human Interface Guidelines를 기반으로 한 일관된 디자인 시스템을 적용했습니다.
+                                </p>
+                                <div class="card-meta">
+                                    <span style="background: var(--color-secondary-100); color: var(--color-secondary-700); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">Figma</span>
+                                    <span style="background: var(--color-primary-100); color: var(--color-primary-700); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">UI/UX</span>
+                                    <span style="background: var(--color-accent-100); color: var(--color-accent-700); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">프로토타입</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary btn-lg">디자인 보기</button>
+                        <button class="btn btn-outline btn-md">프로토타입</button>
+                        <button class="btn btn-ghost btn-md">❤️ 32</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+&lt;!-- Project Card --&gt;
+&lt;div class="card card-project card-lg"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;div style="display: flex; gap: var(--space-4);"&gt;
+            &lt;div class="card-icon"&gt;
+                &lt;!-- 프로젝트 아이콘 --&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;h3 class="card-title"&gt;프로젝트 제목&lt;/h3&gt;
+                &lt;p class="card-subtitle"&gt;부제목&lt;/p&gt;
+                &lt;p class="card-description"&gt;프로젝트 설명&lt;/p&gt;
+                &lt;div class="card-meta"&gt;
+                    &lt;!-- 기술 스택 태그들 --&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        &lt;button class="btn btn-primary"&gt;보기&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </section>
+
+        <!-- Feature Cards -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">5. Feature Card (특징 카드)</h2>
+            
+            <div class="demo-grid demo-grid-3">
+                <div class="card card-feature card-elevated card-md">
+                    <div class="card-icon">
+                        <svg width="32" height="32" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title typo-xl typo-bold typo-primary-color">혁신적인 디자인</h3>
+                    <p class="card-description typo-base typo-muted">
+                        사용자 중심의 혁신적인 디자인으로 새로운 경험을 제공합니다. 직관적이고 아름다운 인터페이스를 만듭니다.
+                    </p>
+                    <button class="btn btn-primary btn-md" style="margin-top: var(--space-4);">더 알아보기</button>
+                </div>
+
+                <div class="card card-feature card-elevated card-md">
+                    <div class="card-icon" style="background: var(--color-secondary-100); color: var(--color-secondary-500);">
+                        <svg width="32" height="32" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title typo-xl typo-bold typo-secondary-color">최적화된 성능</h3>
+                    <p class="card-description typo-base typo-muted">
+                        최신 기술과 최적화된 알고리즘으로 빠르고 안정적인 성능을 보장합니다. 사용자 만족도를 높입니다.
+                    </p>
+                    <button class="btn btn-secondary btn-md" style="margin-top: var(--space-4);">성능 확인</button>
+                </div>
+
+                <div class="card card-feature card-elevated card-md">
+                    <div class="card-icon" style="background: var(--color-accent-100); color: var(--color-accent-600);">
+                        <svg width="32" height="32" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title typo-xl typo-bold" style="color: var(--color-accent-700);">사용자 만족</h3>
+                    <p class="card-description typo-base typo-muted">
+                        사용자의 니즈를 깊이 이해하고 반영하여 높은 만족도를 달성합니다. 지속적인 개선과 피드백 반영.
+                    </p>
+                    <button class="btn btn-outline btn-md" style="margin-top: var(--space-4); border-color: var(--color-accent-600); color: var(--color-accent-700);">고객 후기</button>
+                </div>
+            </div>
+
+            <div class="code-example">
+&lt;!-- Feature Card --&gt;
+&lt;div class="card card-feature card-elevated"&gt;
+    &lt;div class="card-icon"&gt;
+        &lt;!-- 특징 아이콘 --&gt;
+    &lt;/div&gt;
+    &lt;h3 class="card-title"&gt;특징 제목&lt;/h3&gt;
+    &lt;p class="card-description"&gt;특징 설명&lt;/p&gt;
+    &lt;button class="btn btn-primary"&gt;액션&lt;/button&gt;
+&lt;/div&gt;
+            </div>
+        </section>
+
+        <!-- Testimonial Cards -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">6. Testimonial Card (후기 카드)</h2>
+            
+            <div class="demo-grid demo-grid-2">
+                <div class="card card-testimonial card-gradient card-lg">
+                    <div class="card-body" style="padding-top: var(--space-12);">
+                        <p class="typo-lg typo-medium typo-neutral-800" style="font-style: italic; margin-bottom: var(--space-6);">
+                            나인원랩스의 디자인 시스템은 정말 혁신적입니다. 우리 팀의 생산성이 2배 이상 증가했고, 
+                            일관된 브랜드 경험을 제공할 수 있게 되었습니다. 특히 컴포넌트의 완성도가 뛰어납니다.
+                        </p>
+                        <div style="display: flex; align-items: center; gap: var(--space-4);">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&auto=format&q=80" alt="김철수" class="card-avatar">
+                            <div>
+                                <p class="typo-base typo-semibold typo-primary-color" style="margin: 0;">김철수</p>
+                                <p class="typo-sm typo-muted" style="margin: 0;">프론트엔드 개발자, 테크스타트업</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-testimonial card-elevated card-lg">
+                    <div class="card-body" style="padding-top: var(--space-12);">
+                        <p class="typo-lg typo-medium typo-neutral-800" style="font-style: italic; margin-bottom: var(--space-6);">
+                            접근성과 사용성을 모두 고려한 완벽한 디자인 시스템입니다. 
+                            클라이언트들의 반응이 매우 긍정적이고, 프로젝트 완성도가 크게 향상되었습니다.
+                        </p>
+                        <div style="display: flex; align-items: center; gap: var(--space-4);">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b589?w=64&h=64&fit=crop&auto=format&q=80" alt="박영희" class="card-avatar">
+                            <div>
+                                <p class="typo-base typo-semibold typo-secondary-color" style="margin: 0;">박영희</p>
+                                <p class="typo-sm typo-muted" style="margin: 0;">UX 디자이너, 디자인 에이전시</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-testimonial card-outlined card-lg">
+                    <div class="card-body" style="padding-top: var(--space-12);">
+                        <p class="typo-lg typo-medium typo-neutral-800" style="font-style: italic; margin-bottom: var(--space-6);">
+                            기술적 완성도와 디자인 품질이 모두 뛰어난 시스템입니다. 
+                            개발 시간은 단축되고 결과물의 품질은 향상되는 놀라운 경험을 했습니다.
+                        </p>
+                        <div style="display: flex; align-items: center; gap: var(--space-4);">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&auto=format&q=80" alt="이민수" class="card-avatar">
+                            <div>
+                                <p class="typo-base typo-semibold" style="margin: 0; color: var(--color-accent-700);">이민수</p>
+                                <p class="typo-sm typo-muted" style="margin: 0;">풀스택 개발자, IT 컨설팅</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-testimonial card-dark card-lg">
+                    <div class="card-body" style="padding-top: var(--space-12);">
+                        <p class="typo-lg typo-medium" style="font-style: italic; margin-bottom: var(--space-6); color: var(--color-neutral-100);">
+                            나인원랩스와 함께한 프로젝트는 항상 성공적입니다. 
+                            전문성과 창의성을 겸비한 최고의 파트너라고 생각합니다.
+                        </p>
+                        <div style="display: flex; align-items: center; gap: var(--space-4);">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop&auto=format&q=80" alt="최지연" class="card-avatar">
+                            <div>
+                                <p class="typo-base typo-semibold" style="margin: 0; color: var(--color-neutral-0);">최지연</p>
+                                <p class="typo-sm" style="margin: 0; color: var(--color-neutral-400);">프로덕트 매니저, 글로벌 기업</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-example">
+&lt;!-- Testimonial Card --&gt;
+&lt;div class="card card-testimonial card-gradient"&gt;
+    &lt;div class="card-body" style="padding-top: var(--space-12);"&gt;
+        &lt;p class="testimonial-quote"&gt;후기 내용...&lt;/p&gt;
+        &lt;div style="display: flex; align-items: center; gap: var(--space-4);"&gt;
+            &lt;img src="avatar.jpg" alt="이름" class="card-avatar"&gt;
+            &lt;div&gt;
+                &lt;p class="author-name"&gt;작성자 이름&lt;/p&gt;
+                &lt;p class="author-title"&gt;직책, 회사&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </section>
+
+        <!-- Interactive Cards -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">7. 인터랙티브 카드 (Clickable & Hover)</h2>
+            
+            <div class="demo-grid demo-grid-3">
+                <div class="card card-clickable card-md" onclick="handleCardClick('card1')">
+                    <div class="card-body">
+                        <h3 class="card-title typo-lg typo-semibold">클릭 가능한 카드</h3>
+                        <p class="card-description typo-sm typo-muted">
+                            전체 카드가 클릭 가능합니다. 호버 시 elevation이 증가합니다.
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-xs typo-primary-color">← 클릭해보세요</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-elevated card-md">
+                    <div class="card-body">
+                        <h3 class="card-title typo-lg typo-semibold">호버 효과 카드</h3>
+                        <p class="card-description typo-sm typo-muted">
+                            마우스를 올리면 부드러운 애니메이션과 함께 그림자가 변화합니다.
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-xs typo-secondary-color">← 호버해보세요</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-secondary btn-sm">액션</button>
+                    </div>
+                </div>
+
+                <div class="card card-outlined card-md">
+                    <div class="card-body">
+                        <h3 class="card-title typo-lg typo-semibold typo-primary-color">포커스 가능 카드</h3>
+                        <p class="card-description typo-sm typo-muted">
+                            키보드 네비게이션 지원으로 접근성을 보장합니다.
+                        </p>
+                        <div class="card-meta">
+                            <span class="typo-xs typo-accent-color">← Tab으로 포커스</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">확인</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usage-note">
+                <div class="usage-note-title">💡 인터랙션 가이드</div>
+                <ul style="margin: 0; padding-left: 1.5rem;">
+                    <li><strong>card-clickable</strong>: 전체 카드를 클릭 가능하게 만듭니다</li>
+                    <li><strong>호버 효과</strong>: 모든 카드에 기본 적용되는 elevation 변화</li>
+                    <li><strong>포커스 인디케이터</strong>: 키보드 네비게이션 지원</li>
+                    <li><strong>애니메이션</strong>: 부드러운 전환 효과로 사용자 경험 향상</li>
+                </ul>
+            </div>
+
+            <div class="code-example">
+&lt;!-- Clickable Card --&gt;
+&lt;div class="card card-clickable" onclick="handleClick()"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h3 class="card-title"&gt;클릭 가능한 카드&lt;/h3&gt;
+        &lt;p class="card-description"&gt;카드 설명&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function handleClick() {
+    // 클릭 이벤트 처리
+    console.log('Card clicked!');
+}
+&lt;/script&gt;
+            </div>
+        </section>
+
+        <!-- 사용법 가이드 -->
+        <section class="demo-section">
+            <h2 class="demo-section-title">8. 사용법 가이드</h2>
+            
+            <div class="usage-note">
+                <div class="usage-note-title">🎯 Card 컴포넌트 사용 가이드</div>
+                <p><strong>기본 구조:</strong> Card는 Header, Body, Footer의 3단계 구조를 가집니다.</p>
+                <p><strong>크기 선택:</strong> 콘텐츠 양에 따라 sm, md(기본), lg, full 중 선택</p>
+                <p><strong>변형 적용:</strong> 목적에 따라 elevated, outlined, gradient, dark 중 선택</p>
+                <p><strong>브랜드 일관성:</strong> 나인원랩스 색상 팔레트와 Typography 시스템 활용</p>
+            </div>
+
+            <div class="demo-grid demo-grid-2">
+                <div>
+                    <h3 class="typo-xl typo-semibold typo-neutral-800">권장 사용 사례</h3>
+                    <ul class="typo-base typo-muted">
+                        <li><strong>Basic Card:</strong> 일반적인 콘텐츠, 정보 표시</li>
+                        <li><strong>Elevated Card:</strong> 중요한 정보, 강조가 필요한 콘텐츠</li>
+                        <li><strong>Image Card:</strong> 프로젝트 포트폴리오, 제품 소개</li>
+                        <li><strong>Project Card:</strong> 상세한 프로젝트 정보, 기술 스택 표시</li>
+                        <li><strong>Feature Card:</strong> 서비스 특징, 장점 소개</li>
+                        <li><strong>Testimonial Card:</strong> 고객 후기, 추천사</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="typo-xl typo-semibold typo-neutral-800">접근성 고려사항</h3>
+                    <ul class="typo-base typo-muted">
+                        <li><strong>최소 터치 타겟:</strong> 버튼은 44×44px 이상</li>
+                        <li><strong>키보드 네비게이션:</strong> Tab 순서와 포커스 표시</li>
+                        <li><strong>색상 대비:</strong> 4.5:1 이상의 대비율 보장</li>
+                        <li><strong>의미있는 HTML:</strong> semantic markup 사용</li>
+                        <li><strong>ARIA 레이블:</strong> 스크린 리더 지원</li>
+                        <li><strong>애니메이션:</strong> prefers-reduced-motion 고려</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="code-example">
+&lt;!-- 완전한 Card 구조 예시 --&gt;
+&lt;div class="card card-md"&gt;
+    &lt;!-- Header (선택사항) --&gt;
+    &lt;div class="card-header"&gt;
+        &lt;span class="card-badge"&gt;배지&lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Image (선택사항) --&gt;
+    &lt;img src="image.jpg" alt="설명" class="card-image"&gt;
+    
+    &lt;!-- Body (필수) --&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h3 class="card-title typo-lg typo-semibold"&gt;카드 제목&lt;/h3&gt;
+        &lt;p class="card-subtitle typo-base typo-muted"&gt;부제목&lt;/p&gt;
+        &lt;p class="card-description typo-sm typo-muted"&gt;설명 텍스트&lt;/p&gt;
+        &lt;div class="card-meta"&gt;
+            &lt;!-- 메타 정보 --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Footer (선택사항) --&gt;
+    &lt;div class="card-footer"&gt;
+        &lt;div class="card-actions"&gt;
+            &lt;button class="btn btn-primary btn-md"&gt;주요 액션&lt;/button&gt;
+            &lt;button class="btn btn-ghost btn-md"&gt;보조 액션&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </section>
+
+        <!-- CSS Classes Reference -->
+        <section class="demo-section" style="border-bottom: none;">
+            <h2 class="demo-section-title">9. CSS 클래스 참조</h2>
+            
+            <div class="code-example">
+/* ============================================================================
+   CARD 컴포넌트 CSS 클래스 참조
+   ============================================================================ */
+
+/* 기본 카드 */
+.card                     // 기본 카드 스타일
+
+/* 크기 (Sizes) */
+.card-sm                  // 작은 카드 (320px max-width)
+.card-md                  // 중간 카드 (400px max-width) - 기본값
+.card-lg                  // 큰 카드 (500px max-width)
+.card-full                // 전체 너비 카드 (100% width)
+
+/* 변형 (Variants) */
+.card-elevated            // 높은 elevation 카드
+.card-outlined            // 테두리 강조 카드 (Primary 색상)
+.card-gradient            // 그라디언트 배경 카드
+.card-dark                // 다크 테마 카드
+.card-project             // 프로젝트 카드 (왼쪽 Primary 테두리)
+
+/* 특수 타입 */
+.card-feature             // 특징 카드 (중앙 정렬)
+.card-testimonial         // 후기 카드 (인용부호 포함)
+.card-clickable           // 클릭 가능한 카드
+
+/* 레이아웃 구성 요소 */
+.card-header              // 카드 헤더 영역
+.card-body                // 카드 본문 영역 (필수)
+.card-footer              // 카드 푸터 영역
+
+/* 컨텐츠 요소 */
+.card-image               // 카드 이미지
+.card-title               // 카드 제목
+.card-subtitle            // 카드 부제목
+.card-description         // 카드 설명
+.card-meta                // 메타 정보 컨테이너
+.card-badge               // 카드 배지
+.card-actions             // 액션 버튼 컨테이너
+.card-avatar              // 아바타 이미지
+.card-icon                // 아이콘 컨테이너
+
+/* 크기 수정자 */
+.card-body-sm             // 작은 패딩
+.card-body-lg             // 큰 패딩
+.card-image-sm            // 작은 이미지 높이
+.card-image-lg            // 큰 이미지 높이
+.card-avatar-sm           // 작은 아바타
+.card-avatar-lg           // 큰 아바타
+
+/* 배지 변형 */
+.card-badge-secondary     // Secondary 색상 배지
+.card-badge-accent        // Accent 색상 배지
+
+/* 조합 예시 */
+.card .card-md .card-elevated .card-clickable
+.card .card-lg .card-project
+.card .card-feature .card-gradient
+            </div>
+
+            <div style="text-align: center; padding: var(--space-8) 0;">
+                <p class="typo-base typo-muted">
+                    NineOneLabs Card Component System v1.0
+                    <br>
+                    © 2024 NineOneLabs. 나인원랩스 브랜드 가이드라인 기반 제작
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Card Component Interactive Features
+        console.log('NineOneLabs Card System Loaded');
+        
+        // Card click handler
+        function handleCardClick(cardId) {
+            console.log(`Card clicked: ${cardId}`);
+            alert(`${cardId} 카드가 클릭되었습니다!`);
+        }
+        
+        // Add keyboard navigation support
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickableCards = document.querySelectorAll('.card-clickable');
+            
+            clickableCards.forEach(card => {
+                // Make cards focusable
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                
+                // Add keyboard event listeners
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+                
+                // Add focus visual feedback
+                card.addEventListener('focus', function() {
+                    this.style.outline = '3px solid var(--color-primary-300)';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                card.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                    this.style.outlineOffset = '0';
+                });
+            });
+            
+            // Add animation preferences check
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            if (prefersReducedMotion) {
+                // Disable animations for users who prefer reduced motion
+                const style = document.createElement('style');
+                style.textContent = `
+                    .card {
+                        transition: none !important;
+                    }
+                    .card:hover {
+                        transform: none !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Card interaction analytics (example)
+            document.querySelectorAll('.card').forEach((card, index) => {
+                card.addEventListener('mouseenter', function() {
+                    console.log(`Card ${index + 1} hovered`);
+                });
+                
+                card.addEventListener('click', function() {
+                    console.log(`Card ${index + 1} clicked`);
+                });
+            });
+        });
+
+        // Touch device optimization
+        if ('ontouchstart' in window) {
+            document.documentElement.classList.add('touch-device');
+            
+            // Add touch-specific styles
+            const touchStyles = document.createElement('style');
+            touchStyles.textContent = `
+                .touch-device .card:hover {
+                    transform: none;
+                }
+                .touch-device .card:active {
+                    transform: scale(0.98);
+                }
+            `;
+            document.head.appendChild(touchStyles);
+        }
+    </script>
+</body>
+</html>

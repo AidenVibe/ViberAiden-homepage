@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViberAiden Header - NineOneLabs Design System</title>
+    
+    <!-- Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css" rel="stylesheet">
+    
+    <style>
+        /* ============================================================================
+           DESIGN SYSTEM IMPORT - NineOneLabs Theme
+           ============================================================================ */
+        
+        :root {
+            /* Primary Purple - ViberAiden Main Brand */
+            --color-primary-50: hsl(266, 87%, 97%);
+            --color-primary-100: hsl(266, 87%, 93%);
+            --color-primary-300: hsl(266, 87%, 77%);
+            --color-primary-500: hsl(266, 87%, 57%); /* rgb(102, 53, 240) */
+            --color-primary-600: hsl(266, 87%, 47%);
+            --color-primary-700: hsl(266, 87%, 37%);
+
+            /* Secondary Green */
+            --color-secondary-500: hsl(158, 98%, 34%); /* rgb(2, 170, 108) */
+            --color-secondary-600: hsl(158, 98%, 30%);
+
+            /* Accent Yellow */
+            --color-accent-500: hsl(57, 97%, 53%); /* rgb(252, 240, 18) */
+
+            /* Neutral */
+            --color-neutral-0: hsl(0, 0%, 100%);
+            --color-neutral-50: hsl(0, 0%, 98%);
+            --color-neutral-100: hsl(0, 0%, 96%);
+            --color-neutral-200: hsl(0, 0%, 90%);
+            --color-neutral-400: hsl(0, 0%, 64%);
+            --color-neutral-600: hsl(0, 0%, 32%);
+            --color-neutral-700: hsl(0, 0%, 25%);
+            --color-neutral-900: hsl(0, 0%, 9%);
+
+            /* Typography */
+            --font-family-primary: 'NanumSquare', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-secondary: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            /* Spacing */
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+
+            /* Font Sizes */
+            --font-size-sm: 0.75rem;
+            --font-size-base: 0.875rem;
+            --font-size-md: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+
+            /* Font Weights */
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-black: 900;
+
+            /* Transitions */
+            --transition-all: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Shadows */
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+            /* Button Radius - NineOneLabs Signature */
+            --radius-button: 2.5rem; /* 40px */
+        }
+
+        /* ============================================================================
+           IMPORTED BUTTON SYSTEM - From ../atoms/Button/Button.html
+           ============================================================================ */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-family: var(--font-family-primary);
+            font-weight: var(--font-weight-semibold);
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: var(--radius-button);
+            cursor: pointer;
+            transition: var(--transition-all);
+            user-select: none;
+            white-space: nowrap;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--color-primary-300);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            border-color: var(--color-primary-500);
+            padding: var(--space-3) var(--space-6);
+            font-size: var(--font-size-base);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: var(--color-primary-600);
+            border-color: var(--color-primary-600);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(-1px);
+            background-color: var(--color-primary-700);
+            border-color: var(--color-primary-700);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary-500);
+            border-color: var(--color-primary-500);
+            padding: var(--space-3) var(--space-6);
+            font-size: var(--font-size-base);
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background-color: var(--color-primary-500);
+            color: var(--color-neutral-0);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--color-neutral-600);
+            border-color: transparent;
+            padding: var(--space-3) var(--space-6);
+            font-size: var(--font-size-base);
+        }
+
+        .btn-ghost:hover:not(:disabled) {
+            background-color: var(--color-neutral-100);
+            color: var(--color-neutral-900);
+            transform: translateY(-1px);
+        }
+
+        /* ============================================================================
+           HEADER COMPONENT SYSTEM
+           ============================================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family-primary);
+            background-color: var(--color-neutral-50);
+            padding-top: 80px; /* Header height compensation */
+        }
+
+        /* Header Container */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background-color: var(--color-neutral-0);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-neutral-200);
+            transition: var(--transition-all);
+            z-index: 1000;
+        }
+
+        .header.scrolled {
+            background-color: hsla(0, 0%, 100%, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .header-container {
+            max-width: 1920px;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Logo */
+        .header-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-black);
+            color: var(--color-primary-500);
+            transition: var(--transition-all);
+        }
+
+        .header-logo:hover {
+            color: var(--color-primary-600);
+            transform: scale(1.05);
+        }
+
+        .header-logo:focus-visible {
+            outline: 3px solid var(--color-primary-300);
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+
+        /* Navigation */
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: var(--space-8);
+        }
+
+        .nav-link {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-neutral-600);
+            text-decoration: none;
+            padding: var(--space-2) var(--space-3);
+            border-radius: 12px;
+            transition: var(--transition-all);
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus-visible {
+            color: var(--color-primary-500);
+            background-color: var(--color-primary-50);
+        }
+
+        .nav-link:focus-visible {
+            outline: 2px solid var(--color-primary-500);
+            outline-offset: 2px;
+        }
+
+        .nav-link.active {
+            color: var(--color-primary-500);
+            background-color: var(--color-primary-100);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            background-color: var(--color-primary-500);
+            border-radius: 1px;
+        }
+
+        /* CTA Button */
+        .header-cta {
+            margin-left: var(--space-4);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: var(--font-size-xl);
+            color: var(--color-neutral-600);
+            cursor: pointer;
+            padding: var(--space-2);
+            border-radius: 8px;
+            transition: var(--transition-all);
+        }
+
+        .mobile-menu-toggle:hover,
+        .mobile-menu-toggle:focus-visible {
+            color: var(--color-primary-500);
+            background-color: var(--color-primary-50);
+        }
+
+        .mobile-menu-toggle:focus-visible {
+            outline: 2px solid var(--color-primary-500);
+            outline-offset: 2px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--color-neutral-0);
+            border-bottom: 1px solid var(--color-neutral-200);
+            box-shadow: var(--shadow-xl);
+            padding: var(--space-6);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .mobile-nav-link {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-neutral-700);
+            text-decoration: none;
+            padding: var(--space-4);
+            border-radius: 12px;
+            transition: var(--transition-all);
+            text-align: center;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link:focus-visible {
+            color: var(--color-primary-500);
+            background-color: var(--color-primary-50);
+        }
+
+        .mobile-nav-link:focus-visible {
+            outline: 2px solid var(--color-primary-500);
+            outline-offset: 2px;
+        }
+
+        .mobile-nav-link.active {
+            color: var(--color-primary-500);
+            background-color: var(--color-primary-100);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        /* Mobile CTA */
+        .mobile-cta {
+            text-align: center;
+        }
+
+        /* ============================================================================
+           RESPONSIVE DESIGN
+           ============================================================================ */
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .header-container {
+                padding: 0 var(--space-8);
+            }
+            
+            .nav-links {
+                gap: var(--space-10);
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1023px) {
+            .header-nav {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 var(--space-4);
+            }
+            
+            .header-logo {
+                font-size: var(--font-size-xl);
+            }
+        }
+
+        /* ============================================================================
+           DEMO PAGE STYLES
+           ============================================================================ */
+
+        .demo-content {
+            padding: var(--space-12);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: var(--space-16);
+            padding: var(--space-8);
+            background: var(--color-neutral-0);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .demo-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-neutral-900);
+            margin-bottom: var(--space-4);
+        }
+
+        .demo-description {
+            color: var(--color-neutral-600);
+            line-height: 1.6;
+            margin-bottom: var(--space-6);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--color-neutral-100);
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--color-secondary-500);
+            flex-shrink: 0;
+        }
+
+        .code-showcase {
+            background: var(--color-neutral-900);
+            color: var(--color-neutral-100);
+            padding: var(--space-6);
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+            overflow-x: auto;
+            margin-top: var(--space-4);
+        }
+
+        .keyword { color: #ff79c6; }
+        .string { color: #f1fa8c; }
+        .class { color: #50fa7b; }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================================
+         HEADER COMPONENT - ViberAiden Brand
+         ============================================================================ -->
+    
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="#" class="header-logo" aria-label="ViberAiden 홈페이지로 이동">
+                ViberAiden
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="header-nav" aria-label="주요 네비게이션">
+                <ul class="nav-links">
+                    <li><a href="#problems" class="nav-link active">문제들</a></li>
+                    <li><a href="#solutions" class="nav-link">해결책</a></li>
+                    <li><a href="#story" class="nav-link">기획자 이야기</a></li>
+                    <li><a href="#contact" class="nav-link">연락하기</a></li>
+                </ul>
+                
+                <!-- CTA Button -->
+                <div class="header-cta">
+                    <a href="#solved-problems" class="btn btn-primary">
+                        해결한 문제들 보기
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button 
+                class="mobile-menu-toggle" 
+                id="mobileMenuToggle"
+                aria-label="모바일 메뉴 열기"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="모바일 네비게이션">
+                <ul class="mobile-nav-links">
+                    <li><a href="#problems" class="mobile-nav-link active">문제들</a></li>
+                    <li><a href="#solutions" class="mobile-nav-link">해결책</a></li>
+                    <li><a href="#story" class="mobile-nav-link">기획자 이야기</a></li>
+                    <li><a href="#contact" class="mobile-nav-link">연락하기</a></li>
+                </ul>
+                
+                <div class="mobile-cta">
+                    <a href="#solved-problems" class="btn btn-primary">
+                        해결한 문제들 보기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================================
+         DEMO CONTENT
+         ============================================================================ -->
+    
+    <main class="demo-content">
+        <section class="demo-section">
+            <h1 class="demo-title">🎯 ViberAiden Header Component</h1>
+            <p class="demo-description">
+                나인원랩스 디자인 시스템을 기반으로 ViberAiden 브랜딩에 최적화된 Header 컴포넌트입니다. 
+                80px 고정 높이, 반응형 네비게이션, 접근성을 완벽 지원합니다.
+            </p>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>80px 고정 높이 헤더 with 스크롤 효과</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>ViberAiden 브랜딩 메뉴 (문제들, 해결책, 기획자 이야기, 연락하기)</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>반응형 햄버거 메뉴 (1024px 이하)</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>나인원랩스 Button 컴포넌트 통합</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>완전한 키보드 네비게이션 및 스크린 리더 지원</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>부드러운 애니메이션 및 호버 효과</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="demo-section">
+            <h2 class="demo-title">🔧 사용 방법</h2>
+            <p class="demo-description">
+                기존 Button 컴포넌트와 Typography 시스템을 활용하여 구성된 Header입니다.
+            </p>
+
+            <div class="code-showcase">
+<span class="keyword">&lt;header</span> <span class="string">class="<span class="class">header</span>"</span> <span class="string">id="<span class="class">header</span>"</span><span class="keyword">&gt;</span>
+  <span class="keyword">&lt;div</span> <span class="string">class="<span class="class">header-container</span>"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;a</span> <span class="string">href="#" class="<span class="class">header-logo</span>"</span><span class="keyword">&gt;</span>ViberAiden<span class="keyword">&lt;/a&gt;</span>
+    
+    <span class="keyword">&lt;nav</span> <span class="string">class="<span class="class">header-nav</span>"</span><span class="keyword">&gt;</span>
+      <span class="keyword">&lt;ul</span> <span class="string">class="<span class="class">nav-links</span>"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;li&gt;&lt;a</span> <span class="string">class="<span class="class">nav-link active</span>"</span><span class="keyword">&gt;</span>문제들<span class="keyword">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="keyword">&lt;li&gt;&lt;a</span> <span class="string">class="<span class="class">nav-link</span>"</span><span class="keyword">&gt;</span>해결책<span class="keyword">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="keyword">&lt;li&gt;&lt;a</span> <span class="string">class="<span class="class">nav-link</span>"</span><span class="keyword">&gt;</span>기획자 이야기<span class="keyword">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="keyword">&lt;li&gt;&lt;a</span> <span class="string">class="<span class="class">nav-link</span>"</span><span class="keyword">&gt;</span>연락하기<span class="keyword">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="keyword">&lt;/ul&gt;</span>
+      
+      <span class="keyword">&lt;div</span> <span class="string">class="<span class="class">header-cta</span>"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;a</span> <span class="string">class="<span class="class">btn btn-primary</span>"</span><span class="keyword">&gt;</span>해결한 문제들 보기<span class="keyword">&lt;/a&gt;</span>
+      <span class="keyword">&lt;/div&gt;</span>
+    <span class="keyword">&lt;/nav&gt;</span>
+  <span class="keyword">&lt;/div&gt;</span>
+<span class="keyword">&lt;/header&gt;</span>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <h2 class="demo-title">🎨 인터랙션 테스트</h2>
+            <p class="demo-description">
+                다음 기능들을 테스트해보세요:
+            </p>
+            
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>스크롤 효과:</strong> 페이지를 스크롤하면 헤더 배경이 반투명해집니다</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>키보드 네비게이션:</strong> Tab 키로 모든 요소에 접근 가능</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>반응형 메뉴:</strong> 브라우저 크기를 조정하여 모바일 메뉴 확인</span>
+                </li>
+                <li class="feature-item">
+                    <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><strong>호버 효과:</strong> 로고, 메뉴 링크, 버튼에 마우스를 올려보세요</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Demo Content for Scroll Effect -->
+        <section class="demo-section">
+            <h2 class="demo-title">📝 스크롤 테스트용 콘텐츠</h2>
+            <p class="demo-description">이 섹션은 스크롤 효과를 테스트하기 위한 더미 콘텐츠입니다.</p>
+            <div style="height: 200vh; background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); color: var(--color-neutral-600);">
+                스크롤하면 헤더 스타일이 변경됩니다 ✨
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================================
+         JAVASCRIPT - Header Functionality
+         ============================================================================ -->
+    
+    <script>
+        // Header Component JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('header');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            // 스크롤 효과
+            function handleScroll() {
+                const scrollY = window.scrollY;
+                
+                if (scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+
+            // 모바일 메뉴 토글
+            function toggleMobileMenu() {
+                const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+                
+                if (isExpanded) {
+                    // 메뉴 닫기
+                    mobileMenu.classList.remove('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenuToggle.setAttribute('aria-label', '모바일 메뉴 열기');
+                    
+                    // 햄버거 아이콘으로 변경
+                    mobileMenuToggle.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    `;
+                } else {
+                    // 메뉴 열기
+                    mobileMenu.classList.add('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'true');
+                    mobileMenuToggle.setAttribute('aria-label', '모바일 메뉴 닫기');
+                    
+                    // X 아이콘으로 변경
+                    mobileMenuToggle.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    `;
+                }
+            }
+
+            // 키보드 네비게이션
+            function handleKeyNavigation(e) {
+                // ESC 키로 모바일 메뉴 닫기
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                    mobileMenuToggle.focus();
+                }
+                
+                // Enter 또는 Space로 모바일 메뉴 토글
+                if ((e.key === 'Enter' || e.key === ' ') && e.target === mobileMenuToggle) {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                }
+            }
+
+            // 모바일 메뉴 외부 클릭 시 닫기
+            function handleClickOutside(e) {
+                if (mobileMenu.classList.contains('active')) {
+                    if (!header.contains(e.target)) {
+                        toggleMobileMenu();
+                    }
+                }
+            }
+
+            // 활성 링크 업데이트
+            function updateActiveLink() {
+                const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+                const hash = window.location.hash || '#problems';
+                
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === hash) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // 이벤트 리스너 등록
+            window.addEventListener('scroll', handleScroll);
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+            document.addEventListener('keydown', handleKeyNavigation);
+            document.addEventListener('click', handleClickOutside);
+            window.addEventListener('hashchange', updateActiveLink);
+
+            // 초기 실행
+            handleScroll();
+            updateActiveLink();
+
+            // 성능 로깅
+            console.log('✅ ViberAiden Header Component loaded successfully');
+            console.log('🎯 Features: Fixed header, responsive menu, keyboard navigation, scroll effects');
+            
+            // 접근성 향상을 위한 포커스 관리
+            const focusableElements = header.querySelectorAll(
+                'a, button, [tabindex]:not([tabindex="-1"])'
+            );
+            
+            focusableElements.forEach(element => {
+                element.addEventListener('focus', function() {
+                    console.log('Focus on:', this.textContent || this.getAttribute('aria-label'));
+                });
+            });
+
+            // 모바일 메뉴 링크 클릭 시 메뉴 자동 닫기
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

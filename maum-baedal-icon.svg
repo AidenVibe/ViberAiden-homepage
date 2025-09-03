@@ -1,0 +1,38 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect width="240" height="240" rx="60" fill="#C4B5FD"/>
+  
+  <!-- 말풍선 배경 -->
+  <path d="M50 70 Q50 50 70 50 L170 50 Q190 50 190 70 L190 130 Q190 150 170 150 L90 150 L70 170 L70 150 Q50 150 50 130 Z" 
+        fill="white"/>
+  
+  <!-- 하트들 -->
+  <g fill="#FB923C">
+    <!-- 큰 하트 -->
+    <path d="M120 80 C115 75 108 75 105 80 C102 75 95 75 90 80 C85 85 85 95 90 100 L105 115 L120 100 C125 95 125 85 120 80 Z"/>
+    
+    <!-- 작은 하트 -->
+    <path d="M130 95 C127.5 92.5 124 92.5 122.5 95 C121 92.5 117.5 92.5 115 95 C112.5 97.5 112.5 102.5 115 105 L122.5 112.5 L130 105 C132.5 102.5 132.5 97.5 130 95 Z"/>
+  </g>
+  
+  <!-- 가족 실루엣 -->
+  <g fill="#403E5C">
+    <!-- 엄마 -->
+    <ellipse cx="90" cy="105" rx="15" ry="20"/>
+    <ellipse cx="90" cy="92" rx="8" ry="8"/>
+    
+    <!-- 아빠 -->
+    <ellipse cx="140" cy="105" rx="15" ry="20"/>
+    <ellipse cx="140" cy="92" rx="8" ry="8"/>
+    
+    <!-- 아이 -->
+    <ellipse cx="115" cy="115" rx="12" ry="15"/>
+    <ellipse cx="115" cy="105" rx="6" ry="6"/>
+  </g>
+  
+  <!-- 텍스트 -->
+  <text x="120" y="200" font-family="NanumSquare" font-size="20" font-weight="700" 
+        text-anchor="middle" fill="#403E5C">마음배달</text>
+  <text x="120" y="220" font-family="Arial" font-size="14" font-weight="400" 
+        text-anchor="middle" fill="#64748B">dearq</text>
+</svg>

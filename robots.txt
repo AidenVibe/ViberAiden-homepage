@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://viberaiden.github.io/sitemap.xml
+
+# 크롤링 허용
+Crawl-delay: 1

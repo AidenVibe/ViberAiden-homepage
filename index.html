@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViberAiden - 사람들이 느끼지만 말하지 않는 불편함을 찾는 기획자</title>
+    <meta name="description" content="ViberAiden | 사람들이 느끼지만 말하지 않는 불편함을 찾는 기획자. 마음배달 - 부모님과 따뜻한 일상을 나누는 효도 앱">
+    <meta name="keywords" content="ViberAiden, 바이버에이든, 마음배달, 효도앱, 가족소통, 박준형">
+    <meta name="author" content="에이든 (ViberAiden)">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viberaiden.com/">
+    <meta property="og:title" content="ViberAiden - 사람들이 느끼지만 말하지 않는 불편함을 찾는 기획자">
+    <meta property="og:description" content="마음배달로 부모님과 따뜻한 일상을 나누세요. 매일 한 질문으로 가족의 마음을 연결합니다.">
+    <meta property="og:image" content="https://viberaiden.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://viberaiden.com/">
+    <meta property="twitter:title" content="ViberAiden - 사람들이 느끼지만 말하지 않는 불편함을 찾는 기획자">
+    <meta property="twitter:description" content="마음배달로 부모님과 따뜻한 일상을 나누세요. 매일 한 질문으로 가족의 마음을 연결합니다.">
+    
+    <!-- Fonts -->
+    <link href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="components/design-system/theme.css">
+    
+    <style>
+        /* Additional Custom Styles for ViberAiden with 마음배달 Theme */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'NanumSquare', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #ffffff;
+            background: var(--night-sky-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* 별 반짝임 효과 */
+        .starlight-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .starlight-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #FFE276 1px, transparent 1px),
+                radial-gradient(circle at 70% 20%, #ffffff 0.5px, transparent 0.5px),
+                radial-gradient(circle at 80% 80%, #FFE276 1.5px, transparent 1.5px),
+                radial-gradient(circle at 30% 90%, #ffffff 0.8px, transparent 0.8px),
+                radial-gradient(circle at 90% 40%, #FFE276 0.6px, transparent 0.6px),
+                radial-gradient(circle at 40% 60%, #ffffff 1px, transparent 1px);
+            animation: starlight 12s ease-in-out infinite;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        
+        @keyframes starlight {
+            0%, 100% { opacity: 0.6; transform: translateY(0px) scale(1); }
+            50% { opacity: 1; transform: translateY(-2px) scale(1.1); }
+        }
+        
+        /* 우주적 글로우 효과 */
+        .cosmic-glow {
+            box-shadow: var(--starlight-glow);
+        }
+        
+        /* 밤하늘 테마 컬러 오버라이드 - "우주를 간직한 마음은 별처럼 반짝인다" */
+        :root {
+            --color-primary-500: #385678;   /* 깊은 밤하늘 파랑 */
+            --color-primary-600: #2A4460;   /* 진한 밤하늘 파랑 */
+            --color-secondary-500: #0176F9; /* 우주의 밝은 파랑 */
+            --color-secondary-600: #0056CC; /* 진한 우주 파랑 */
+            --color-accent-500: #FFE276;    /* 황금 별빛 */
+            --color-accent-600: #E5C55C;    /* 진한 별빛 */
+            
+            /* 접근성 개선된 텍스트 색상 - WCAG 2.1 AA 준수 */
+            --color-text-primary: #ffffff;      /* 순백색 - 대비율 21:1 */
+            --color-text-secondary: #E6F3FF;    /* 연한 별빛 파랑 - 대비율 16.8:1 */
+            --color-text-tertiary: #CCE7FF;     /* 중간 별빛 파랑 - 대비율 12.6:1 */
+            --color-text-quaternary: #B3DBFF;   /* 약간 진한 별빛 파랑 - 대비율 9.8:1 */
+            --color-text-muted: #99CFFF;        /* 부드러운 별빛 파랑 - 대비율 7.4:1 */
+            --color-text-subtle: #80C3FF;       /* 미묘한 별빛 파랑 - 대비율 5.8:1 */
+            --color-text-link: #66B7FF;         /* 링크용 별빛 파랑 - 대비율 4.9:1 */
+            
+            /* 밤하늘 특별 그라데이션 - 더 진한 남색으로 가독성 개선 */
+            --night-sky-gradient: linear-gradient(135deg, 
+                #0A0A0F 0%,     /* 더 진한 우주 검정 */
+                #1E2A3A 25%,    /* 더 진한 남색 */
+                #2A4460 65%,    /* 깊은 남색 */
+                #4A7BC8 100%    /* 부드러운 파랑 */
+            );
+            
+            --starlight-glow: 0 0 20px #FFE276, 0 0 40px #FFE27680, 0 0 60px #FFE27640;
+        }
+        
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 226, 118, 0.2);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .header.scrolled {
+            box-shadow: 0 4px 20px rgba(1, 118, 249, 0.3);
+            background: rgba(26, 26, 42, 0.98);
+        }
+        
+        .header-container {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-family: 'Archivo', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #385678 0%, #0176F9 50%, #FFE276 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 0 8px #FFE27640);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--color-text-link);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #385678 0%, #FFE276 100%);
+            transition: width 0.3s ease;
+            box-shadow: var(--starlight-glow);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: var(--color-text-secondary);
+            text-shadow: 0 0 10px rgba(230, 243, 255, 0.4);
+        }
+        
+        .contact-btn {
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #385678 0%, #0176F9 100%);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(1, 118, 249, 0.3);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #0176F9 0%, #FFE276 100%);
+            color: #111111;
+            box-shadow: var(--starlight-glow), 0 10px 30px rgba(1, 118, 249, 0.4);
+        }
+        
+        /* Hero Section - 밤하늘 테마 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+            background: var(--night-sky-gradient);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 별들이 반짝이는 효과 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #FFE276, transparent),
+                radial-gradient(2px 2px at 40px 70px, #FFE27680, transparent),
+                radial-gradient(1px 1px at 90px 40px, #FFE276, transparent),
+                radial-gradient(1px 1px at 130px 80px, #FFE276, transparent),
+                radial-gradient(2px 2px at 160px 30px, #FFE27680, transparent),
+                radial-gradient(1px 1px at 200px 20px, #FFE276, transparent),
+                radial-gradient(2px 2px at 250px 60px, #FFE27680, transparent),
+                radial-gradient(1px 1px at 300px 90px, #FFE276, transparent);
+            background-repeat: repeat;
+            background-size: 320px 120px;
+            animation: starlight 10s ease-in-out infinite, starFlow 25s linear infinite;
+            pointer-events: none;
+        }
+        
+        /* 우주적 글로우 효과 */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, 
+                rgba(1, 118, 249, 0.2) 0%, 
+                transparent 50%),
+                radial-gradient(circle at 70% 80%, 
+                rgba(255, 226, 118, 0.15) 0%, 
+                transparent 40%);
+            animation: cosmicPulse 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        /* 별 은은한 반짝임 애니메이션 - 바운스 제거 */
+        @keyframes starlight {
+            0%, 100% { 
+                opacity: 0.4; 
+            }
+            50% { 
+                opacity: 0.9; 
+            }
+        }
+        
+        /* 별이 천천히 흐르는 애니메이션 */
+        @keyframes starFlow {
+            0% { 
+                transform: translateX(-50px); 
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% { 
+                transform: translateX(50px); 
+                opacity: 0.3;
+            }
+        }
+        
+        /* 우주적 부드러운 글로우 애니메이션 - 회전과 크기 변화 제거 */
+        @keyframes cosmicPulse {
+            0%, 100% { 
+                opacity: 0.2; 
+            }
+            50% { 
+                opacity: 0.4; 
+            }
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: linear-gradient(135deg, #FFE276 0%, #E5C55C 100%);
+            color: #111111;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            animation: starPulse 2s ease-in-out infinite;
+            box-shadow: var(--starlight-glow);
+        }
+        
+        @keyframes starPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: var(--starlight-glow);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 25px #FFE276, 0 0 50px #FFE27680, 0 0 75px #FFE27640;
+            }
+        }
+        
+        /* 공통 스타일 */
+        .hero-subtitle-text {
+            display: block;
+            font-size: clamp(28px, 5vw, 60px);  /* 기존보다 작게 */
+            font-weight: 600;  /* 살짝 더 열게 */
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
+        
+        .hero-main-text {
+            display: block;
+            font-size: clamp(36px, 7vw, 80px);  /* 기존 크기 유지 */
+            font-weight: 900;  /* 굵게 유지 */
+            margin-top: 16px;  /* 자연스러운 간격 조정 */
+        }
+        
+        /* Option 1A: Crystal White Basic */
+        .hero-title-option1a {
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #ffffff;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 
+                0 0 20px rgba(1, 118, 249, 0.9),
+                0 0 40px rgba(107, 163, 245, 0.7),
+                0 0 60px rgba(1, 118, 249, 0.5),
+                2px 2px 6px rgba(0, 0, 0, 0.9);
+            position: relative;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+        }
+        
+        /* Option 1B: Crystal White + Pulse Glow */
+        .hero-title-option1b {
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #ffffff;
+            animation: fadeInUp 1s ease-out, crystalPulse 3s ease-in-out infinite;
+            text-shadow: 
+                0 0 25px rgba(1, 118, 249, 0.9),
+                0 0 50px rgba(107, 163, 245, 0.8),
+                0 0 75px rgba(1, 118, 249, 0.6),
+                2px 2px 6px rgba(0, 0, 0, 0.9);
+            position: relative;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+        }
+        
+        @keyframes crystalPulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 25px rgba(1, 118, 249, 0.9),
+                    0 0 50px rgba(107, 163, 245, 0.8),
+                    0 0 75px rgba(1, 118, 249, 0.6),
+                    2px 2px 6px rgba(0, 0, 0, 0.9);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 35px rgba(1, 118, 249, 1),
+                    0 0 70px rgba(107, 163, 245, 0.9),
+                    0 0 100px rgba(1, 118, 249, 0.7),
+                    2px 2px 6px rgba(0, 0, 0, 0.9);
+            }
+        }
+        
+        /* Option 1C: Crystal White + Aurora Tint */
+        .hero-title-option1c {
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #ffffff;
+            animation: fadeInUp 1s ease-out, auroraShimmer 4s ease-in-out infinite;
+            text-shadow: 
+                0 0 20px rgba(1, 118, 249, 0.8),
+                0 0 40px rgba(157, 78, 221, 0.6),
+                0 0 60px rgba(107, 115, 255, 0.5),
+                2px 2px 6px rgba(0, 0, 0, 0.9);
+            position: relative;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+        }
+        
+        @keyframes auroraShimmer {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px rgba(1, 118, 249, 0.8),
+                    0 0 40px rgba(157, 78, 221, 0.6),
+                    0 0 60px rgba(107, 115, 255, 0.5),
+                    2px 2px 6px rgba(0, 0, 0, 0.9);
+            }
+            33% {
+                text-shadow: 
+                    0 0 25px rgba(107, 115, 255, 0.9),
+                    0 0 45px rgba(1, 118, 249, 0.7),
+                    0 0 65px rgba(157, 78, 221, 0.6),
+                    2px 2px 6px rgba(0, 0, 0, 0.9);
+            }
+            66% {
+                text-shadow: 
+                    0 0 30px rgba(157, 78, 221, 0.8),
+                    0 0 50px rgba(107, 115, 255, 0.7),
+                    0 0 70px rgba(1, 118, 249, 0.6),
+                    2px 2px 6px rgba(0, 0, 0, 0.9);
+            }
+        }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin-bottom: 48px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .btn-hero {
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .btn-hero-primary {
+            background: linear-gradient(135deg, 
+                #385678 0%,     /* 깊은 밤하늘 */
+                #0176F9 100%);  /* 우주 파랑 */
+            color: white;
+            box-shadow: 0 10px 30px rgba(1, 118, 249, 0.3), var(--starlight-glow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hero-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 226, 118, 0.4) 50%, 
+                transparent 100%);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-hero-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #0176F9 0%, #FFE276 100%);
+            color: #111111;
+            box-shadow: var(--starlight-glow), 0 15px 40px rgba(1, 118, 249, 0.4);
+        }
+        
+        .btn-hero-secondary {
+            background: transparent;
+            color: #FFE276;
+            border: 2px solid #FFE276;
+            box-shadow: 0 0 15px rgba(255, 226, 118, 0.3);
+        }
+        
+        .btn-hero-secondary:hover {
+            background: linear-gradient(135deg, #FFE276 0%, #0176F9 100%);
+            color: white;
+            border-color: #0176F9;
+            transform: translateY(-3px);
+            box-shadow: var(--starlight-glow), 0 15px 40px rgba(255, 226, 118, 0.4);
+        }
+        
+        /* Problems Section */
+        .problems {
+            padding: 120px 40px;
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: var(--color-accent-alpha-10);
+            color: var(--color-accent-600);
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .section-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: var(--color-text-primary);
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--color-text-tertiary);
+            line-height: 1.6;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .problem-card {
+            background: rgba(26, 26, 42, 0.9);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(1, 118, 249, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 226, 118, 0.1);
+        }
+        
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--color-accent-600) 0%, 
+                var(--color-secondary-300) 100%);
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(1, 118, 249, 0.3);
+            border: 1px solid rgba(255, 226, 118, 0.3);
+        }
+        
+        .problem-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, 
+                var(--color-accent-alpha-20) 0%, 
+                var(--color-secondary-alpha-20) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            font-size: 36px;
+        }
+        
+        .problem-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+        
+        .problem-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text-tertiary);
+            margin-bottom: 24px;
+        }
+        
+        .problem-stats {
+            display: flex;
+            gap: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .stat-item {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-accent-500);
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+        
+        /* Solutions Section */
+        .solutions {
+            padding: 120px 40px;
+            background: linear-gradient(180deg, 
+                rgba(56, 86, 120, 0.3) 0%, 
+                rgba(1, 118, 249, 0.2) 100%);
+            backdrop-filter: blur(5px);
+        }
+        
+        .solution-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 80px;
+        }
+        
+        .solution-content {
+            padding-right: 40px;
+        }
+        
+        .solution-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: var(--color-secondary-500);
+            color: white;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        .solution-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, 
+                var(--color-accent-600) 0%, 
+                var(--color-secondary-300) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .solution-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+        }
+        
+        .solution-features {
+            list-style: none;
+            margin-bottom: 48px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            font-size: 16px;
+            color: var(--color-text-primary);
+        }
+        
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--color-secondary-alpha-20);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-secondary-300);
+            flex-shrink: 0;
+        }
+        
+        .solution-visual {
+            position: relative;
+        }
+        
+        .phone-mockup {
+            width: 100%;
+            max-width: 400px;
+            height: 600px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                rgba(17, 17, 17, 0.9) 0%, 
+                rgba(26, 26, 42, 0.95) 100%);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 226, 118, 0.2);
+        }
+        
+        .screen-logo {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, 
+                var(--color-accent-600) 0%, 
+                var(--color-secondary-300) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .screen-app-icon {
+            margin-bottom: 16px;
+            filter: drop-shadow(2px 2px 8px var(--color-accent-alpha-50));
+        }
+        
+        .screen-app-icon img {
+            border-radius: 12px;
+        }
+        
+        .conversation-example {
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .chat-question {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .question-badge {
+            background: var(--color-accent-alpha-20);
+            color: var(--color-accent-500);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        
+        .chat-answers {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .answer-bubble {
+            padding: 12px 16px;
+            border-radius: 16px;
+            text-align: left;
+            max-width: 85%;
+        }
+        
+        .answer-bubble.mom {
+            background: rgba(1, 118, 249, 0.3);
+            border: 1px solid rgba(1, 118, 249, 0.5);
+            align-self: flex-start;
+            backdrop-filter: blur(10px);
+        }
+        
+        .answer-bubble.child {
+            background: rgba(255, 226, 118, 0.3);
+            border: 1px solid rgba(255, 226, 118, 0.5);
+            align-self: flex-end;
+            backdrop-filter: blur(10px);
+        }
+        
+        .answer-author {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            margin-bottom: 4px;
+        }
+        
+        .answer-text {
+            font-size: 13px;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+        
+        .screen-message-small {
+            font-size: 12px;
+            color: var(--color-text-subtle);
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.4;
+        }
+        
+        .screen-message {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+        }
+        
+        .screen-button {
+            padding: 14px 32px;
+            background: linear-gradient(135deg, 
+                var(--color-accent-600) 0%, 
+                var(--color-secondary-300) 100%);
+            color: white;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 120px 40px;
+            background: rgba(17, 17, 17, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .about-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 20px var(--color-accent-alpha-30),
+                0 0 40px var(--color-secondary-alpha-20),
+                0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--color-accent-alpha-50);
+            overflow: hidden;
+        }
+        
+        .about-name {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--color-text-primary);
+        }
+        
+        .about-role {
+            font-size: 20px;
+            color: var(--color-text-secondary);
+            margin-bottom: 48px;
+            font-weight: 600;
+        }
+        
+        .about-story {
+            font-size: 18px;
+            line-height: 2;
+            color: var(--color-text-secondary);
+            margin-bottom: 48px;
+        }
+        
+        .about-quote {
+            padding: 40px;
+            background: var(--color-primary-alpha-10);
+            border-left: 4px solid #FFB33A;
+            border-radius: 16px;
+            margin: 48px 0;
+            box-shadow: 0 0 20px rgba(255, 140, 66, 0.1);
+        }
+        
+        .quote-text {
+            font-size: 24px;
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--color-text-primary);
+            margin-bottom: 16px;
+        }
+        
+        .quote-author {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 80px 40px 40px;
+            background: var(--color-neutral-950);
+            color: white;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand {
+            max-width: 400px;
+        }
+        
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, 
+                var(--color-accent-500) 0%, 
+                var(--color-secondary-500) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text-quaternary);
+            margin-bottom: 32px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: var(--color-neutral-800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--color-primary-500);
+            transform: translateY(-4px);
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+        
+        .footer-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 12px 0;
+            display: inline-block;
+            min-height: 44px;
+            line-height: 20px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-text-secondary);
+        }
+        
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid var(--color-neutral-800);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        
+        .footer-copyright {
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
+        
+        .footer-business {
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
+        
+        /* 한국어 텍스트 줄바꿈 최적화 */
+        body {
+            word-break: keep-all; /* 한국어 단어 단위 줄바꿈 */
+            overflow-wrap: break-word; /* 긴 단어는 줄바꿈 허용 */
+            line-break: strict; /* 엄격한 줄바꿈 규칙 */
+        }
+
+        /* 제목 텍스트 최적화 */
+        .hero-subtitle-text,
+        .hero-main-text,
+        .hero-subtitle,
+        .section-title,
+        .solution-title,
+        .problem-title {
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            line-break: strict;
+        }
+
+        /* 본문 텍스트 최적화 */
+        .problem-description,
+        .solution-description,
+        .about-story,
+        .section-subtitle,
+        .hero-subtitle {
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            line-break: auto;
+            text-align: justify; /* 모바일에서 양쪽 정렬로 가독성 향상 */
+        }
+
+        /* Mobile Responsive */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--color-text-primary);
+            cursor: pointer;
+        }
+        
+        @media (max-width: 1024px) {
+            .solution-showcase {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .solution-content {
+                padding-right: 0;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .contact-btn {
+                display: inline-block;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            
+            /* 모바일 히어로 텍스트 최적화 */
+            .hero-subtitle-text, .hero-main-text {
+                line-height: 1.4;
+                word-break: keep-all;
+                padding: 0 10px;
+            }
+            
+            .hero-subtitle {
+                text-align: left;
+                word-break: keep-all;
+                line-height: 1.6;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-hero {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .problems, .solutions, .about {
+                padding: 80px 20px;
+            }
+            
+            .problems-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .problem-card {
+                padding: 32px;
+            }
+            
+            /* 모바일에서 텍스트 좌측 정렬로 가독성 향상 */
+            .problem-description, .solution-description, .about-story {
+                text-align: left;
+                line-break: auto;
+            }
+            
+            /* 대화 예시 텍스트 최적화 */
+            .answer-text {
+                line-break: auto;
+                word-break: keep-all;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* 모바일 전용 한국어 텍스트 최적화 */
+            .hero-subtitle-text,
+            .hero-main-text {
+                word-break: keep-all;
+                line-height: 1.4; /* 모바일에서 줄 간격 조정 */
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                word-break: keep-all;
+                line-height: 1.7;
+                text-align: center;
+                padding: 0 10px; /* 좌우 여백 추가 */
+            }
+
+            .problem-description,
+            .solution-description {
+                word-break: keep-all;
+                line-height: 1.8;
+                text-align: left; /* 모바일에서는 좌측 정렬이 더 가독성 좋음 */
+                padding: 0; /* 양쪽 정렬 해제 */
+            }
+
+            .section-title {
+                word-break: keep-all;
+                line-height: 1.3;
+                text-align: center;
+            }
+
+            .about-story p {
+                word-break: keep-all;
+                line-height: 1.9;
+                margin-bottom: 1.5em;
+                text-align: left;
+            }
+
+            /* 모바일 대화 예시 최적화 */
+            .question-text {
+                word-break: keep-all;
+                line-height: 1.5;
+            }
+
+            .answer-text {
+                word-break: keep-all;
+                line-break: auto;
+                overflow-wrap: break-word;
+            }
+        }
+        
+        /* Smooth Scroll Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="#" class="logo">ViberAiden</a>
+            <nav class="nav-menu">
+                <a href="#problems" class="nav-link">해결하는 문제</a>
+                <a href="#solutions" class="nav-link">마음배달</a>
+                <a href="#about" class="nav-link">소개</a>
+            </nav>
+            <a href="https://open.kakao.com/o/sUHoGvzf" class="contact-btn" target="_blank">문의하기</a>
+            <button class="mobile-menu-toggle" aria-label="메뉴">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero starlight-effect">
+        <div class="hero-content">
+           
+            <!-- Option 1B: Crystal White + 강화된 펄스 글로우 -->
+            <h1 class="hero-title-option1b">
+                <span class="hero-subtitle-text">사람들이 느끼지만, 말하지 않는</span>
+                <span class="hero-main-text">불편함을 정의하는 기획자</span>
+            </h1>
+            <p class="hero-subtitle">
+                일상 속 작은 불편함에서 시작해 세상을 조금 더 따뜻하게 만드는 서비스를 만듭니다
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems" id="problems">
+        <div class="section-container">
+            <div class="section-header scroll-reveal">
+                <div class="section-badge">PROBLEMS</div>
+                <h2 class="section-title">
+                    모두가 느끼지만<br>
+                    아무도 해결하지 않았던 불편함
+                </h2>
+                <p class="section-subtitle">
+                    일상 속에서 발견한 진짜 문제들을 해결합니다
+                </p>
+            </div>
+            
+            <div class="problems-grid">
+                <div class="problem-card scroll-reveal">
+                    <div class="problem-icon">💝</div>
+                    <h3 class="problem-title">"효도하고 싶지만 어떻게 해야 할지 모르겠어요"</h3>
+                    <p class="problem-description">
+                        부모님께 안부 전화를 드리고 싶은 마음은 간절하지만, 막상 전화를 걸면 "안녕하세요" 다음에 무슨 말을 해야 할지 막막합니다.<br><br>
+                        우리는 분명 효도하고 싶은 마음이 있어요. 단지 어떻게 시작해야 할지 모르는 것뿐입니다. 마음배달은 그 첫 걸음을 도와드립니다.
+                    </p>
+                </div>
+                
+                <div class="problem-card scroll-reveal">
+                    <div class="problem-icon">💑</div>
+                    <h3 class="problem-title">"언젠가 함께 하자고 하는데 언제인지 모르겠어요"</h3>
+                    <p class="problem-description">
+                        사랑하는 사람과 함께 하고 싶은 것들을 노트에 적어보지만, 시간이 지나고 보면 그대로 말이죠. '언젠가 해야지'라는 말이 '언제인지 모르겠어'로 바뀍니다.<br><br>
+                        소중한 사람과의 추억을 만들고 싶은 마음을 현실로 만드는 손길, 그것이 대단한 선물이죠.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions" id="solutions">
+        <div class="section-container">
+            <div class="section-header scroll-reveal">
+                <div class="section-badge">SOLUTION #1</div>
+                <h2 class="section-title">
+                    부모님과의 어색함을<br>
+                    따뜻한 일상 대화로
+                </h2>
+            </div>
+            
+            <div class="solution-showcase">
+                <div class="solution-content scroll-reveal">
+                    <div class="solution-badge">🎉 2025년 9월 출시</div>
+                    <h3 class="solution-title">마음배달</h3>
+                    <p class="solution-description">
+                        매일 아침, 부모님과 나에게 같은 질문이 도착합니다.<br>
+                        "오늘 가장 기분 좋았던 순간은?" 같은 따뜻한 질문에 서로 답하면,<br>
+                        듣고 싶었던 이야기들이 자연스럽게 시작됩니다. 그렇게 마음이 전달됩니다.
+                    </p>
+                    <ul class="solution-features">
+                        <li class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>매일 아침 8시, 부모님과 같은 질문 받기</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>서로 답하면 자동으로 공개되는 시스템</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>대화 주제 고민 없이 자연스러운 소통</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon">✓</span>
+                            <span>가족만의 소중한 일상 기록 보관</span>
+                        </li>
+                    </ul>
+                    <a href="#solutions" class="btn-hero btn-hero-primary">
+                        마음배달 알아보기 →
+                    </a>
+                </div>
+                
+                <div class="solution-visual scroll-reveal">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <!-- 마음배달 실제 아이콘 -->
+                            <div class="screen-app-icon">
+                                <img src="maum-baedal-logo.png" alt="마음배달" width="64" height="64" style="border-radius: 12px;"/>
+                            </div>
+                            <div class="screen-logo">마음배달</div>
+                            
+                            <!-- 실제 대화 예시 -->
+                            <div class="conversation-example">
+                                <div class="chat-question">
+                                    <div class="question-badge">오늘의 질문</div>
+                                    <div class="question-text">"오늘 가장 기분 좋았던 순간은?"</div>
+                                </div>
+                                
+                                <div class="chat-answers">
+                                    <div class="answer-bubble mom">
+                                        <div class="answer-author">어머니</div>
+                                        <div class="answer-text">"오늘 산책하면서 본 벌꽃이 예뻤더라 🌸"</div>
+                                    </div>
+                                    
+                                    <div class="answer-bubble child">
+                                        <div class="answer-author">나</div>
+                                        <div class="answer-text">"저도 점심시간에 벚꽃 보며 어머니 생각했어요 ❤️"</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="screen-message-small">
+                                부모님과 나, 모두 답하면 서로의 마음을 볼 수 있어요
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="scroll-reveal">
+                <div class="about-photo">
+                    <img src="profile-200.png" alt="Aiden Profile" width="200" height="200" style="border-radius: 50%; object-fit: cover;"/>
+                </div>
+                <h3 class="about-name">Aiden</h3>
+                <p class="about-role">ViberAiden | Product Manager</p>
+                <div class="about-story">
+                    <p>
+                        우리는 일상 속에서 분명히 느끼지만, 쉽게 말하지 않는 불편함들과 함께 살아갑니다.<br>
+                        저는 그런 불편함을 해결하고자 하는 제품 기획자, 에이든입니다.
+                    </p>
+                    <p>
+                        그중에서도 인간관계, 신체와 정신의 건강처럼 행복한 삶의 기반이 되는 문제들에 깊은 관심을 갖고 있습니다.
+                    </p>
+                    <p>
+                        사용자의 문제를 날카롭게 정의하고, 빠른 실행력과 사람을 잇는 커뮤니케이션을 통해 실질적인 제품과 해결책을 만들어냅니다.
+                    </p>
+                    <p>
+                        그렇게 만들어낸 결과물이 누군가의 삶을 조금 더 건강하고 기쁘게 만든다면, 그보다 더 보람찬 일은 없을 것입니다.
+                    </p>
+                </div>
+                
+                <div class="about-quote scroll-reveal">
+                    <p class="quote-text">
+                        "작은 불편함을 해결하는 것이<br>
+                        세상을 조금 더 따뜻하게 만드는 시작이라고 믿습니다"
+                    </p>
+                    <p class="quote-author">- ViberAiden -</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">ViberAiden</div>
+                    <p class="footer-description">
+                        사람들이 느끼지만 말하지 않는 불편함을 찾아<br>
+                        세상을 조금 더 따뜻하게 만드는 서비스를 만듭니다.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://open.kakao.com/o/sUHoGvzf" class="social-link" target="_blank" aria-label="카카오톡">💬</a>
+                        <a href="mailto:viberaiden@gmail.com" class="social-link" aria-label="이메일">✉️</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>서비스</h4>
+                    <ul class="footer-links">
+                        <li><a href="#solutions">마음배달</a></li>
+                        <li><a href="#">커플 버킷리스트 (준비중)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>회사</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">소개</a></li>
+                        <li><a href="https://open.kakao.com/o/sUHoGvzf" target="_blank">문의하기</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>법적 고지</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2025 ViberAiden. All rights reserved.
+                </p>
+                <p class="footer-business">
+                    사업자 등록번호: 622-07-03994 | 대표: 박준형<br>
+                    주소: 서울특별시 송파구 가락로5길 13-15
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuToggle?.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            navMenu.style.position = 'absolute';
+            navMenu.style.top = '80px';
+            navMenu.style.left = '0';
+            navMenu.style.right = '0';
+            navMenu.style.background = 'white';
+            navMenu.style.flexDirection = 'column';
+            navMenu.style.padding = '20px';
+            navMenu.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+        });
+
+        // Add floating animation to cards on hover
+        document.querySelectorAll('.problem-card, .feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.animation = 'float 3s ease-in-out infinite';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.animation = 'none';
+            });
+        });
+
+        // Dynamic year in footer
+        const currentYear = new Date().getFullYear();
+        document.querySelector('.footer-copyright').textContent = 
+            `© ${currentYear} ViberAiden. All rights reserved.`;
+    </script>
+</body>
+</html>
