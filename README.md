@@ -1,7 +1,5 @@
 # ViberAiden 홈페이지
 
-![ViberAiden](https://via.placeholder.com/800x400?text=ViberAiden+-+불편함을+찾는+기획자)
-
 ## 소개
 
 **"사람들이 느끼지만 말하지 않는 불편함을 찾는 기획자"**
@@ -32,7 +30,7 @@ ViberAiden은 일상의 작은 불편함에서 시작해 따뜻한 변화를 만
 
 이 사이트는 GitHub Pages를 통해 배포됩니다.
 
-- **URL**: https://viberaiden.github.io
+- **URL**: https://aidenvibe.github.io/ViberAiden-homepage/
 - **배포 방식**: 자동 배포 (main 브랜치)
 
 ## 문의
